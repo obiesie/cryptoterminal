@@ -1,0 +1,102 @@
+//
+//  PortfolioViewController.swift
+//  cryptoterminal
+//
+import Cocoa
+import GRDB
+
+
+class PositionViewController: NSViewController, NSTableViewDelegate, NSDraggingDestination, NSSearchFieldDelegate {
+    @IBOutlet var positionController: NSArrayController!
+    @IBOutlet weak var segmentedControl: NSSegmentedControl!
+    @IBOutlet weak var portfolioTableHeaderView: NSTableHeaderView!
+    @IBOutlet weak var positionsTable: NSTableView!
+    @IBOutlet var deleteMenu: NSMenu!
+    @IBOutlet weak var searchField: NSSearchField!
+    
+    var controller : FetchedRecordsController<Position>!
+    let datasource = Datasource.shared
+    
+    lazy var sheetViewController: NSViewController = {
+        return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "newPositionView"))
+            as! NSViewController
+    }()
+    
+    @IBAction func segCtrlClicked(_ sender: Any) {
+        self.presentViewControllerAsSheet(sheetViewController)
+    }
+    
+    @IBAction func deleteMenuItemClicked(_ sender: Any) {
+        guard let positions = positionController.arrangedObjects as? [Position] else { return }
+        let indexOfClickedRow = positionsTable.clickedRow
+        let positionToDelete = positions[indexOfClickedRow]
+        Position.deletePosition(withId: positionToDelete.id )
+        positionsTable.reloadData()
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        positionsTable.delegate = self
+        self.view.wantsLayer = true
+        self.view.layer?.backgroundColor = NSColor.white.cgColor
+        self.positionController.avoidsEmptySelection = false
+        self.controller = try! FetchedRecordsController(
+            Datasource.shared.db!,
+            request: Position.all()
+        )
+        self.controller.trackChanges{ controller in
+            self.positionController.content = controller.fetchedRecords
+        }
+        try! self.controller.performFetch()
+        DispatchQueue.main.async {
+            self.positionController.content = self.controller.fetchedRecords
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(PositionViewController.cryptoPricesUpdated(notification:)), name: Notification.Name(CryptoNotification.cryptoUpdatedNotification), object: nil)
+    }
+    
+    
+    func tableView(_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
+        tableView.reloadData()
+    }
+   
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let columnIdentifier = tableColumn?.identifier,
+            let cell = tableView.makeView(withIdentifier : columnIdentifier, owner: nil) as? NSTableCellView,
+            let position = (positionController.arrangedObjects as! [Any])[row] as? Position
+            else { return nil }
+        //cell.textField?.textColor = NSColor.white
+        print(columnIdentifier.rawValue)
+        switch(columnIdentifier.rawValue){
+        case "Position":
+            cell.textField?.formatter = CryptoFormatters.cryptoFormatter
+            cell.textField?.objectValue = position.quantity
+        case "Exchange":
+            cell.textField?.objectValue = position.exchange.name
+        case "PurchaseCurrency":
+            cell.textField?.objectValue = position.purchaseCurrency.code
+        case "Coin":
+            cell.textField?.objectValue = position.coin.name
+        case "PurchaseDate":
+            cell.textField?.objectValue = CryptoFormatters.dateFormatter.string(from: position.purchaseDate)
+        case "Cost":
+            cell.textField?.objectValue = position.costOfPosition
+        case "Side":
+            cell.textField?.objectValue = position.side
+        default:
+            break
+        }
+        return cell
+    }
+    
+    func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
+        return NSDragOperation()
+    }
+    
+    @objc func cryptoPricesUpdated(notification: Notification){
+        DispatchQueue.main.async {
+            self.positionsTable.reloadData()
+        }
+    }
+}

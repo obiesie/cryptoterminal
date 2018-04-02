@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CryptoCurrency" representedClassName="CryptoCurrency" syncable="YES" codeGenerationType="class"/>
+    <entity name="Currency" representedClassName="Currency" syncable="YES" codeGenerationType="class"/>
+    <entity name="CurrencyType" representedClassName="CurrencyType" syncable="YES" codeGenerationType="class"/>
+    <entity name="FiatCurrency" representedClassName="FiatCurrency" syncable="YES" codeGenerationType="class"/>
+    <elements>
+        <element name="Currency" positionX="-63" positionY="-18" width="128" height="45"/>
+        <element name="CurrencyType" positionX="-54" positionY="-9" width="128" height="45"/>
+        <element name="FiatCurrency" positionX="-36" positionY="9" width="128" height="45"/>
+        <element name="CryptoCurrency" positionX="-18" positionY="27" width="128" height="45"/>
+    </elements>
+</model>
