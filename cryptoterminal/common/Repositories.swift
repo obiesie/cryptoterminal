@@ -22,7 +22,7 @@ protocol ExchangeRateRepo {
 
 protocol BalanceRepo {
     
-    weak var delegate:BalancePersistenceDelegate? { get set }
+    var delegate:BalancePersistenceDelegate? { get set }
     
     func addBalance(balances : [Balance])
     func allBalances() -> [Balance]

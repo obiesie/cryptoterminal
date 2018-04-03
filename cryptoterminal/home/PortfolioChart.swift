@@ -9,7 +9,7 @@ import Foundation
 
 protocol Graph {
     
-    weak var delegate:GraphConfigDelegate? { get set }
+    var delegate:GraphConfigDelegate? { get set }
     var plot : CPTXYGraph { get set }
     func setUpPlot()
     func refreshPlot()

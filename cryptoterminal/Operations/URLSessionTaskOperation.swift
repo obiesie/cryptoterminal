@@ -8,7 +8,7 @@ import Foundation
 
 private var URLSessionTaksOperationKVOContext = 0
 
-class URLSessionTaskOperation: BasicOperation {
+class URLSessionTaskOperation: CryptoOperation {
    
     let task: URLSessionTask
     
@@ -18,7 +18,7 @@ class URLSessionTaskOperation: BasicOperation {
         super.init()
     }
     
-    override func main() {
+    override func execute() {
         assert(task.state == .suspended, "Task was resumed by something other than \(self).")
         task.addObserver(self, forKeyPath: "state", options: [], context: &URLSessionTaksOperationKVOContext)
         task.resume()
@@ -30,7 +30,7 @@ class URLSessionTaskOperation: BasicOperation {
             else { return }
         
         if obj == task && keyPath == "state" && task.state == .completed {
-            finish( true )
+            finish(errors: [])
             task.removeObserver(self, forKeyPath: "state")
         }
     }

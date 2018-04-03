@@ -67,7 +67,7 @@ class NewPositionController: NSViewController, DragDestinationDelegate,  NSTextF
     lazy var sheetViewController: NSViewController = {
         let vc = self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "exchangeSelection"))
             as! ExchangeSelectionController
-        vc.delegate = self
+        vc.delegate = (self as! ExchangeDataImportDelegate)
         vc.obDelegate = self
         return vc
     }()
@@ -159,7 +159,7 @@ class NewPositionController: NSViewController, DragDestinationDelegate,  NSTextF
     @IBAction func doneClicked(_ sender: Any) {
         if self.fileDropped{
             let positions = Position.positionFromFile(filePath: dragAndDrop.filePath!)
-            let validPositions = positions.flatMap{ $0 }
+            let validPositions = positions.compactMap{ $0 }
             validPositions.forEach{ pos in
                 Position.addPosition(position: pos)
             }
@@ -274,7 +274,6 @@ class ExchangeSelectionController : NSViewController {
         }
         if let task = task {
             (task as! CryptoOperation).addObserver(observer: obDelegate!)
-            //task.delegate = delegate
             queue.isSuspended = false
             queue.addOperation(task)
         }

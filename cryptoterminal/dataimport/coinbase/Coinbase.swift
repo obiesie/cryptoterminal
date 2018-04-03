@@ -114,32 +114,28 @@ class CoinbaseAccountImportOperation : CryptoOperation {
 class CoinbaseTransactionImportOperation : GroupOperation {
     
     let baseURL : URL? = URL(string: "https://api.coinbase.com/v2/")
-    var apiResult : OperationResultContext
+    var opResult : OperationResultContext
     let apiKey : String
     let apiSecret : String
     let pendingOperations = OperationQueue()
     
     init(apiResult : OperationResultContext, apiKey : String, apiSecret : String){
-        self.apiResult = apiResult
+        self.opResult = apiResult
         self.apiKey = apiKey
         self.apiSecret = apiSecret
-        super.init(operations: createDownloadOps(opResult: self.apiResult))
-    }
-    
-    private func createDownloadOps(opResult: OperationResultContext ) -> [Operation] {
-        let accounts = self.apiResult.data
-        self.apiResult.data = []
+        let accounts = self.opResult.data
         var ops = [Operation]()
         for account in accounts {
             if let accountId = account["id"] as? String{
                 let url = "v2/accounts/\(accountId)/transactions?limit=25"
-                let txDownloadOp = CoinbaseAccountTransactionImportOperation(apiResult:self.apiResult, apiKey:self.apiKey, apiSecret:self.apiSecret,
+                let txDownloadOp = CoinbaseAccountTransactionImportOperation(apiResult:self.opResult, apiKey:self.apiKey, apiSecret:self.apiSecret,
                                                                              transactionEndpoint: url, accountId: accountId)
                 ops.append(txDownloadOp)
             }
         }
-        return ops
+        super.init(operations: ops)
     }
+    
 }
 
 class CoinbaseAccountTransactionImportOperation : CryptoOperation {

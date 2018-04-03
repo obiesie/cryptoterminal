@@ -72,7 +72,7 @@ class Balance : NSObject, RowConvertible, TableMapping, Persistable {
                                                exchangeId: exchange.id) )
             }
         }
-        return parsedBalances.flatMap{ $0 }
+        return parsedBalances.compactMap{ $0 }
     }
     
     
@@ -89,7 +89,7 @@ class Balance : NSObject, RowConvertible, TableMapping, Persistable {
                                                exchangeId: exchange.id) )
             }
         }
-        let t = parsedBalances.flatMap{ $0 }
+        let t = parsedBalances.compactMap{ $0 }
         // We may have multiple crypto account on coinbase so flatten these out.
         let balanceGroups = Dictionary(grouping: t, by: { $0.currencyId })
         let balances = balanceGroups.values.map({ (currencyBalances : [Balance]) -> Balance in
@@ -117,7 +117,7 @@ class Balance : NSObject, RowConvertible, TableMapping, Persistable {
                 }
             }
         }
-        return parsedBalances.flatMap{ $0 }
+        return parsedBalances.compactMap{ $0 }
     }
     
     static func parseKrakenBalance( balances : [[String:Any]] ) -> [Balance] {
@@ -135,7 +135,7 @@ class Balance : NSObject, RowConvertible, TableMapping, Persistable {
                 }
             }
         }
-        return parsedBalances.flatMap{ $0 }
+        return parsedBalances.compactMap{ $0 }
     }
     
     static func addBalance(balance : Balance){

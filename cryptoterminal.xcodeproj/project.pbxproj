@@ -63,7 +63,6 @@
 		3C907F6D1FD929E900A6AFC7 /* CurrencyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C907F6C1FD929E900A6AFC7 /* CurrencyPair.swift */; };
 		3C9A7CCB1F9B9779007C5A28 /* CryptoExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9A7CCA1F9B9779007C5A28 /* CryptoExchange.swift */; };
 		3CA1D3A81F841CAF00CC466E /* URLSessionTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1D3A71F841CAF00CC466E /* URLSessionTaskOperation.swift */; };
-		3CA1D3AC1F84A36D00CC466E /* BasicOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1D3AB1F84A36D00CC466E /* BasicOperation.swift */; };
 		3CA7F2241F11093B001EA464 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA7F2231F11093B001EA464 /* Portfolio.swift */; };
 		3CA7FF2F1F3271510098C4A7 /* MouseMovedAwareCPTGraphHostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA7FF2E1F3271510098C4A7 /* MouseMovedAwareCPTGraphHostingView.swift */; };
 		3CA925861F3AD83C00B7255F /* InitialSetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA925851F3AD83C00B7255F /* InitialSetUpViewController.swift */; };
@@ -174,7 +173,6 @@
 		3C907F6C1FD929E900A6AFC7 /* CurrencyPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPair.swift; sourceTree = "<group>"; };
 		3C9A7CCA1F9B9779007C5A28 /* CryptoExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoExchange.swift; sourceTree = "<group>"; };
 		3CA1D3A71F841CAF00CC466E /* URLSessionTaskOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionTaskOperation.swift; sourceTree = "<group>"; };
-		3CA1D3AB1F84A36D00CC466E /* BasicOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicOperation.swift; sourceTree = "<group>"; };
 		3CA7F2231F11093B001EA464 /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
 		3CA7FF2E1F3271510098C4A7 /* MouseMovedAwareCPTGraphHostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseMovedAwareCPTGraphHostingView.swift; sourceTree = "<group>"; };
 		3CA925851F3AD83C00B7255F /* InitialSetUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialSetUpViewController.swift; sourceTree = "<group>"; };
@@ -480,7 +478,6 @@
 			isa = PBXGroup;
 			children = (
 				3CA1D3A71F841CAF00CC466E /* URLSessionTaskOperation.swift */,
-				3CA1D3AB1F84A36D00CC466E /* BasicOperation.swift */,
 				3C0F735A1F8756F300C3502B /* NotificationOperation.swift */,
 				3CD5C9672064CA3300152CB1 /* GroupOperation.swift */,
 				3CD5C9692064CEBE00152CB1 /* Operation.swift */,
@@ -912,7 +909,6 @@
 				3C2DB4E91F15610C0095E6D6 /* NewWatchListController.swift in Sources */,
 				3CFA0E111F665B8900661E7B /* AddressService.swift in Sources */,
 				3C51B2FB1F310B67004BD585 /* GeneralPrefsPaneViewController.swift in Sources */,
-				3CA1D3AC1F84A36D00CC466E /* BasicOperation.swift in Sources */,
 				3C0F735B1F8756F300C3502B /* NotificationOperation.swift in Sources */,
 				3C390F981F01AF3100D71213 /* NewPositionController.swift in Sources */,
 				3C7D1D441EFC799F001C58E7 /* SidebarController.swift in Sources */,

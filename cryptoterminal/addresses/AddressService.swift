@@ -38,7 +38,7 @@ final class AddressService{
         pendingOperations.addOperation( notificationOp )
     }
     
-    func createOpFor(cryptoAddress : Wallet, crypto : Currency ) -> BasicOperation? {
+    func createOpFor(cryptoAddress : Wallet, crypto : Currency ) -> CryptoOperation? {
         guard let endPoint = crypto.balanceEndpoint?.replacingOccurrences(of: "{}", with: cryptoAddress.address),
             let url = URL(string : endPoint)
             else { return nil }

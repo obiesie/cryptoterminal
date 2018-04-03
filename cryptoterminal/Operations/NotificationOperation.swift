@@ -6,7 +6,7 @@
 
 import Foundation
 
-class NotificationOperation : BasicOperation {
+class NotificationOperation : CryptoOperation {
     
     let notification : String
     
@@ -14,8 +14,8 @@ class NotificationOperation : BasicOperation {
         self.notification = notification
     }
     
-    override func main() {
+    override func execute() {
         NotificationCenter.default.post(name: Notification.Name(notification), object: nil)
-        finish(true)
+        finish(errors: [])
     }
 }

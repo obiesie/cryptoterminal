@@ -22,7 +22,6 @@ class Position : NSObject, RowConvertible, TableMapping, Persistable {
     }
     @objc var quantity : Double {
         return _quantity
-        //return ["BUY", "EXCHANGE_WITHDRAWAL"].contains(side) ? _quantity : -1*_quantity
     }
     let costOfPosition : Double
     @objc let purchaseDate : Date
@@ -255,7 +254,7 @@ class Position : NSObject, RowConvertible, TableMapping, Persistable {
                 parsedPositions.append( position )
             }
         }
-        return parsedPositions.flatMap{$0}
+        return parsedPositions.compactMap{$0}
     }
     
     
@@ -287,7 +286,7 @@ class Position : NSObject, RowConvertible, TableMapping, Persistable {
                                                  positionId:positionId) )
             }
         }
-        return parsedPositions.flatMap{ $0 }
+        return parsedPositions.compactMap{ $0 }
     }
     
     static func parsePoloniexData(transactionData: [[String:Any]]) -> [Position]{
@@ -348,7 +347,7 @@ class Position : NSObject, RowConvertible, TableMapping, Persistable {
                                                  positionId:positionId) )
             }
         }
-        return parsedPositions.flatMap{ $0 }
+        return parsedPositions.compactMap{ $0 }
     }
     
     static func positionFrom(exchange:Exchange, transactionData: [[String:Any]]) -> [Position]{

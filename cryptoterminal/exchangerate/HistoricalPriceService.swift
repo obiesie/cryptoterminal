@@ -17,35 +17,42 @@ class HistoricalPriceService: NSObject {
     }()
     
     func startService(){
-        Timer.scheduledTimer(timeInterval: 60, target: HistoricalPriceService.shared, selector: #selector(fetchHistoricalPrices),
+        Timer.scheduledTimer(timeInterval: 60, target: HistoricalPriceService.shared,
+                             selector: #selector(fetchHistoricalPrices),
                              userInfo: nil, repeats: true)
     }
     
     @objc func fetchHistoricalPrices() {
-        let downloadedDataContainer = OperationResultContext()
-        let parseOperation = HistoricalPriceParser( apiResult:downloadedDataContainer )
-        let currencyPairs = CurrencyPair.allCurrencyPairs().filter{$0.watchListed}
-        for pair in currencyPairs {
-            let downloadTask = CryptoHistoricalPriceTask(downloadedDataContainer:downloadedDataContainer, currencyPair: pair)
-            pendingOperations.addOperation(downloadTask)
-            parseOperation.addDependency(downloadTask)
-        }
-        pendingOperations.addOperation(parseOperation)
+        let opQueue = CryptoOperationQueue()
+        let downloadOp = GetHistoricalPriceService(opResult: OperationResultContext())
+        
+        opQueue.isSuspended = false
+        opQueue.addOperation(downloadOp)
     }
 }
 
 
 
 class GetHistoricalPriceService : GroupOperation {
+    let opResult : OperationResultContext
     
-    let pendingOperations = OperationQueue()
-   
-    
-    
+    init(opResult: OperationResultContext){
+        self.opResult = opResult
+        var ops = [Operation]()
+        let parseOp = HistoricalPriceParser( apiResult:self.opResult )
+        let currencyPairs = CurrencyPair.allCurrencyPairs().filter{$0.watchListed}
+        for pair in currencyPairs {
+            let downloadOp = CryptoHistoricalPriceTask(downloadedDataContainer:self.opResult, currencyPair: pair)
+            parseOp.addDependency(downloadOp)
+            ops.append(downloadOp)
+        }
+        ops.append(parseOp)
+        super.init(operations: ops)
+    }
 }
 
 
-class HistoricalPriceParser : BasicOperation {
+class HistoricalPriceParser : CryptoOperation {
     
     let apiResult : OperationResultContext
     
@@ -53,7 +60,7 @@ class HistoricalPriceParser : BasicOperation {
         self.apiResult = apiResult
     }
     
-    override func main(){
+    override func execute(){
         
         try! Datasource.shared.db?.inTransaction{db in
             let insertSQL = "INSERT INTO HISTORICAL_EXCHANGE_RATE (time, open, high, close, low, currency_pair) VALUES(:time, :open, :high, :close, :low, :currency_pair)"
@@ -67,14 +74,14 @@ class HistoricalPriceParser : BasicOperation {
             }
             return .commit
         }
-        self.finish(true)
+        self.finish(errors: [])
         NotificationCenter.default.post(name: Notification.Name(CryptoNotification.hisoricalPriceUpdateNotification), object: nil)
         os_log("Updated historical data", log: OSLog.default, type: .default)
         
     }
 }
 
-class CryptoHistoricalPriceTask: BasicOperation {
+class CryptoHistoricalPriceTask: CryptoOperation {
     var volToDownload = 1999.0
     let currencyPair:CurrencyPair
     let pendingOperations = OperationQueue()
@@ -86,7 +93,7 @@ class CryptoHistoricalPriceTask: BasicOperation {
         self.downloadedDataContainer = downloadedDataContainer
     }
     
-    override func main(){
+    override func execute(){
         
         // Oldest historical price timestamp that should be in database
         let oldest = Int((DateInRegion() - 7.days).absoluteDate.timeIntervalSince1970)
@@ -127,7 +134,7 @@ class CryptoHistoricalPriceTask: BasicOperation {
             }).resume()
         }
         downloadGroup.wait()
-        self.finish(true)
+        self.finish(errors:[])
     }
     
     private func computeDateBatchesForDownload(cutOffDate : Int) ->  [DateInRegion]{

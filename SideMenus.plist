@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Home</string>
+		<key>submenus</key>
+		<array/>
+		<key>icon</key>
+		<string>NSImage.Name.homeTemplate</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>WatchList</string>
+		<key>submenus</key>
+		<array/>
+		<key>icon</key>
+		<string>NSImage.Name.revealFreestandingTemplate</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Positions</string>
+		<key>submenus</key>
+		<array/>
+		<key>icon</key>
+		<string>NSImage.Name.folderSmart</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Addresses</string>
+		<key>submenus</key>
+		<array/>
+		<key>icon</key>
+		<string>NSImage.Name.listViewTemplate</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Scratch Pad</string>
+		<key>submenus</key>
+		<array/>
+		<key>icon</key>
+		<string>NSImage.Name.smartBadgeTemplate</string>
+	</dict>
+</array>
+</plist>

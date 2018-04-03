@@ -14,7 +14,7 @@ protocol WatchList {
 
 protocol GraphConfig : CPTPlotDelegate {
     var plot: CPTXYGraph { get }
-    weak var delegate:GraphConfigDelegate? { get set }
+    var delegate:GraphConfigDelegate? { get set }
 
     func setUpPlot(for period: String, using dataPoints : [HistoricalExchangeRate], usingFormatter formatter : NumberFormatter?)
     func refreshPlot(for period: String, using data: [HistoricalExchangeRate], usingFormatter formatter : NumberFormatter?)

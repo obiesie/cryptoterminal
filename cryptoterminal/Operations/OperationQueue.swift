@@ -51,7 +51,7 @@ class CryptoOperationQueue: OperationQueue {
             op.addObserver(observer: delegate)
             
             // Extract any dependencies needed by this operation.
-            let dependencies = op.conditions.flatMap {
+            let dependencies = op.conditions.compactMap {
                 $0.dependencyForOperation(operation: op)
             }
             
