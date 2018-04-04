@@ -115,6 +115,7 @@ class GDAXAccountImportOperation: CryptoOperation {
             }
         })
         task.resume()
+        super.execute()
     }
 }
 

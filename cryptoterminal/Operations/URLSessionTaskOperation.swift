@@ -30,7 +30,7 @@ class URLSessionTaskOperation: CryptoOperation {
             else { return }
         
         if obj == task && keyPath == "state" && task.state == .completed {
-            finish(errors: [])
+            self.finish(errors: [])
             task.removeObserver(self, forKeyPath: "state")
         }
     }

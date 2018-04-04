@@ -24,7 +24,7 @@ class HistoricalPriceService: NSObject {
     
     @objc func fetchHistoricalPrices() {
         let opQueue = CryptoOperationQueue()
-        let downloadOp = GetHistoricalPriceService(opResult: OperationResultContext())
+        let downloadOp = GetHistoricalExchangeRateService(opResult: OperationResultContext())
         
         opQueue.isSuspended = false
         opQueue.addOperation(downloadOp)
@@ -33,16 +33,16 @@ class HistoricalPriceService: NSObject {
 
 
 
-class GetHistoricalPriceService : GroupOperation {
+class GetHistoricalExchangeRateService : GroupOperation {
     let opResult : OperationResultContext
     
     init(opResult: OperationResultContext){
         self.opResult = opResult
         var ops = [Operation]()
-        let parseOp = HistoricalPriceParser( apiResult:self.opResult )
+        let parseOp = HistoricalPriceParser(apiResult:self.opResult)
         let currencyPairs = CurrencyPair.allCurrencyPairs().filter{$0.watchListed}
         for pair in currencyPairs {
-            let downloadOp = CryptoHistoricalPriceTask(downloadedDataContainer:self.opResult, currencyPair: pair)
+            let downloadOp = CryptoHistoricalExchangeRateTask(downloadedDataContainer:self.opResult, currencyPair: pair)
             parseOp.addDependency(downloadOp)
             ops.append(downloadOp)
         }
@@ -54,19 +54,18 @@ class GetHistoricalPriceService : GroupOperation {
 
 class HistoricalPriceParser : CryptoOperation {
     
-    let apiResult : OperationResultContext
+    let opResult : OperationResultContext
     
     init( apiResult : OperationResultContext){
-        self.apiResult = apiResult
+        self.opResult = apiResult
     }
     
     override func execute(){
-        
         try! Datasource.shared.db?.inTransaction{db in
             let insertSQL = "INSERT INTO HISTORICAL_EXCHANGE_RATE (time, open, high, close, low, currency_pair) VALUES(:time, :open, :high, :close, :low, :currency_pair)"
             let statement = try db.makeUpdateStatement(insertSQL)
             
-            for historicalPrice in apiResult.data {
+            for historicalPrice in opResult.data {
                 statement.unsafeSetArguments([historicalPrice["time"] as! Double, historicalPrice["open"] as! Double,
                                               historicalPrice["high"] as! Double, historicalPrice["close"] as! Double,
                                               historicalPrice["low"] as! Double, historicalPrice["currencyPairId"] as! Int])
@@ -74,27 +73,28 @@ class HistoricalPriceParser : CryptoOperation {
             }
             return .commit
         }
-        self.finish(errors: [])
         NotificationCenter.default.post(name: Notification.Name(CryptoNotification.hisoricalPriceUpdateNotification), object: nil)
         os_log("Updated historical data", log: OSLog.default, type: .default)
-        
+        self.finish()
     }
 }
 
-class CryptoHistoricalPriceTask: CryptoOperation {
+class CryptoHistoricalExchangeRateTask: GroupOperation {
     var volToDownload = 1999.0
     let currencyPair:CurrencyPair
     let pendingOperations = OperationQueue()
     let downloadedDataContainer : OperationResultContext
-    let downloadGroup = DispatchGroup()
     
     init( downloadedDataContainer : OperationResultContext, currencyPair : CurrencyPair) {
         self.currencyPair = currencyPair
         self.downloadedDataContainer = downloadedDataContainer
+        super.init(operations: CryptoHistoricalExchangeRateTask.createOps(downloadedDataContainer:self.downloadedDataContainer,
+                                                                          currencyPair: self.currencyPair))
     }
     
-    override func execute(){
+    static func createOps(downloadedDataContainer: OperationResultContext, currencyPair:CurrencyPair) -> [CryptoOperation]{
         
+        var ops = [CryptoOperation]()
         // Oldest historical price timestamp that should be in database
         let oldest = Int((DateInRegion() - 7.days).absoluteDate.timeIntervalSince1970)
         
@@ -121,23 +121,21 @@ class CryptoHistoricalPriceTask: CryptoOperation {
             
             os_log("Querying %@ for historical data", log: OSLog.default, type: .default, url)
             let request = URLRequest(url: URL(string: url)!)
-            downloadGroup.enter()
-            URLSession.shared.dataTask(with:request, completionHandler : { (data, response, error) in
+            let downloadTask = URLSession.shared.dataTask(with:request, completionHandler : { (data, response, error) in
                 guard let responseData = data,
                     let json = try! JSONSerialization.jsonObject(with: responseData, options: .allowFragments) as? [String: Any],
                     var values = json["Data"] as? [[String : Any]], error == nil else { return }
                 for index in values.indices {
-                    values[index]["currencyPairId"] = self.currencyPair.id
+                    values[index]["currencyPairId"] = currencyPair.id
                 }
-                self.downloadedDataContainer.data = self.downloadedDataContainer.data + values
-                self.downloadGroup.leave()
-            }).resume()
+                downloadedDataContainer.data = downloadedDataContainer.data + values
+            })
+            ops.append(URLSessionTaskOperation(task:downloadTask))
         }
-        downloadGroup.wait()
-        self.finish(errors:[])
+        return ops
     }
     
-    private func computeDateBatchesForDownload(cutOffDate : Int) ->  [DateInRegion]{
+    private static func computeDateBatchesForDownload(cutOffDate : Int) ->  [DateInRegion]{
         let now = DateInRegion()
         let batchFirstDate = Date(timeIntervalSince1970: TimeInterval(cutOffDate))
         guard var batchDateTimes = DateInRegion.dates(between: DateInRegion(absoluteDate: batchFirstDate), and: now, increment: 2000.minutes),
@@ -153,7 +151,7 @@ class CryptoHistoricalPriceTask: CryptoOperation {
         return batchDateTimes
     }
     
-    func diff(values : [DateInRegion]) -> [Double]{
+    private static func diff(values : [DateInRegion]) -> [Double]{
         var diffArray = [Double]()
         for index in 1..<values.count{
             diffArray.append( (values[index] - values[index - 1]).minutes )

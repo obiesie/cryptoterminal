@@ -25,7 +25,7 @@
 		3C2DB4E51F154DEE0095E6D6 /* WatchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DB4E31F154DEE0095E6D6 /* WatchListController.swift */; };
 		3C2DB4E91F15610C0095E6D6 /* NewWatchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DB4E71F15610C0095E6D6 /* NewWatchListController.swift */; };
 		3C2DB4EE1F16BF180095E6D6 /* ScratchPadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DB4ED1F16BF180095E6D6 /* ScratchPadController.swift */; };
-		3C2E4ABF1F1D6FA9001BC2C7 /* HistoricalPriceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2E4ABE1F1D6FA9001BC2C7 /* HistoricalPriceService.swift */; };
+		3C2E4ABF1F1D6FA9001BC2C7 /* HistoricalExchangRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2E4ABE1F1D6FA9001BC2C7 /* HistoricalExchangRateService.swift */; };
 		3C35228F1F3F680A00789BBD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35228E1F3F680A00789BBD /* Utils.swift */; };
 		3C3522931F3F9E5300789BBD /* CryptoNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3522921F3F9E5300789BBD /* CryptoNotification.swift */; };
 		3C3533AD2057C4030004BCD6 /* PortfolioChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3533AC2057C4030004BCD6 /* PortfolioChart.swift */; };
@@ -55,7 +55,7 @@
 		3C831CC9205264FC00B84C04 /* WatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C831CC8205264FC00B84C04 /* WatchList.swift */; };
 		3C831CCE2053D0A300B84C04 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C831CCD2053D0A300B84C04 /* Repositories.swift */; };
 		3C831CD02053D80E00B84C04 /* RepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C831CCF2053D80E00B84C04 /* RepositoryImpl.swift */; };
-		3C83CCCB1F04188A00B0C054 /* PriceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C83CCCA1F04188A00B0C054 /* PriceService.swift */; };
+		3C83CCCB1F04188A00B0C054 /* ExchangeRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C83CCCA1F04188A00B0C054 /* ExchangeRateService.swift */; };
 		3C83CCCF1F078A5A00B0C054 /* DragDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C83CCCE1F078A5A00B0C054 /* DragDestination.swift */; };
 		3C84426D202BB1D10006DA99 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C84426C202BB1D10006DA99 /* Balance.swift */; };
 		3C84426F202C2B510006DA99 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C84426E202C2B510006DA99 /* Wallet.swift */; };
@@ -136,7 +136,7 @@
 		3C2DB4E31F154DEE0095E6D6 /* WatchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListController.swift; sourceTree = "<group>"; };
 		3C2DB4E71F15610C0095E6D6 /* NewWatchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWatchListController.swift; sourceTree = "<group>"; };
 		3C2DB4ED1F16BF180095E6D6 /* ScratchPadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchPadController.swift; sourceTree = "<group>"; };
-		3C2E4ABE1F1D6FA9001BC2C7 /* HistoricalPriceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalPriceService.swift; sourceTree = "<group>"; };
+		3C2E4ABE1F1D6FA9001BC2C7 /* HistoricalExchangRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalExchangRateService.swift; sourceTree = "<group>"; };
 		3C35228E1F3F680A00789BBD /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		3C3522921F3F9E5300789BBD /* CryptoNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNotification.swift; sourceTree = "<group>"; };
 		3C3533AC2057C4030004BCD6 /* PortfolioChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioChart.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		3C831CC8205264FC00B84C04 /* WatchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchList.swift; sourceTree = "<group>"; };
 		3C831CCD2053D0A300B84C04 /* Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
 		3C831CCF2053D80E00B84C04 /* RepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryImpl.swift; sourceTree = "<group>"; };
-		3C83CCCA1F04188A00B0C054 /* PriceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceService.swift; sourceTree = "<group>"; };
+		3C83CCCA1F04188A00B0C054 /* ExchangeRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateService.swift; sourceTree = "<group>"; };
 		3C83CCCE1F078A5A00B0C054 /* DragDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDestination.swift; sourceTree = "<group>"; };
 		3C84426C202BB1D10006DA99 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		3C84426E202C2B510006DA99 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
@@ -392,8 +392,8 @@
 			isa = PBXGroup;
 			children = (
 				3CF437531F1AA55700B6DFEC /* PriceConversionService.swift */,
-				3C2E4ABE1F1D6FA9001BC2C7 /* HistoricalPriceService.swift */,
-				3C83CCCA1F04188A00B0C054 /* PriceService.swift */,
+				3C2E4ABE1F1D6FA9001BC2C7 /* HistoricalExchangRateService.swift */,
+				3C83CCCA1F04188A00B0C054 /* ExchangeRateService.swift */,
 			);
 			path = exchangerate;
 			sourceTree = "<group>";
@@ -612,7 +612,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Obiesie Ike-Nwosu";
 				TargetAttributes = {
 					3C0B4D8A1EFC2941007F8D2B = {
@@ -878,7 +878,7 @@
 				3C2DB4E51F154DEE0095E6D6 /* WatchListController.swift in Sources */,
 				3CA7FF2F1F3271510098C4A7 /* MouseMovedAwareCPTGraphHostingView.swift in Sources */,
 				3CDE6E051F002F29002266AF /* DataSource.swift in Sources */,
-				3C2E4ABF1F1D6FA9001BC2C7 /* HistoricalPriceService.swift in Sources */,
+				3C2E4ABF1F1D6FA9001BC2C7 /* HistoricalExchangRateService.swift in Sources */,
 				3CD5C97F2067B71100152CB1 /* ParseOperation.swift in Sources */,
 				3CD5C98120681B9000152CB1 /* Gdax.swift in Sources */,
 				3CD5C9772064E1FD00152CB1 /* TradeHistoryImportOperation.swift in Sources */,
@@ -905,7 +905,7 @@
 				3C84426D202BB1D10006DA99 /* Balance.swift in Sources */,
 				3C9A7CCB1F9B9779007C5A28 /* CryptoExchange.swift in Sources */,
 				3CD5C96C2064D26E00152CB1 /* Observer.swift in Sources */,
-				3C83CCCB1F04188A00B0C054 /* PriceService.swift in Sources */,
+				3C83CCCB1F04188A00B0C054 /* ExchangeRateService.swift in Sources */,
 				3C2DB4E91F15610C0095E6D6 /* NewWatchListController.swift in Sources */,
 				3CFA0E111F665B8900661E7B /* AddressService.swift in Sources */,
 				3C51B2FB1F310B67004BD585 /* GeneralPrefsPaneViewController.swift in Sources */,
@@ -996,6 +996,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1003,6 +1004,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1055,6 +1057,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1062,6 +1065,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

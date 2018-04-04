@@ -6,6 +6,20 @@
 
 import Foundation
 
+class GetExchangeService: GroupOperation {
+    let priceApi = "https://min-api.cryptocompare.com/data/price?"
+    let fromQueryParam = "fsym"
+    let toQueryParam = "tsyms"
+    let defaultLocaleCode = "en_US"
+    let opResult: OperationResultContext
+    
+    init(opResult: OperationResultContext){
+        self.opResult = opResult
+        super.init(operations: [])
+    }
+}
+
+
 final class PriceService : NSObject {
     
     let priceApi = "https://min-api.cryptocompare.com/data/price?"
