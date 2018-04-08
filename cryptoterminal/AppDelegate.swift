@@ -14,7 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         UserDefaults.standard.set(true, forKey: "NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraint‌​s")
         HistoricalPriceService.shared.startService()
-        PriceService.shared.startService()
+        SpotExchangeRateService.shared.startService()
         AddressService.shared.startService()
         DispatchQueue.main.async {
             self.updateLocalCurrencyPairs()
