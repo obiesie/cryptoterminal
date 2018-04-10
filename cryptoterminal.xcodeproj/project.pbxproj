@@ -265,6 +265,9 @@
 		3C0B4D8D1EFC2941007F8D2B /* cryptoterminal */ = {
 			isa = PBXGroup;
 			children = (
+				3CBF9C50207C8E7F000A0160 /* crypto */,
+				3CBF9C4F207C8E5A000A0160 /* persistence */,
+				3CBF9C4E207C8DBB000A0160 /* sidebar */,
 				3C37E7F5206B531500C0F0A9 /* position */,
 				3C37E7F42069A17F00C0F0A9 /* exchangerate */,
 				3C37E7F32069A16100C0F0A9 /* scratchpad */,
@@ -274,7 +277,7 @@
 				3C3533AB205530070004BCD6 /* home */,
 				3C831CCC2053D08200B84C04 /* common */,
 				3C831CC72052637900B84C04 /* watchlist */,
-				3CA1D3A61F841C7900CC466E /* Operations */,
+				3CA1D3A61F841C7900CC466E /* operations */,
 				3C337F331F780A55008E53AB /* storyboard */,
 				3C4AA44A1F3F05AB00E42EA7 /* util */,
 				3C4AA4491F3F057F00E42EA7 /* controller */,
@@ -411,11 +414,10 @@
 		3C4AA4481F3EFB7A00E42EA7 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				3C2625B41F0375B200EB7052 /* SideMenuItem.swift */,
-				3C6E82671F436C2400ACD5AD /* HistoricalExchangeRate.swift */,
 				3C691A771F649BFE0076B70E /* CryptoAddress.swift */,
-				3CFDCB081F72360F00B06D3E /* CryptoAddressType.swift */,
 				3C2D69F81F7397CB00E5A389 /* CryptoAddressBalance.swift */,
+				3C6E82671F436C2400ACD5AD /* HistoricalExchangeRate.swift */,
+				3CFDCB081F72360F00B06D3E /* CryptoAddressType.swift */,
 				3CD10B201F8DD84B00692F13 /* Currency.swift */,
 				3C38C4881F93EE9E000EC014 /* CurrencyType.swift */,
 				3C9A7CCA1F9B9779007C5A28 /* CryptoExchange.swift */,
@@ -429,7 +431,6 @@
 		3C4AA4491F3F057F00E42EA7 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				3C7D1D431EFC799F001C58E7 /* SidebarController.swift */,
 				3CED6C3C1F0F62F000A2DA9C /* WindowController.swift */,
 				3C51B2F81F2FFAD3004BD585 /* PreferencesWindowController.swift */,
 				3C51B2FA1F310B67004BD585 /* GeneralPrefsPaneViewController.swift */,
@@ -443,12 +444,9 @@
 		3C4AA44A1F3F05AB00E42EA7 /* util */ = {
 			isa = PBXGroup;
 			children = (
-				3CDE6E041F002F29002266AF /* DataSource.swift */,
 				3C51B2F61F2E6E1D004BD585 /* Formatters.swift */,
 				3C35228E1F3F680A00789BBD /* Utils.swift */,
 				3C3522921F3F9E5300789BBD /* CryptoNotification.swift */,
-				3CE6934F1F5C45BE00D216FA /* DbMigration.swift */,
-				3C5BC0D51FC2169500B4BB5E /* Crypto.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -474,7 +472,7 @@
 			path = common;
 			sourceTree = "<group>";
 		};
-		3CA1D3A61F841C7900CC466E /* Operations */ = {
+		3CA1D3A61F841C7900CC466E /* operations */ = {
 			isa = PBXGroup;
 			children = (
 				3CA1D3A71F841CAF00CC466E /* URLSessionTaskOperation.swift */,
@@ -487,7 +485,33 @@
 				3CD5C9712064DA7B00152CB1 /* OperationErrors.swift */,
 				3CD5C9782066CF9C00152CB1 /* ResultContext.swift */,
 			);
-			path = Operations;
+			path = operations;
+			sourceTree = "<group>";
+		};
+		3CBF9C4E207C8DBB000A0160 /* sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				3C7D1D431EFC799F001C58E7 /* SidebarController.swift */,
+				3C2625B41F0375B200EB7052 /* SideMenuItem.swift */,
+			);
+			path = sidebar;
+			sourceTree = "<group>";
+		};
+		3CBF9C4F207C8E5A000A0160 /* persistence */ = {
+			isa = PBXGroup;
+			children = (
+				3CDE6E041F002F29002266AF /* DataSource.swift */,
+				3CE6934F1F5C45BE00D216FA /* DbMigration.swift */,
+			);
+			path = persistence;
+			sourceTree = "<group>";
+		};
+		3CBF9C50207C8E7F000A0160 /* crypto */ = {
+			isa = PBXGroup;
+			children = (
+				3C5BC0D51FC2169500B4BB5E /* Crypto.swift */,
+			);
+			path = crypto;
 			sourceTree = "<group>";
 		};
 		3CD5C9732064E1A300152CB1 /* poloniex */ = {

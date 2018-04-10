@@ -8,7 +8,7 @@ import Foundation
 import CorePlot
 
 
-class Util{
+class Util {
     
     static var defaultLocaleCode = "en_GB"
     

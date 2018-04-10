@@ -11,7 +11,6 @@ import Cocoa
 class TerminalViewController: NSSplitViewController{
     
     override func viewDidLoad() {
-        //self.splitView = CustomSplitView()
         super.viewDidLoad()
 
     }
