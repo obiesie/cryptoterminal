@@ -2,9 +2,6 @@
 //  ResultContext.swift
 //  cryptoterminal
 //
-//  Created by Obiesie Ike-Nwosu on 24/03/2018.
-//  Copyright © 2018 Obiesie Ike-Nwosu. All rights reserved.
-//
 
 import Foundation
 

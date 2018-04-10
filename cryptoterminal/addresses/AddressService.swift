@@ -72,7 +72,7 @@ final class GetAddressBalance: GroupOperation {
 }
 
 
-final class AddressService{
+final class AddressService {
     
     private var accountBalances = [String : Double]()
     let pendingOperations = CryptoOperationQueue()
@@ -93,7 +93,4 @@ final class AddressService{
         pendingOperations.isSuspended = false
         pendingOperations.addOperation(fetchBalanceOp)
     }
-    
-   
 }
-
