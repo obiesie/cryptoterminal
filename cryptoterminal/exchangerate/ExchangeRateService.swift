@@ -29,7 +29,7 @@ final class SpotExchangeRateService : NSObject {
                              selector: #selector(SpotExchangeRateService.updatePrices as (SpotExchangeRateService) -> (Bool) -> ()), userInfo: nil, repeats: true)
     }
     
-    func priceFor(crypto: String) -> Double?{
+    func priceFor(crypto: String) -> Double? {
         return nil
     }
     
@@ -40,7 +40,6 @@ final class SpotExchangeRateService : NSObject {
         
         opQueue.isSuspended = false
         opQueue.addOperation(downloadOp)
-        
     }
 }
 
@@ -72,20 +71,22 @@ class GetSpotExchangeRateService: GroupOperation {
             guard let url = urlComponents.url else {return [] }
             
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-                guard error == nil, let responseData = data else { NSLog((error?.localizedDescription)!); return}
+                guard error == nil,
+                    let responseData = data,
+                    let _json = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) as? [String: Any],
+                    let json = _json
+                    else { return }
                 
-                if let json = try! JSONSerialization.jsonObject(with: responseData, options: .allowFragments) as? [String: Any]{
-                    try! Datasource.shared.db?.inTransaction{ db in
-                        let updateSQL = "UPDATE CURRENCY_PAIR SET SPOT_RATE = :spotPrice WHERE BASE_CURRENCY = :baseCurrency AND DENOMINATED_CURRENCY = :denominatedCurrency"
-                        let updateStatement = try db.makeUpdateStatement(updateSQL)
-                        for denominatedCurrency in denominatedCurrencies {
-                            if let exchangeRate = json[denominatedCurrency.code] as? Double {
-                                updateStatement.unsafeSetArguments([exchangeRate, baseCurrency.id, denominatedCurrency.id])
-                                try! updateStatement.execute()
-                            }
+                try? Datasource.shared.db?.inTransaction { db in
+                    let updateSQL = "UPDATE CURRENCY_PAIR SET SPOT_RATE = :spotPrice WHERE BASE_CURRENCY = :baseCurrency AND DENOMINATED_CURRENCY = :denominatedCurrency"
+                    let updateStatement = try db.makeUpdateStatement(updateSQL)
+                    for denominatedCurrency in denominatedCurrencies {
+                        if let exchangeRate = json[denominatedCurrency.code] as? Double {
+                            updateStatement.unsafeSetArguments([exchangeRate, baseCurrency.id, denominatedCurrency.id])
+                            try? updateStatement.execute()
                         }
-                        return .commit
                     }
+                    return .commit
                 }
             }
             let op = URLSessionTaskOperation(task: task)
