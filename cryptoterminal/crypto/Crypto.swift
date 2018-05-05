@@ -9,11 +9,10 @@ import Foundation
 
 struct CryptoHMAC {
     
-    let digest : Data
+    private let digest : Data
     
     init?(message:String, key:String, algorithm: CryptoAlgorithm){
-        guard let encodedMessage = message.data(using: .utf8),
-            let encodedKey = key.data(using: .utf8) else { return nil }
+        guard let encodedMessage = message.data(using: .utf8), let encodedKey = key.data(using: .utf8) else { return nil }
         let digestLen = algorithm.digestLength
         let tmp = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
         encodedKey.withUnsafeBytes{ encodedKeyBytes in
@@ -22,9 +21,8 @@ struct CryptoHMAC {
                        encodedMessage.count, tmp)
             }
         }
-       
         digest = Data(bytes: tmp, count: digestLen)
-        tmp.deinitialize()
+        tmp.deinitialize(count:digestLen)
     }
     
     init?(messageData: Data, key:String, algorithm:CryptoAlgorithm){
@@ -39,7 +37,7 @@ struct CryptoHMAC {
             }
         }
         digest = Data(bytes: tmp, count: digestLen)
-        tmp.deinitialize()
+        tmp.deinitialize(count:digestLen)
     }
     
     func hexdigest() -> String {

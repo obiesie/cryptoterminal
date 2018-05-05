@@ -23,11 +23,7 @@ class GetPoloniexData : GroupOperation, DataImportOperation {
         getPoloTradeHist = GetPoloniexTradeHistory( apiKey: self.apiKey, apiSecret: self.apiSecret)
        
         getPoloTradeHist.addDependency(getPoloAcctBal)
-        
-        //let dataImportFinishOperation = DataImportFinishedTask()
-        //dataImportFinishOperation.addDependency(getPoloTradeHist)
-        //dataImportFinishOperation.delegate = delegate
-        
+    
         let ops = [getPoloAcctBal, getPoloTradeHist]
         super.init(operations: ops)
     }
