@@ -6,7 +6,7 @@
 import Foundation
 
 final class GetAddressBalance: GroupOperation {
-    
+
     init(walletAddresses : [Wallet] = []){
         let cryptoWalletList = walletAddresses == [] ? Wallet.allWallets() : walletAddresses
         let notificationOp = NotificationOperation(notification:CryptoNotification.cryptoAddressUpdatedNotification)
@@ -60,7 +60,8 @@ final class GetAddressBalance: GroupOperation {
                     if actualbalance > 0 {
                         let cryptoBalance = Balance(currencyId: Int(crypto.id), quantity: actualbalance,
                                                     walletId: cryptoAddress.id!)
-                        Balance.addBalance(balance: cryptoBalance)
+                        let sqliteRepo = SQLiteRepository()
+                        sqliteRepo.addBalance(balances: [cryptoBalance])
                     }
                 }
             } catch {

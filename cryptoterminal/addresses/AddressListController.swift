@@ -14,7 +14,9 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
     @IBOutlet weak var qrCodeImageView: NSImageView!
     @IBOutlet weak var cryptoAddressDetailTable: NSTableView!
     @IBOutlet var backgroundView: NSView!
+    @IBOutlet var contextMenu: NSMenu!
     
+    let repo = SQLiteRepository()
     var cryptos : [Currency] = [Currency]()
     let cryptoAddressTypes = CryptoAddressType.allCryptoAddressType()
     lazy var newAddressSheetViewController: NewAddressController = {
@@ -90,8 +92,10 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
     
     func deleteSelectedAddress(){
         let selectedWallet = Wallet.allWallets()[ cryptoAddressTable.selectedRow ]
-        Wallet.deleteWallet(withId: selectedWallet.id!)
-        self.cryptoAddressTable.reloadData()
+        if let walletId = selectedWallet.id {
+            repo.deleteWallet(withId: walletId)
+            self.cryptoAddressTable.reloadData()
+        }
     }
 
    
@@ -192,6 +196,14 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
             }
         }
         return nil
+    }
+    
+    @IBAction func deleteClicked(_ sender: Any) {
+        let selectedWallet = Wallet.allWallets()[ cryptoAddressTable.selectedRow ]
+        if let walletId = selectedWallet.id {
+            repo.deleteWallet(withId: walletId)
+            self.cryptoAddressTable.reloadData()
+        }
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {

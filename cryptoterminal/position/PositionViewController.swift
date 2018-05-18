@@ -77,7 +77,7 @@ class PositionViewController: NSViewController, NSTableViewDelegate, NSDraggingD
         case "PurchaseCurrency":
             cell.textField?.objectValue = position.purchaseCurrency.code
         case "Coin":
-            cell.textField?.objectValue = position.coin.name
+            cell.textField?.objectValue = position.coin?.name
         case "PurchaseDate":
             cell.textField?.objectValue = CryptoFormatters.dateFormatter.string(from: position.purchaseDate)
         case "Cost":

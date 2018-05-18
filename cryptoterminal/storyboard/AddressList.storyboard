@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="FMg-o6-U1U">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="FMg-o6-U1U">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -158,6 +158,9 @@
                                                                     </prototypeCellViews>
                                                                 </tableColumn>
                                                             </tableColumns>
+                                                            <connections>
+                                                                <outlet property="menu" destination="KRU-Ee-gsI" id="tlB-8j-Nax"/>
+                                                            </connections>
                                                         </tableView>
                                                     </subviews>
                                                 </clipView>
@@ -380,8 +383,10 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="U5i-YN-dDm" id="4tJ-WF-VTF"/>
+                        <outlet property="contextMenu" destination="KRU-Ee-gsI" id="u1v-jE-Gdl"/>
                         <outlet property="cryptoAddressDetailTable" destination="F4h-y4-bac" id="hC5-ir-tnO"/>
                         <outlet property="cryptoAddressTable" destination="Wqz-KC-HCn" id="Raq-df-KxA"/>
+                        <outlet property="deleteClicked" destination="aFh-O0-2Xa" id="KPk-0y-Hk2"/>
                         <outlet property="leftCustomView" destination="2SJ-1e-UCb" id="LlL-wQ-JUH"/>
                         <outlet property="qrCodeImageView" destination="HB6-ZL-Rhi" id="OFu-jI-hw2"/>
                         <outlet property="segmentedControl" destination="YNE-wI-Q1f" id="IMu-la-aiu"/>
@@ -389,6 +394,16 @@
                     </connections>
                 </viewController>
                 <customObject id="nCf-AL-be5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu showsStateColumn="NO" id="KRU-Ee-gsI">
+                    <items>
+                        <menuItem title="Delete address" id="aFh-O0-2Xa">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="deleteClicked:" target="FMg-o6-U1U" id="LsZ-xQ-gEv"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="-848" y="282.5"/>
         </scene>

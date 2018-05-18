@@ -27,3 +27,8 @@ protocol BalanceRepo {
     func addBalance(balances : [Balance])
     func allBalances() -> [Balance]
 }
+
+protocol WalletRepo {
+    func addWallet(cryptoAddressIdentifier: String, cryptoAddressType: Int64, addressNickname: String)
+    func deleteWallet(withId walletId: Int)
+}

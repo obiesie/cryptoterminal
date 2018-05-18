@@ -7,6 +7,7 @@ import Foundation
 import Cocoa
 
 class SidebarController: NSViewController {
+   
     @IBOutlet weak var sidebarOutline: NSOutlineView!
     let icons = ["NSImage.Name.homeTemplate" : NSImage.Name.homeTemplate,
                  "NSImage.Name.revealFreestandingTemplate":NSImage.Name.revealFreestandingTemplate,
@@ -65,9 +66,10 @@ extension SidebarController: NSOutlineViewDelegate {
         if let sideMenuItem = item as? SideMenuItem {
             view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "sideMenu"), owner: self) as? NSTableCellView
 
-            if let textField = view?.textField {
+            if let textField = view?.textField,
+                let icon = icons[sideMenuItem.icon] {
                 textField.stringValue = sideMenuItem.name
-                view?.imageView!.image = NSImage(named: icons[sideMenuItem.icon]!)
+                view?.imageView?.image = NSImage(named: icon)
             }
         }
         return view

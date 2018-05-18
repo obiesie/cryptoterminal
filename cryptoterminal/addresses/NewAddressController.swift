@@ -15,11 +15,11 @@ class NewAddressController: NSViewController {
     @IBOutlet weak var cancelButton: NSButton!
     weak var delegate : NewAddressDelegate?
     var coins : [CryptoAddressType] = [CryptoAddressType]()
+    let repo = SQLiteRepository()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
         var items = [String]()
         coins = CryptoAddressType.allCryptoAddressType()
         for v in coins{
@@ -32,10 +32,9 @@ class NewAddressController: NSViewController {
     @IBAction func doneClicked(_ sender: Any) {
         self.dismiss(sender)
         if let address = addressField.objectValue as? String, let addressAlias = addressNicknameTextField.objectValue as? String  {
-           // Wallet.add
-            Wallet.addWallet( cryptoAddressIdentifier: address,
-                              cryptoAddressType: coins[coinPopup.indexOfSelectedItem].id as Int64,
-                              addressNickname: addressAlias)
+            repo.addWallet(cryptoAddressIdentifier: address,
+                           cryptoAddressType: coins[coinPopup.indexOfSelectedItem].id as Int64,
+                           addressNickname: addressAlias)
             delegate?.newAddressAdded()
         }
     }

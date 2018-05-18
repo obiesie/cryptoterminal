@@ -9,7 +9,7 @@ import Foundation
 
 struct CryptoHMAC {
     
-    private let digest : Data
+    let digest : Data
     
     init?(message:String, key:String, algorithm: CryptoAlgorithm){
         guard let encodedMessage = message.data(using: .utf8), let encodedKey = key.data(using: .utf8) else { return nil }

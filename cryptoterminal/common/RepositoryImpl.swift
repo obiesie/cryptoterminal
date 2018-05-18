@@ -3,15 +3,14 @@
 //  cryptoterminal
 //
 
-
 import Foundation
 
 protocol BalancePersistenceDelegate: class {
     func addedBalance(sender: BalanceRepo)
 }
 
-struct SQLiteRepository: CurrencyPairRepo, ExchangeRateRepo, BalanceRepo {
-    
+struct SQLiteRepository: CurrencyPairRepo, ExchangeRateRepo, BalanceRepo, WalletRepo {
+   
     weak var delegate:BalancePersistenceDelegate?
 
     func addBalance(balances: [Balance]) {
@@ -50,5 +49,17 @@ struct SQLiteRepository: CurrencyPairRepo, ExchangeRateRepo, BalanceRepo {
         return pair.historicalRates(after: cutoff)
     }
     
+    func addWallet(cryptoAddressIdentifier: String, cryptoAddressType: Int64, addressNickname: String) {
+        Wallet.addWallet( cryptoAddressIdentifier: cryptoAddressIdentifier,
+                          cryptoAddressType: cryptoAddressType,
+                          addressNickname: addressNickname)
+        NotificationCenter.default.post(name: Notification.Name(CryptoNotification.balanceUpdated), object: nil)
+
+    }
     
+    func deleteWallet(withId walletId: Int) {
+        Wallet.deleteWallet(withId: walletId)
+        NotificationCenter.default.post(name: Notification.Name(CryptoNotification.balanceUpdated), object: nil)
+
+    }
 }

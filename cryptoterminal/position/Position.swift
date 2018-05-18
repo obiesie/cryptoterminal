@@ -59,18 +59,18 @@ class Position : NSObject, RowConvertible, TableMapping, Persistable {
     
     static let ALLOWED_TRANSACTION_TYPES : Set = ["sell", "buy"]
     
-    var coin : Currency {
+    var coin : Currency? {
         var crypto : Currency?
         do {
             crypto = try Datasource.shared.db!.read{ d in try Currency.filter(Currency.Columns.ID == self.baseCurrencyId).fetchOne(d) }
         } catch let error {
             print(error.localizedDescription)
         }
-        return crypto!
+        return crypto
     }
     
     @objc var name : String {
-        return self.coin.name
+        return (self.coin?.name) ?? ""
     }
     
     
