@@ -15,12 +15,13 @@ class NewAddressController: NSViewController {
     @IBOutlet weak var cancelButton: NSButton!
     weak var delegate : NewAddressDelegate?
     var coins : [CryptoAddressType] = [CryptoAddressType]()
-    let repo = SQLiteRepository()
+    var repo = SQLiteRepository()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         var items = [String]()
+        repo.walletDelegate = Portfolio.shared
         coins = CryptoAddressType.allCryptoAddressType()
         for v in coins{
             items.append(v.name.capitalized)

@@ -87,11 +87,11 @@ class Wallet : NSObject, RowConvertible, TableMapping, Persistable {
     }
     
     static func addWallet(cryptoAddressIdentifier : String, cryptoAddressType : Int64,
-                          addressNickname : String = "") {
+                          addressNickname : String = "") -> Wallet {
         let cryptoWallet = Wallet(id:nil, typeId:Int(cryptoAddressType),
                                   name: cryptoAddressIdentifier, walletAlias: addressNickname)
         try! Datasource.shared.db?.inDatabase{ db in try cryptoWallet.insert(db)}
-        AddressService.shared.updateAddressBalances(cryptoAddresses: [cryptoWallet])
+        return cryptoWallet
     }
     
     func allCryptoBalances() -> [Balance]{

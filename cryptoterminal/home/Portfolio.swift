@@ -13,17 +13,19 @@ protocol PortfolioUpdatedDelegate: class {
 
 class Portfolio : NSObject {
     
-    var balanceRepo:BalanceRepo
+    var balanceRepo: BalanceRepo
     var assetAllocation = [String:Double]()
     weak var delegate:PortfolioUpdatedDelegate?
 
     var _positions = [Position]()
     var positions : [Position] {
-        if _positions.isEmpty{
+        if _positions.isEmpty {
             _positions = positions(from : balanceRepo.allBalances())
         }
         return _positions
     }
+    
+    static let shared = Portfolio(balanceRepo: SQLiteRepository())
     
     var isEmpty : Bool {
         return self.positions.isEmpty
@@ -41,17 +43,18 @@ class Portfolio : NSObject {
         return _defaultMarketValue
     }
     
-    init(balanceRepo:BalanceRepo){
+    private init(balanceRepo:BalanceRepo){
         self.balanceRepo = balanceRepo
         super.init()
         self.balanceRepo.delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(Portfolio.balanceUpdated(notification:)), name: Notification.Name(CryptoNotification.balanceUpdated), object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(Portfolio.balanceUpdated(notification:)), name: Notification.Name(CryptoNotification.balanceUpdated), object: nil)
     }
     
-    @objc func balanceUpdated(notification: Notification){
+    
+   /* @objc func balanceUpdated(notification: Notification){
         _positions = [Position]()
         delegate?.portfolioUpdated(sender: self)
-    }
+    } */
     
     func marketValue( in currency : String) -> Double {
         let _marketValue = self.positions.reduce(0.0, {x, y in x + y.marketValue(in: currency)})
@@ -72,7 +75,16 @@ class Portfolio : NSObject {
     }
 }
 
-extension Portfolio : BalancePersistenceDelegate {
+extension Portfolio : BalancePersistenceDelegate, WalletPersistenceDelegate {
+    
+    func deletedWallet(sender: WalletRepo, walletId: Int) {
+        _positions = [Position]()
+        delegate?.portfolioUpdated(sender: self)
+    }
+    
+    func addedWallet(sender: WalletRepo, wallet:Wallet) {
+        AddressService.shared.updateAddressBalances(cryptoAddresses: [wallet])
+    }
     
     func addedBalance(sender: BalanceRepo) {
         _positions = [Position]()

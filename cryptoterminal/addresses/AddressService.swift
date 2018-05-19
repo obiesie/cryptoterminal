@@ -60,8 +60,7 @@ final class GetAddressBalance: GroupOperation {
                     if actualbalance > 0 {
                         let cryptoBalance = Balance(currencyId: Int(crypto.id), quantity: actualbalance,
                                                     walletId: cryptoAddress.id!)
-                        let sqliteRepo = SQLiteRepository()
-                        sqliteRepo.addBalance(balances: [cryptoBalance])
+                        Portfolio.shared.balanceRepo.addBalance(balances: [cryptoBalance])
                     }
                 }
             } catch {

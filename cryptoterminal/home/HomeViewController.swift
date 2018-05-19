@@ -21,7 +21,7 @@ class HomeViewController: NSViewController, NSSplitViewDelegate {
     var barPlot : Graph?
     private var crytpos = [Currency]()
     
-    let portfolio = Portfolio(balanceRepo: SQLiteRepository())
+    let portfolio = Portfolio.shared //Portfolio(balanceRepo: SQLiteRepository())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,7 +104,7 @@ extension HomeViewController: GraphConfigDelegate {
 
 extension HomeViewController: PortfolioUpdatedDelegate {
     func portfolioUpdated(sender: Portfolio){
-        DispatchQueue.main.async{
+        DispatchQueue.main.async {
             self.positionSummaryController.content = self.portfolio.positions
             self.summaryTable.reloadData()
             self.barPlot?.refreshPlot()

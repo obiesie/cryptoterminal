@@ -16,7 +16,7 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
     @IBOutlet var backgroundView: NSView!
     @IBOutlet var contextMenu: NSMenu!
     
-    let repo = SQLiteRepository()
+    var repo = SQLiteRepository()
     var cryptos : [Currency] = [Currency]()
     let cryptoAddressTypes = CryptoAddressType.allCryptoAddressType()
     lazy var newAddressSheetViewController: NewAddressController = {
@@ -50,6 +50,8 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
         cryptoAddressTable.dataSource = self
         cryptoAddressDetailTable.delegate = self
         cryptoAddressDetailTable.dataSource = self
+        repo.delegate = Portfolio.shared
+        repo.walletDelegate = Portfolio.shared
         NotificationCenter.default.addObserver(self, selector: #selector(AddressListController.methodOfReceivedNotification1(notification:)), name: Notification.Name(CryptoNotification.cryptoAddressUpdatedNotification), object: nil)
     }
     

@@ -9,16 +9,21 @@ protocol BalancePersistenceDelegate: class {
     func addedBalance(sender: BalanceRepo)
 }
 
+protocol WalletPersistenceDelegate: class {
+    func addedWallet(sender: WalletRepo, wallet: Wallet)
+    func deletedWallet(sender: WalletRepo, walletId: Int)
+}
+
 struct SQLiteRepository: CurrencyPairRepo, ExchangeRateRepo, BalanceRepo, WalletRepo {
    
-    weak var delegate:BalancePersistenceDelegate?
+    weak var delegate : BalancePersistenceDelegate?
+    weak var walletDelegate : WalletPersistenceDelegate?
 
     func addBalance(balances: [Balance]) {
         for balance in balances{
             Balance.addBalance(balance: balance)
         }
         delegate?.addedBalance(sender: self)
-        NotificationCenter.default.post(name: Notification.Name(CryptoNotification.balanceUpdated), object: nil)
     }
     
     func allBalances() -> [Balance] {
@@ -50,16 +55,15 @@ struct SQLiteRepository: CurrencyPairRepo, ExchangeRateRepo, BalanceRepo, Wallet
     }
     
     func addWallet(cryptoAddressIdentifier: String, cryptoAddressType: Int64, addressNickname: String) {
-        Wallet.addWallet( cryptoAddressIdentifier: cryptoAddressIdentifier,
+        let wallet = Wallet.addWallet( cryptoAddressIdentifier: cryptoAddressIdentifier,
                           cryptoAddressType: cryptoAddressType,
                           addressNickname: addressNickname)
-        NotificationCenter.default.post(name: Notification.Name(CryptoNotification.balanceUpdated), object: nil)
-
+        
+        walletDelegate?.addedWallet(sender: self, wallet: wallet)
     }
     
     func deleteWallet(withId walletId: Int) {
         Wallet.deleteWallet(withId: walletId)
-        NotificationCenter.default.post(name: Notification.Name(CryptoNotification.balanceUpdated), object: nil)
-
+        walletDelegate?.deletedWallet(sender: self, walletId:walletId)
     }
 }

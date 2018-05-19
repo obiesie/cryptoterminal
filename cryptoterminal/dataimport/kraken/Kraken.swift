@@ -33,14 +33,16 @@ class GetKrakenData : GroupOperation {
     }
     
     static func auth(request : inout URLRequest, withKey apiKey: String, withSecret apiSecret : String ){
-        let encodedParams = String(data: request.httpBody!, encoding: String.Encoding.utf8)
-        let nonce = encodedParams?.components(separatedBy: "=")[1]
-        
-        let d = (nonce!+encodedParams!).get_sha256_String()
-        var cd = (request.url?.path)!.data(using: .utf8, allowLossyConversion: false)
-        cd?.append(d!)
-        
-        if let signature = CryptoHMAC(messageData: cd!, key: apiSecret, algorithm: .SHA512)?.digest.base64EncodedString(options: []){
+        guard let data = request.httpBody,
+            let encodedParams = String(data: data, encoding: String.Encoding.utf8) else { return }
+        let nonce = encodedParams.components(separatedBy: "=")[1]
+        let shaString = (nonce + encodedParams).get_sha256_String()
+        var cd = (request.url?.path)?.data(using: .utf8, allowLossyConversion: false)
+        if let _shaString = shaString{
+            cd?.append(_shaString)
+        }
+        if let _cd = cd,
+            let signature = CryptoHMAC(messageData: _cd, key: apiSecret, algorithm: .SHA512)?.digest.base64EncodedString(options: []){
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue( signature, forHTTPHeaderField: "API-Sign")
             request.setValue(apiKey, forHTTPHeaderField: "API-Key")
@@ -69,7 +71,6 @@ class KrakenBalanceImport : CryptoOperation {
     }
     
     override func execute() {
-        
         var request = URLRequest(url: baseURL!)
         request.httpMethod = "POST"
         let params = ["nonce":String(Int(Date().timeIntervalSince1970.rounded()*1000))]
