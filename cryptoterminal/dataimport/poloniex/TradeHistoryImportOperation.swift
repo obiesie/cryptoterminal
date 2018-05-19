@@ -2,7 +2,7 @@
 //  TradeHistoryImportOperation.swift
 //  cryptoterminal
 //
-
+import os
 import Foundation
 
 
@@ -82,22 +82,26 @@ class PoloTradeHistoryDownloadOperation : CryptoOperation {
         request.httpBody = components.query!.data(using: .utf8)
         GetPoloniexData.auth(request: &request, withKey: self.apiKey, withSecret: apiSecret)
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (responseData, response, error) in
-            guard let httpResp = response as? HTTPURLResponse, httpResp.statusCode == 200, let data = responseData,
-                var json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as?  [String:[[String:Any]]] ,
-                error == nil
-                else {
-                    handleBadApiResponse(data: responseData, response: response, error: error, command: self.COMMAND, op: self)
-                    return
+            var errors = [NSError]()
+            guard let httpResp = response as? HTTPURLResponse, httpResp.statusCode == 200, let data = responseData, error == nil else {
+                handleBadApiResponse(data: responseData, response: response, error: error, command: self.COMMAND, op: self)
+                return
             }
-            for index in json.indices {
-                let element = json[index]
-                for i in element.value.indices {
-                    json[element.key]![i]["pair"] = element.key
+            do {
+                var json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as!  [String:[[String:Any]]]
+                for index in json.indices {
+                    let element = json[index]
+                    for i in element.value.indices {
+                        json[element.key]![i]["pair"] = element.key
+                    }
                 }
+                let content = json.values.reduce(into : []) { vals, val in vals.append(contentsOf: val) }
+                self.opResult.data = content
+            } catch let error as NSError {
+                errors.append(error)
+                os_log("Error parsing returned json", log: OSLog.default, type: .error, error.localizedDescription)
             }
-            let content = json.values.reduce(into : []) { vals, val in vals.append(contentsOf: val) }
-            self.opResult.data = content
-            self.finish(errors: [])
+            self.finish(errors: errors)
         })
         task.resume()
     }

@@ -92,27 +92,39 @@ class GDAXAccountImportOperation: CryptoOperation {
         var request = URLRequest(url: url)
         GetGdaxData.auth(request: &request, withKey: self.apiKey, withSecret: apiSecret, with: self.passphrase)
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (responseData, response, error) in
+            var errors = [NSError]()
             guard let httpResponse = response as? HTTPURLResponse, let statusCode = HTTPStatusCode(HTTPResponse: httpResponse), error == nil else {
                 let errorMessage = error?.localizedDescription ?? ""
                 os_log("Error while connecting to GDAX:- %@", log: OSLog.default, type: .error, errorMessage)
                 self.finish(errors:[ NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: errorMessage as NSString])])
                 return
             }
-            if statusCode.isSuccess, let data = responseData,
-                let jsonData = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String: Any]] {
-                os_log("Downloaded account data from gdax:- %@", log: OSLog.default, type: .info, jsonData)
-                self.opResult.data.append(contentsOf: jsonData)
-                self.finish(errors: [])
-            } else if statusCode.isClientError, let data = responseData,
-                let errorData = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any],
-                let errorJson =  errorData["errors"] as? [[String:Any]], let errorInstance = errorJson.first,
-                let errorMessage = errorInstance["message"] as? String {
-                os_log("Client error while fetching data from gdax:- %@", log: OSLog.default, type: .error, errorMessage)
-                self.finish(errors:[ NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: errorMessage as NSString])])
+            if statusCode.isSuccess, let data = responseData {
+                do {
+                    let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [[String: Any]]
+                    os_log("Downloaded account data from gdax:- %@", log: OSLog.default, type: .info, jsonData)
+                    self.opResult.data.append(contentsOf: jsonData)
+                } catch let error as NSError {
+                    errors.append(error)
+                    os_log("Error parsing returned json", log: OSLog.default, type: .error, error.localizedDescription)
+                }
+            } else if statusCode.isClientError, let data = responseData {
+                do {
+                    let errorData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+                    if let errorJson =  errorData["errors"] as? [[String:Any]], let errorInstance = errorJson.first,
+                        let errorMessage = errorInstance["message"] as? String {
+                        os_log("Client error while fetching data from gdax:- %@", log: OSLog.default, type: .error, errorMessage)
+                        errors.append( NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: errorMessage as NSString]) )
+                    }
+                } catch let error as NSError {
+                    errors.append(error)
+                    os_log("Error parsing returned json", log: OSLog.default, type: .error, error.localizedDescription)
+                }
             } else {
                 os_log("Undefined error while fetching data from gdax", log: OSLog.default, type: .error)
-                self.finish(errors:[NSError(code:.ExecutionFailed, userInfo: ["errorMessage" as NSString: "Error while fetching data from gdax" as NSString])])
+                errors.append( NSError(code:.ExecutionFailed, userInfo: ["errorMessage" as NSString: "Error while fetching data from gdax" as NSString]))
             }
+            self.finish(errors: errors)
         })
         task.resume()
         super.execute()
@@ -148,36 +160,48 @@ class GDAXOrderFillImportOperation : CryptoOperation {
         GetGdaxData.auth(request: &request, withKey : self.apiKey, withSecret : self.apiSecret, with: passphrase)
         
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (responseData, response, error) in
-            
+            var errors = [NSError]()
             guard let httpResponse = response as? HTTPURLResponse, let statusCode = HTTPStatusCode(HTTPResponse: httpResponse), error == nil else {
                 let errorMessage = error?.localizedDescription ?? ""
                 os_log("Error while connecting to GDAX:- %@", log: OSLog.default, type: .error, errorMessage)
-                self.finish(errors:[ NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: errorMessage as NSString])])
+                errors.append(NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: errorMessage as NSString]))
+                self.finish(errors:errors)
                 return
             }
-            if statusCode.isSuccess, let data = responseData,
-                let fills = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [ [String: Any] ] {
-                os_log("Downloaded account fill data from gdax:- %@", log: OSLog.default, type: .info, fills)
-                for fill in fills {
-                    self.apiResult.data.append(fill)
+            if statusCode.isSuccess, let data = responseData {
+                do {
+                    let fills = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [ [String: Any] ]
+                    os_log("Downloaded account fill data from gdax:- %@", log: OSLog.default, type: .info, fills)
+                    for fill in fills {
+                        self.apiResult.data.append(fill)
+                    }
+                    if let cbAfter = httpResponse.allHeaderFields["cb-after"] as? String {
+                        os_log("found after header so enqueuing new task", log: OSLog.default, type: .info)
+                        let op = GDAXOrderFillImportOperation(apiResult : self.apiResult, apiKey : self.apiKey,
+                                                              apiSecret : self.apiSecret, passphrase:self.passphrase, after:cbAfter)
+                        queue?.addOperation(op)
+                    }
+                } catch let error as NSError {
+                    errors.append(error)
+                    os_log("Error parsing returned json", log: OSLog.default, type: .error, error.localizedDescription)
                 }
-                if let cbAfter = httpResponse.allHeaderFields["cb-after"] as? String {
-                    os_log("found after header so enqueuing new task", log: OSLog.default, type: .info)
-                    let op = GDAXOrderFillImportOperation(apiResult : self.apiResult, apiKey : self.apiKey,
-                                                           apiSecret : self.apiSecret, passphrase:self.passphrase, after:cbAfter)
-                    queue?.addOperation(op)
+            } else if statusCode.isClientError, let data = responseData {
+                do {
+                    let errorData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+                    if let errorJson =  errorData["errors"] as? [[String:Any]], let errorInstance = errorJson.first,
+                        let errorMessage = errorInstance["message"] as? String {
+                        os_log("Client error while fetching fill data from gdax:- %@", log: OSLog.default, type: .error, errorMessage)
+                        errors.append(NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: errorMessage as NSString]))
+                    }
+                } catch let error as NSError {
+                    errors.append(error)
+                    os_log("Error parsing returned json", log: OSLog.default, type: .error, error.localizedDescription)
                 }
-                self.finish(errors: [])
-            } else if statusCode.isClientError, let data = responseData,
-                let errorData = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any],
-                let errorJson =  errorData["errors"] as? [[String:Any]], let errorInstance = errorJson.first,
-                let errorMessage = errorInstance["message"] as? String {
-                os_log("Client error while fetching fill data from gdax:- %@", log: OSLog.default, type: .error, errorMessage)
-                self.finish(errors:[ NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: errorMessage as NSString])])
             } else {
                 os_log("Undefined error while fetching fill data from gdax", log: OSLog.default, type: .error)
-                self.finish(errors:[NSError(code:.ExecutionFailed, userInfo: ["errorMessage" as NSString: "Error while fetching data from gdax" as NSString])])
+                errors.append(NSError(code:.ExecutionFailed, userInfo: ["errorMessage" as NSString: "Error while fetching data from gdax" as NSString]))
             }
+            self.finish(errors: errors)
         })
         task.resume()
     }

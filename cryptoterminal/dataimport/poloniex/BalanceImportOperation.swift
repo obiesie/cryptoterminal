@@ -46,15 +46,23 @@ class GetPoloniexAccountBalance: GroupOperation {
 
 func handleBadApiResponse(data: Data?, response: URLResponse?, error: Error?, command:String, op:CryptoOperation) {
     let badResponseCodes : Set = [404]
+    var errors = [NSError]()
     if let httpResponse = response as? HTTPURLResponse, badResponseCodes.contains(httpResponse.statusCode)  {
         os_log("Could not connect to poloniex:- %@", log: OSLog.default, type: .error, httpResponse.statusCode)
-        op.finish(errors:[ NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: "Could not connect to Poloniex server." as NSString])])
-    } else if  let responseData = data,
-        let errorJson = try! JSONSerialization.jsonObject(with: responseData, options: .allowFragments) as? [String:String],
-        let errorMessage =  errorJson["error"] {
-        os_log("Failed to execute command: %@ on poloniex:- %@", log: OSLog.default, type: .error, command, errorMessage)
-        op.finish(errors:[ NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: errorMessage as NSString])])
+        errors.append(NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: "Could not connect to Poloniex server." as NSString]))
+    } else if  let responseData = data {
+        do {
+            let errorJson = try JSONSerialization.jsonObject(with: responseData, options: .allowFragments) as! [String:String]
+            if let errorMessage =  errorJson["error"] {
+                os_log("Failed to execute command: %@ on poloniex:- %@", log: OSLog.default, type: .error, command, errorMessage)
+                errors.append(NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: errorMessage as NSString]))
+            }
+        } catch let error as NSError {
+            errors.append(error)
+            os_log("Error parsing returned json", log: OSLog.default, type: .error, error.localizedDescription)
+        }
     }
+    op.finish(errors: errors)
 }
 
 class PoloniexBalanceImportOperation : CryptoOperation {
@@ -89,25 +97,31 @@ class PoloniexBalanceImportOperation : CryptoOperation {
         request.httpBody = components.query?.data(using: .utf8)
         GetPoloniexData.auth(request: &request, withKey: self.apiKey, withSecret: apiSecret)
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (responseData, response, error) in
+           var errors = [NSError]()
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
-                let data = responseData, error == nil,
-                let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as?  [String: [String:String]]
+                let data = responseData, error == nil
                 else {
                     handleBadApiResponse(data: responseData, response: response, error: error, command: self.poloniexApiCommand, op: self)
                     return
             }
-            var balancesMap = [String:Double]()
-            for (crypto, balances) in json {
-                var amount = 0.0
-                for (_, balance) in balances {
-                    if let _balance = Double(balance){
-                        amount = amount + _balance
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as!  [String: [String:String]]
+                var balancesMap = [String:Double]()
+                for (crypto, balances) in json {
+                    var amount = 0.0
+                    for (_, balance) in balances {
+                        if let _balance = Double(balance){
+                            amount = amount + _balance
+                        }
                     }
+                    balancesMap[crypto] = amount
                 }
-                balancesMap[crypto] = amount
+                self.opResult.data = [balancesMap]
+            } catch let error as NSError {
+                errors.append(error)
+                os_log("Error parsing returned json", log: OSLog.default, type: .error, error.localizedDescription)
             }
-            self.opResult.data = [balancesMap]
-            self.finish(errors: [])
+            self.finish(errors:errors)
         })
         task.resume()
     }
