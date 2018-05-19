@@ -71,6 +71,7 @@ class KrakenBalanceImport : CryptoOperation {
     }
     
     override func execute() {
+
         var request = URLRequest(url: baseURL!)
         request.httpMethod = "POST"
         let params = ["nonce":String(Int(Date().timeIntervalSince1970.rounded()*1000))]
@@ -83,17 +84,20 @@ class KrakenBalanceImport : CryptoOperation {
         request.httpBody = components.query!.data(using: .utf8)
         GetKrakenData.auth(request: &request, withKey: self.apiKey, withSecret: apiSecret)
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-            guard let response = response as? HTTPURLResponse,
-                response.statusCode == 200,
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200,
                 let responseData = data,
-                let json = try! JSONSerialization.jsonObject(with: responseData, options: .allowFragments) as?  [String:Any],
+                let optionalJson = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) as?  [String:Any],
+                let json = optionalJson,
                 error == nil
                 else {
                     if let errorData = data,
-                        let errorJson = try! JSONSerialization.jsonObject(with: errorData, options: .allowFragments) as?  [String:Any],
+                        let optionalErrorJson = try? JSONSerialization.jsonObject(with: errorData, options: .allowFragments) as?  [String:Any],
+                        let errorJson = optionalErrorJson,
                         let errorArray = errorJson["error"] as? [String], let firstError = errorArray.first  {
                         os_log("Failed to fetch account balance data from kraken:- %@", log: OSLog.default, type: .error, firstError as NSString)
                         self.finish(errors:[ NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: firstError as NSString])])
+                    } else {
+                        os_log("Failed to fetch account balance data from kraken - but error occurred unpacking error", log: OSLog.default, type: .error)
                     }
                     return
             }
@@ -137,18 +141,20 @@ class KrakenOrderHistoryImportOperation : CryptoOperation {
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 200,
                 let responseData = data,
-                let json = try! JSONSerialization.jsonObject(with: responseData, options: .allowFragments) as?  [String:Any],
+                let optionalJson = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) as?  [String:Any],
+                let json = optionalJson,
                 let result = json["result"] as? [String:Any],
                 let trades = result["trades"],
                 error == nil
                 else {
                     if let errorData = data,
-                        let errorJson = try! JSONSerialization.jsonObject(with: errorData, options: .allowFragments) as?  [String:Any],
+                        let optionalErrorJson = try? JSONSerialization.jsonObject(with: errorData, options: .allowFragments) as?  [String:Any],
+                        let errorJson = optionalErrorJson,
                         let errorArray = errorJson["error"] as? [String], let firstError = errorArray.first {
                         os_log("Failed to fetch transaction data from kraken:- %@", log: OSLog.default, type: .error, firstError)
                         self.finish(errors:[ NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: firstError as NSString])])
                     } else {
-                        self.finish(errors: [NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: "Could not connect to kraken" as NSString ])])
+                        self.finish(errors: [NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: "Could not connect to kraken - error unpacking error" as NSString ])])
                     }
                     return
             }

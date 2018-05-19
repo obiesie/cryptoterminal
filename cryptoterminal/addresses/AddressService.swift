@@ -3,6 +3,7 @@
 //  cryptoterminal
 //
 
+import os
 import Foundation
 
 final class GetAddressBalance: GroupOperation {
@@ -35,9 +36,10 @@ final class GetAddressBalance: GroupOperation {
     
     static func handleResponseFor(cryptoAddress : Wallet, crypto : Currency) -> ( (Data?, URLResponse?, Error?) -> Void) {
         func _handleResponse(data : Data?, response: URLResponse?, error : Error?){
-            guard error == nil,
-                let actualData = data
-                else { NSLog(error!.localizedDescription); return }
+            guard error == nil, let actualData = data else {
+                os_log("Error querying for address balance:- %@", log: OSLog.default, type: .error, error?.localizedDescription ?? "")
+                return
+            }
             do {
                 if let json = try JSONSerialization.jsonObject(with: actualData, options: .allowFragments) as? [String: Any],
                     let balanceResponsePath = crypto.balanceResponsePath,
@@ -46,8 +48,10 @@ final class GetAddressBalance: GroupOperation {
                     var pathIndex = 0
                     let pathTree = balanceResponsePath.components(separatedBy: ",")
                     while pathTree[pathIndex] != pathTree.last {
-                        innerJson = innerJson[pathTree[pathIndex]] as! [String : Any]
-                        pathIndex += 1
+                        if let json = innerJson[pathTree[pathIndex]] as? [String : Any] {
+                            innerJson = json
+                            pathIndex += 1
+                        }
                     }
                     var actualbalance = 0.0
                     let decimalPlaces = Int(balanceDecimalPlaces)

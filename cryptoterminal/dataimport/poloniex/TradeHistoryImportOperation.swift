@@ -2,9 +2,6 @@
 //  TradeHistoryImportOperation.swift
 //  cryptoterminal
 //
-//  Created by Obiesie Ike-Nwosu on 23/03/2018.
-//  Copyright © 2018 Obiesie Ike-Nwosu. All rights reserved.
-//
 
 import Foundation
 
