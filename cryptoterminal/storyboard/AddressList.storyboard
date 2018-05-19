@@ -177,29 +177,30 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableHeaderView>
                                             </scrollView>
-                                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YNE-wI-Q1f">
-                                                <rect key="frame" x="20" y="9" width="70" height="23"/>
-                                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="K8l-4j-gi5">
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1eS-02-S1w">
+                                                <rect key="frame" x="20" y="4" width="38" height="27"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="38" id="Ob5-SK-Gac"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UTy-vJ-tL0">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
-                                                    <segments>
-                                                        <segment image="NSAddTemplate" width="32"/>
-                                                        <segment image="NSRemoveTemplate" width="32" selected="YES" tag="1"/>
-                                                    </segments>
-                                                </segmentedCell>
+                                                </buttonCell>
                                                 <connections>
-                                                    <action selector="segCtrlClicked:" target="FMg-o6-U1U" id="CNF-3I-PCR"/>
+                                                    <action selector="addNewAddressClicked:" target="FMg-o6-U1U" id="Fdm-hv-RFF"/>
                                                 </connections>
-                                            </segmentedControl>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="450" id="7sg-kK-N5F"/>
                                             <constraint firstItem="M1g-Am-wk9" firstAttribute="top" secondItem="2SJ-1e-UCb" secondAttribute="top" constant="20" id="Bbw-I1-CDm"/>
-                                            <constraint firstItem="YNE-wI-Q1f" firstAttribute="leading" secondItem="2SJ-1e-UCb" secondAttribute="leading" constant="20" id="LMk-FA-RcG"/>
+                                            <constraint firstAttribute="bottom" secondItem="1eS-02-S1w" secondAttribute="bottom" constant="5" id="H0G-5R-cvc"/>
                                             <constraint firstItem="M1g-Am-wk9" firstAttribute="leading" secondItem="2SJ-1e-UCb" secondAttribute="leading" constant="20" id="LPK-LA-3Kz"/>
-                                            <constraint firstAttribute="bottom" secondItem="YNE-wI-Q1f" secondAttribute="bottom" constant="10" id="Np7-kb-gbC"/>
                                             <constraint firstItem="zbl-Nb-fwE" firstAttribute="leading" secondItem="2SJ-1e-UCb" secondAttribute="leading" constant="20" id="QVl-IC-kxu"/>
                                             <constraint firstAttribute="trailing" secondItem="zbl-Nb-fwE" secondAttribute="trailing" id="bHX-El-LJf"/>
+                                            <constraint firstItem="1eS-02-S1w" firstAttribute="leading" secondItem="zbl-Nb-fwE" secondAttribute="leading" id="bbh-p0-qPf"/>
                                             <constraint firstItem="zbl-Nb-fwE" firstAttribute="top" secondItem="M1g-Am-wk9" secondAttribute="bottom" id="dXU-vi-lmu"/>
+                                            <constraint firstItem="1eS-02-S1w" firstAttribute="top" secondItem="zbl-Nb-fwE" secondAttribute="bottom" constant="5" id="m5z-ee-nhQ"/>
                                             <constraint firstAttribute="bottom" secondItem="zbl-Nb-fwE" secondAttribute="bottom" constant="35" id="pc6-ZX-0qB"/>
                                         </constraints>
                                     </customView>
@@ -389,7 +390,6 @@
                         <outlet property="deleteClicked" destination="aFh-O0-2Xa" id="KPk-0y-Hk2"/>
                         <outlet property="leftCustomView" destination="2SJ-1e-UCb" id="LlL-wQ-JUH"/>
                         <outlet property="qrCodeImageView" destination="HB6-ZL-Rhi" id="OFu-jI-hw2"/>
-                        <outlet property="segmentedControl" destination="YNE-wI-Q1f" id="IMu-la-aiu"/>
                         <outlet property="topRightView" destination="ZQc-Rb-V9r" id="Fg9-sz-OQ1"/>
                     </connections>
                 </viewController>
@@ -590,6 +590,5 @@ Gw
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
-        <image name="NSRemoveTemplate" width="11" height="11"/>
     </resources>
 </document>

@@ -118,7 +118,8 @@
         self.selectedWatchListItem = self.watchListArrayController.selectedObjects.first as? CurrencyPair
         let cutOff = Date().addingTimeInterval(TimeInterval(7.0*24.0*60.0*60.0)).timeIntervalSince1970
         if let _selectedWatchListItem = selectedWatchListItem, let dataPoints = self.watchList?.exchangeRates(for: _selectedWatchListItem, since:cutOff)  {
-            self.scatterPlot?.setUpPlot(for:selectedPeriod, using:dataPoints, usingFormatter: _selectedWatchListItem.denominatedCurrency.formatter )
+            self.scatterPlot?.setUpPlot(for:selectedPeriod, using:dataPoints,
+                                        usingFormatter: _selectedWatchListItem.denominatedCurrency.formatter )
         }
     }
     

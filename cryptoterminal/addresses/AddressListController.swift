@@ -79,15 +79,8 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
     }
     
     
-    @IBAction func segCtrlClicked(_ sender: Any) {
-        switch segmentedControl.selectedSegment{
-        case 0:
-            self.presentViewControllerAsSheet(newAddressSheetViewController)
-        case 1:
-            self.deleteSelectedAddress()
-        default:
-            NSLog("No segment with index other than 0 or 1")
-        }
+    @IBAction func addNewAddressClicked(_ sender: Any){
+        self.presentViewControllerAsSheet(newAddressSheetViewController)
     }
     
     func deleteSelectedAddress(){

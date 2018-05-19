@@ -131,7 +131,8 @@ private class BarGraph : NSObject, CPTPlotDataSource, CPTPlotDelegate, Graph{
 private class VerticalBarGraph : BarGraph {
     
     override func setUpAnnotations(_ plot: CPTBarPlot, for portfolio: Portfolio){
-        guard let plotArea = plot.graph?.plotAreaFrame?.plotArea else { return }
+        guard let plotArea = plot.graph?.plotAreaFrame?.plotArea,
+        let plotSpace = plot.plotSpace else { return }
         for annotation in plotArea.annotations {
             annotation.annotationHostLayer?.removeAnnotation(annotation)
         }
@@ -140,7 +141,7 @@ private class VerticalBarGraph : BarGraph {
             let style = CPTMutableTextStyle()
             style.fontSize = 10.0
             style.fontName = "Lato"
-            let priceAnnotation = CPTPlotSpaceAnnotation(plotSpace: plot.plotSpace!, anchorPlotPoint: [0, 0])
+            let priceAnnotation = CPTPlotSpaceAnnotation(plotSpace: plotSpace, anchorPlotPoint: [0, 0])
             guard let price = number(for: plot,
                                      field: UInt(CPTBarPlotField.barTip.rawValue),
                                      record: UInt(index)) as? NSNumber else { return }
@@ -153,7 +154,6 @@ private class VerticalBarGraph : BarGraph {
             let y = CGFloat(truncating: price) + 0.025
             priceAnnotation.anchorPlotPoint = [NSNumber(cgFloat: x), NSNumber(cgFloat: y)]
             
-            // guard let plotArea = plot.graph?.plotAreaFrame?.plotArea else { return }
             plotArea.addAnnotation(priceAnnotation)
         }
     }
@@ -195,7 +195,7 @@ private class VerticalBarGraph : BarGraph {
             var axisLabels = Set<CPTAxisLabel>()
             for value in stride(from: 0, to: 1.1, by: 0.1) {
                 majorTickLocations.insert(value as NSNumber)
-                let label = CPTAxisLabel(text: "\( CryptoFormatters.decimalFormatter.string(from: value as NSNumber)! )", textStyle: axesTitleStyle)
+                let label = CPTAxisLabel(text: "\( CryptoFormatters.decimalFormatter.string(from: value as NSNumber) ?? "" )", textStyle: axesTitleStyle)
                 label.tickLocation = NSNumber(value: value)
                 label.offset = 5.0
                 label.alignment = .center
@@ -233,7 +233,8 @@ private class VerticalBarGraph : BarGraph {
 private class HorizontalBarGraph : BarGraph {
     
     override func setUpAnnotations(_ plot: CPTBarPlot, for portfolio: Portfolio){
-        guard let plotArea = plot.graph?.plotAreaFrame?.plotArea else { return }
+        guard let plotArea = plot.graph?.plotAreaFrame?.plotArea,
+        let plotSpace = plot.plotSpace else { return }
         for annotation in plotArea.annotations {
             annotation.annotationHostLayer?.removeAnnotation(annotation)
         }
@@ -242,7 +243,7 @@ private class HorizontalBarGraph : BarGraph {
             let style = CPTMutableTextStyle()
             style.fontSize = 10.0
             style.fontName = "Lato"
-            let priceAnnotation = CPTPlotSpaceAnnotation(plotSpace: plot.plotSpace!, anchorPlotPoint: [0, 0])
+            let priceAnnotation = CPTPlotSpaceAnnotation(plotSpace: plotSpace, anchorPlotPoint: [0, 0])
             guard let price = number(for: plot,
                                      field: UInt(CPTBarPlotField.barTip.rawValue),
                                      record: UInt(index)) as? NSNumber else { return }
@@ -320,7 +321,7 @@ private class HorizontalBarGraph : BarGraph {
             var axisLabels = Set<CPTAxisLabel>()
             for value in stride(from: 0, to: 1.1, by: 0.1) {
                 majorTickLocations.insert(value as NSNumber)
-                let label = CPTAxisLabel(text: "\( CryptoFormatters.decimalFormatter.string(from: value as NSNumber)! )", textStyle: axesTitleStyle)
+                let label = CPTAxisLabel(text: "\( CryptoFormatters.decimalFormatter.string(from: value as NSNumber) ?? "" )", textStyle: axesTitleStyle)
                 label.tickLocation = NSNumber(value: value)
                 label.offset = 5.0
                 label.alignment = .center

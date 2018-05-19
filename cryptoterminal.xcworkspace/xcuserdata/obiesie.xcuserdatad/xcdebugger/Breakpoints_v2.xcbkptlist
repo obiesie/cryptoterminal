@@ -4935,11 +4935,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/watchlist/WatchListController.swift"
-            timestampString = "548319559.230536"
+            timestampString = "548371434.594946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "didFinishSetUp(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4951,7 +4951,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/home/Portfolio.swift"
-            timestampString = "548319559.231064"
+            timestampString = "548371434.595057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
@@ -4967,7 +4967,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/common/RepositoryImpl.swift"
-            timestampString = "548319559.231456"
+            timestampString = "548371434.595536"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -4983,7 +4983,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/common/RepositoryImpl.swift"
-            timestampString = "548319559.231784"
+            timestampString = "548371434.596079"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
@@ -4999,7 +4999,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/home/Portfolio.swift"
-            timestampString = "548319559.2320549"
+            timestampString = "548371434.596388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -5015,7 +5015,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/home/HomeViewController.swift"
-            timestampString = "548319559.232334"
+            timestampString = "548371434.596675"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
@@ -5031,7 +5031,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/home/HomeViewController.swift"
-            timestampString = "548319559.232674"
+            timestampString = "548371434.597025"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -5792,11 +5792,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/addresses/AddressListController.swift"
-            timestampString = "548319559.233688"
+            timestampString = "548371434.597983"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "deleteClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5808,11 +5808,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/addresses/AddressListController.swift"
-            timestampString = "548319559.234032"
+            timestampString = "548371434.5985169"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "deleteClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5820,11 +5820,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/addresses/AddressService.swift"
-            timestampString = "548319646.818347"
+            timestampString = "548371434.59902"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
@@ -5840,13 +5840,109 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/addresses/AddressService.swift"
-            timestampString = "548319651.1179169"
+            timestampString = "548371434.599102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
             endingLineNumber = "53"
             landmarkName = "_handleResponse(data:response:error:)"
             landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/addresses/AddressService.swift"
+            timestampString = "548371434.599166"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "createOpFor(cryptoAddress:crypto:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/addresses/AddressService.swift"
+            timestampString = "548371434.599252"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "createOpFor(cryptoAddress:crypto:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/addresses/AddressService.swift"
+            timestampString = "548371434.599458"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "_handleResponse(data:response:error:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/addresses/AddressService.swift"
+            timestampString = "548371434.599552"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "_handleResponse(data:response:error:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/addresses/AddressService.swift"
+            timestampString = "548371434.599638"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "createOpFor(cryptoAddress:crypto:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/addresses/AddressListController.swift"
+            timestampString = "548371434.599769"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "addNewAddressClicked(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

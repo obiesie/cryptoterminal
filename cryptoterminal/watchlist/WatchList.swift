@@ -320,10 +320,9 @@ extension ScatterGraphConfig: MouseMovedAwareCPTGraphHostingViewDelegate {
     }
     
     func mouseMovedInGraphArea(with event: NSEvent) {
-        guard !self.dataPoints.isEmpty else {
+        guard !self.dataPoints.isEmpty, let plot = self._plot?.allPlots().last as? CPTScatterPlot else {
             return
         }
-        let plot = (self._plot?.allPlots().last as! CPTScatterPlot)
         let plotPoint = plot.plotSpace?.plotPoint(for: event)
         
         priceAnnotation?.annotationHostLayer?.removeAnnotation(priceAnnotation)
