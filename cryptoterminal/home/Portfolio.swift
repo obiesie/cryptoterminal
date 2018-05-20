@@ -13,16 +13,27 @@ protocol PortfolioUpdatedDelegate: class {
 
 class Portfolio : NSObject {
     
+    fileprivate let queue = DispatchQueue(label: "position", attributes: .concurrent)
     var balanceRepo: BalanceRepo
     var assetAllocation = [String:Double]()
     weak var delegate:PortfolioUpdatedDelegate?
-
-    var _positions = [Position]()
+    private var _positions = [Position]()
+    
     var positions : [Position] {
-        if _positions.isEmpty {
-            _positions = positions(from : balanceRepo.allBalances())
+        get {
+            queue.sync(flags:.barrier)  { [unowned self] in
+                if self._positions.isEmpty {
+                    self._positions = self.positions(from : self.balanceRepo.allBalances())
+                }
+            }
+            return queue.sync { return _positions }
         }
-        return _positions
+        
+        set {
+            queue.sync(flags: .barrier) { [unowned self] in
+                self._positions = newValue
+            }
+        }
     }
     
     static let shared = Portfolio(balanceRepo: SQLiteRepository())
@@ -47,21 +58,14 @@ class Portfolio : NSObject {
         self.balanceRepo = balanceRepo
         super.init()
         self.balanceRepo.delegate = self
-        //NotificationCenter.default.addObserver(self, selector: #selector(Portfolio.balanceUpdated(notification:)), name: Notification.Name(CryptoNotification.balanceUpdated), object: nil)
     }
-    
-    
-   /* @objc func balanceUpdated(notification: Notification){
-        _positions = [Position]()
-        delegate?.portfolioUpdated(sender: self)
-    } */
     
     func marketValue( in currency : String) -> Double {
         let _marketValue = self.positions.reduce(0.0, {x, y in x + y.marketValue(in: currency)})
         return _marketValue
     }
     
-    func positions(from balances : [Balance]) -> [Position]{
+    private func positions(from balances : [Balance]) -> [Position]{
         var _positions = [Position]()
         let balancesByCrypto = Dictionary(grouping: balances, by: {$0.currencyId})
         for (cryptoId, balances) in balancesByCrypto {
@@ -78,7 +82,7 @@ class Portfolio : NSObject {
 extension Portfolio : BalancePersistenceDelegate, WalletPersistenceDelegate {
     
     func deletedWallet(sender: WalletRepo, walletId: Int) {
-        _positions = [Position]()
+        positions = [Position]()
         delegate?.portfolioUpdated(sender: self)
     }
     
@@ -87,7 +91,7 @@ extension Portfolio : BalancePersistenceDelegate, WalletPersistenceDelegate {
     }
     
     func addedBalance(sender: BalanceRepo) {
-        _positions = [Position]()
+        positions = [Position]()
         delegate?.portfolioUpdated(sender: self)
     }
 }
