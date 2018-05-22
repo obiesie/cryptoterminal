@@ -35,6 +35,7 @@
 		3C38C4891F93EE9E000EC014 /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C38C4881F93EE9E000EC014 /* CurrencyType.swift */; };
 		3C390F951F01A6CC00D71213 /* PositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C390F941F01A6CC00D71213 /* PositionViewController.swift */; };
 		3C390F981F01AF3100D71213 /* NewPositionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C390F961F01AF3100D71213 /* NewPositionController.swift */; };
+		3C425FBA20B34C100033310B /* ReachabilityCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C425FB920B34C100033310B /* ReachabilityCondition.swift */; };
 		3C51B2F71F2E6E1D004BD585 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C51B2F61F2E6E1D004BD585 /* Formatters.swift */; };
 		3C51B2F91F2FFAD3004BD585 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C51B2F81F2FFAD3004BD585 /* PreferencesWindowController.swift */; };
 		3C51B2FB1F310B67004BD585 /* GeneralPrefsPaneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C51B2FA1F310B67004BD585 /* GeneralPrefsPaneViewController.swift */; };
@@ -145,6 +146,7 @@
 		3C38C4881F93EE9E000EC014 /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 		3C390F941F01A6CC00D71213 /* PositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionViewController.swift; sourceTree = "<group>"; };
 		3C390F961F01AF3100D71213 /* NewPositionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPositionController.swift; sourceTree = "<group>"; };
+		3C425FB920B34C100033310B /* ReachabilityCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityCondition.swift; sourceTree = "<group>"; };
 		3C51B2F61F2E6E1D004BD585 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		3C51B2F81F2FFAD3004BD585 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		3C51B2FA1F310B67004BD585 /* GeneralPrefsPaneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPrefsPaneViewController.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 		3CA1D3A61F841C7900CC466E /* operations */ = {
 			isa = PBXGroup;
 			children = (
+				3C425FB920B34C100033310B /* ReachabilityCondition.swift */,
 				3CA1D3A71F841CAF00CC466E /* URLSessionTaskOperation.swift */,
 				3C0F735A1F8756F300C3502B /* NotificationOperation.swift */,
 				3CD5C9672064CA3300152CB1 /* GroupOperation.swift */,
@@ -942,6 +945,7 @@
 				3C51B2F91F2FFAD3004BD585 /* PreferencesWindowController.swift in Sources */,
 				3CE693501F5C45BE00D216FA /* DbMigration.swift in Sources */,
 				3C3522931F3F9E5300789BBD /* CryptoNotification.swift in Sources */,
+				3C425FBA20B34C100033310B /* ReachabilityCondition.swift in Sources */,
 				3C2D69F91F7397CB00E5A389 /* CryptoAddressBalance.swift in Sources */,
 				3CD5C9792066CF9D00152CB1 /* ResultContext.swift in Sources */,
 				3CD5C96A2064CEBE00152CB1 /* Operation.swift in Sources */,

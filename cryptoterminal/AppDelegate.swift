@@ -26,10 +26,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let allowedLocalCurrencies = ["GBP", "EUR", "USD"]
         let previousLocaleCurreny = UserDefaults.standard.value(forKey: "previousLocalCurrencyCode") as? String
+        guard let currencyCode = Locale.current.currencyCode else {return}
         
-        if let currencyCode = Locale.current.currencyCode  {
-            if previousLocaleCurreny == nil || (previousLocaleCurreny != nil && previousLocaleCurreny! != currencyCode) {
-                if previousLocaleCurreny != currencyCode {
+        if let _previousLocaleCurreny = previousLocaleCurreny, _previousLocaleCurreny != currencyCode {
+       // if let currencyCode = Locale.current.currencyCode  {
+         //   if previousLocaleCurreny == nil || (previousLocaleCurreny != nil && previousLocaleCurreny! != currencyCode) {
+               // if previousLocaleCurreny != currencyCode {
                     let currencyCodeToUse = allowedLocalCurrencies.contains(currencyCode) ? currencyCode : "USD"
                     let denominatedCurrency = Currency.currency(by: currencyCodeToUse)
                     let currencyPairsToDelete = CurrencyPair.allCurrencyPairs().filter{$0.watchListed == false && $0.denominatedCurrencyId != denominatedCurrency?.id}
@@ -37,8 +39,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     let cryptoCurrencies = Currency.currencies(ofType: 2)
                     let currencyPairsToAdd = cryptoCurrencies.map{ CurrencyPair.from(baseCurrency: $0, denominatedCurrency: denominatedCurrency! ) }
                     CurrencyPair.insertCurrencyPairs( currencyPairs: currencyPairsToAdd )
-                }
-            }
+              //  }
+           // }
         }
     }
     

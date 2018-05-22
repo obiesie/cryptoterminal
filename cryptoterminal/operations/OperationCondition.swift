@@ -39,7 +39,7 @@ protocol OperationCondition {
     func dependencyForOperation(operation: Operation) -> Operation?
     
     /// Evaluate the condition, to see if it has been satisfied or not.
-    func evaluateForOperation(operation: Operation, completion: (OperationConditionResult) -> Void)
+    func evaluateForOperation(operation: Operation, completion: @escaping (OperationConditionResult) -> Void)
 }
 
 /**
