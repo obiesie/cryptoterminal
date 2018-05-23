@@ -67,7 +67,7 @@ class NewPositionController: NSViewController, DragDestinationDelegate,  NSTextF
     lazy var sheetViewController: NSViewController = {
         let vc = self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "exchangeSelection"))
             as! ExchangeSelectionController
-        vc.delegate = (self as! ExchangeDataImportDelegate)
+        //vc.delegate = (self as! ExchangeDataImportDelegate)
         vc.obDelegate = self
         return vc
     }()
@@ -231,7 +231,7 @@ class ExchangeSelectionController : NSViewController {
     @IBOutlet weak var importExchangeDataButton: NSButton!
     @IBOutlet weak var exchangeAPISecretTextField: NSTextField!
     @IBOutlet weak var gdaxPassphraseTextField: NSTextField!
-    weak var delegate: ExchangeDataImportDelegate?
+    //weak var delegate: ExchangeDataImportDelegate?
     var obDelegate : OperationObserver?
     var queue = CryptoOperationQueue()
     
@@ -288,18 +288,6 @@ class ExchangeSelectionController : NSViewController {
     }
 }
 
-protocol ExchangeDataImportDelegate : class  {
-    func exchangeDataImportStarted()
-    func exchangeDataImportSucceeded()
-    func exchangeDataImportFailed(with errors : [NSError])
-}
-
-
-protocol DataImportOperation : class {
-    
-    var delegate : ExchangeDataImportDelegate? { get set }
-    func main()
-}
 
 
 

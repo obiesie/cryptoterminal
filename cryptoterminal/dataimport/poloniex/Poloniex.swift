@@ -6,14 +6,13 @@
 
 import Foundation
 
-class GetPoloniexData : GroupOperation, DataImportOperation {
+class GetPoloniexData : GroupOperation {
     
     let apiKey : String
     let apiSecret : String
     let getPoloAcctBal : Operation
     let getPoloTradeHist : Operation
     static let exchangeName = "Poloniex"
-    weak var delegate: ExchangeDataImportDelegate?
 
     init(apiKey : String, apiSecret : String){
         self.apiKey = apiKey
@@ -29,7 +28,6 @@ class GetPoloniexData : GroupOperation, DataImportOperation {
     }
     
     override func execute(){
-        delegate?.exchangeDataImportStarted()
         super.execute()
     }
     
