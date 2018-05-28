@@ -28,15 +28,18 @@ class GetGdaxData : GroupOperation {
                                                            apiResult: opResult, balanceRepo: balanceRepo)
         let gdaxOrderFillImportOperation = GDAXOrderFillImportOperation( apiResult : opResult, apiKey : apiKey,
                                                                          apiSecret : apiSecret, passphrase:self.passphrase)
-        let parseGdaxTransactionOperation  = ParseImportedDataOperation( exchange: .GDAX, apiResult : opResult  )
+        let parseFillBlock = {
+            let positions = Position.positionFrom(exchange:.GDAX, transactionData:opResult.data)
+            positions.forEach{ position in Position.addPosition(position: position) }
+        }
+        
+        let finishOp = BlockOperation(block: parseFillBlock)
         
         balanceImportOperation.addDependency(acctImport)
         gdaxOrderFillImportOperation.addDependency(balanceImportOperation)
-        parseGdaxTransactionOperation.addDependency(gdaxOrderFillImportOperation)
         
-        let ops = [acctImport, balanceImportOperation, gdaxOrderFillImportOperation, parseGdaxTransactionOperation]
-        super.init(operations: ops)
-        
+        let ops = [acctImport, balanceImportOperation, gdaxOrderFillImportOperation]
+        super.init(operations: ops, finishOperation: finishOp)
     }
     
     static func auth(request : inout URLRequest, withKey apiKey: String,
@@ -63,7 +66,7 @@ class GetGdaxData : GroupOperation {
     
     override func operationDidFinish(operation: Operation, withErrors errors: [NSError]) {
         if !errors.isEmpty {
-            ///self.cancel()
+            self.cancel()
             self.finish(errors: errors)
         }
     }
@@ -126,7 +129,6 @@ class GDAXAccountImportOperation: CryptoOperation {
             self.finish(errors: errors)
         })
         task.resume()
-       // super.execute()
     }
 }
 
@@ -149,7 +151,6 @@ class GDAXOrderFillImportOperation : GroupOperation {
     }
     
     override func execute(){
-        self.apiResult.data = []
         var urlString = "fills?limit=100"
         if let _after = after {
             urlString += "&after=" + _after
@@ -173,10 +174,10 @@ class GDAXOrderFillImportOperation : GroupOperation {
                     os_log("Downloaded account fill data from gdax:- %@", log: OSLog.default, type: .info, fills)
                     self.apiResult.data.append(contentsOf: fills)
                     if let cbAfter = httpResponse.allHeaderFields["cb-after"] as? String {
-                        os_log("found after header so enqueuing new task", log: OSLog.default, type: .info)
+                        os_log("found after header so enqueuing new task - %@", log: OSLog.default, type: .info, cbAfter)
                         let op = GDAXOrderFillImportOperation(apiResult : self.apiResult, apiKey : self.apiKey,
                                                               apiSecret : self.apiSecret, passphrase:self.passphrase, after:cbAfter)
-                        self.addOperation(operation: op)
+                        self.produceOperation(operation: op)
                     }
                 } catch let error as NSError {
                     errors.append(error)
@@ -185,8 +186,7 @@ class GDAXOrderFillImportOperation : GroupOperation {
             } else if statusCode.isClientError, let data = responseData {
                 do {
                     let errorData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
-                    if let errorJson =  errorData["errors"] as? [[String:Any]], let errorInstance = errorJson.first,
-                        let errorMessage = errorInstance["message"] as? String {
+                    if let errorMessage =  errorData["message"] as? String {
                         os_log("Client error while fetching fill data from gdax:- %@", log: OSLog.default, type: .error, errorMessage)
                         errors.append(NSError(code:.ExecutionFailed, userInfo : ["errorMessage" as NSString: errorMessage as NSString]))
                     }

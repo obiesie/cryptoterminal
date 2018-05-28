@@ -21,22 +21,22 @@ import Foundation
 class GroupOperation: CryptoOperation {
     private let internalQueue = CryptoOperationQueue()
     private let startingOperation = BlockOperation(block: {})
-    private let finishingOperation = BlockOperation(block: {})
+    private var finishingOperation = BlockOperation(block: {})
     private let aggLock = NSLock()
 
     
     private var aggregatedErrors = [NSError]()
-    convenience init(operations: Operation...) {
-        self.init(operations: operations)
+    convenience init(operations: Operation..., finishOperation:BlockOperation = BlockOperation(block: {})) {
+        self.init(operations: operations, finishOperation: finishOperation)
     }
     
-    init(operations: [Operation]) {
+    init(operations: [Operation], finishOperation:BlockOperation = BlockOperation(block: {})) {
         super.init()
         
         internalQueue.isSuspended = true
         internalQueue.delegate = self
         internalQueue.addOperation(startingOperation)
-        
+        self.finishingOperation =  finishOperation
         for operation in operations {
             internalQueue.addOperation(operation)
         }

@@ -39,6 +39,7 @@ class BalanceParseOperation : CryptoOperation {
         let balances = Balance.balanceFrom(exchange:exchange, accountData:self.apiResult.data)
         let nonzeroBalances = balances.filter{$0.quantity>0}
         balanceRepo.addBalance(balances: nonzeroBalances)
+        self.apiResult.data = []
         self.finish(errors: [])
     }
 }
