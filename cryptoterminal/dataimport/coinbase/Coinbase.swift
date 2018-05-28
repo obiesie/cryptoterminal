@@ -28,7 +28,7 @@ class GetCoinbaseData : GroupOperation {
             opResult.data = []
         }
         
-        let finishOp = BlockOperation(block: parseBalanceOpBlock)        
+        let finishOp = BlockOperation(block: parseBalanceOpBlock)
         let ops = [coinbaseAccountImportOperation]
         super.init(operations: ops, finishOperation: finishOp)
     }
@@ -212,7 +212,6 @@ class CoinbaseAccountTransactionImportOperation : GroupOperation {
                     if nextUrl != "" {
                         let txDownloadOp = CoinbaseAccountTransactionImportOperation(apiResult:self.apiResult, apiKey:self.apiKey, apiSecret:self.apiSecret, transactionEndpoint: nextUrl, accountId:self.accountId)
                         self.produceOperation(operation: txDownloadOp)
-                        //queue?.addOperation(txDownloadOp)
                     }
                     self.apiResult.data.append(contentsOf: jsonData )
                 }
