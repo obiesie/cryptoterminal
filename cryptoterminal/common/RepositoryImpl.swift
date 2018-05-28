@@ -2,36 +2,45 @@
 //  RepositoryImpl.swift
 //  cryptoterminal
 //
-
+import GRDB
 import Foundation
-
-protocol BalancePersistenceDelegate: class {
-    func addedBalance(sender: BalanceRepo)
-}
-
-protocol WalletPersistenceDelegate: class {
-    func addedWallet(sender: WalletRepo, wallet: Wallet)
-    func deletedWallet(sender: WalletRepo, walletId: Int)
-}
 
 struct SQLiteRepository: CurrencyPairRepo, ExchangeRateRepo, BalanceRepo, WalletRepo {
    
     weak var delegate : BalancePersistenceDelegate?
     weak var walletDelegate : WalletPersistenceDelegate?
 
+    var db: DatabaseQueue?
+    
+    init(db:DatabaseQueue? = Datasource.shared.db){
+        self.db = db
+    }
+    
     func addBalance(balances: [Balance]) {
         for balance in balances{
-            Balance.addBalance(balance: balance)
+            if let _exchangeId = balance.exchangeId {
+                try? db?.inTransaction{db in
+                    let deleteSql = "DELETE FROM BALANCE WHERE CURRENCY = \(balance.currencyId) AND EXCHANGE = \(_exchangeId);"
+                    try db.execute(deleteSql)
+                    try balance.save(db)
+                    return .commit
+                }
+            } else if let _walletId = balance.walletId {
+                try? db?.inTransaction{ db in
+                    let deleteSql = "DELETE FROM BALANCE WHERE CURRENCY = \(balance.currencyId) AND WALLET = \(_walletId);"
+                    try db.execute(deleteSql)
+                    try balance.save(db)
+                    return .commit
+                }
+            }
         }
         delegate?.addedBalance(sender: self)
     }
     
     func allBalances() -> [Balance] {
-        var balances = [Balance]()
-        if let db = Datasource.shared.db {
-            balances.append(contentsOf: Balance.allBalances(db: db))
+        return try! db!.inDatabase{
+            db in try Balance.fetchAll(db)
         }
-        return balances
     }
     
     func watchListedCurrencyPairs() -> [CurrencyPair] {
@@ -67,3 +76,13 @@ struct SQLiteRepository: CurrencyPairRepo, ExchangeRateRepo, BalanceRepo, Wallet
         walletDelegate?.deletedWallet(sender: self, walletId:walletId)
     }
 }
+
+protocol BalancePersistenceDelegate: class {
+    func addedBalance(sender: BalanceRepo)
+}
+
+protocol WalletPersistenceDelegate: class {
+    func addedWallet(sender: WalletRepo, wallet: Wallet)
+    func deletedWallet(sender: WalletRepo, walletId: Int)
+}
+

@@ -54,7 +54,7 @@ class Portfolio : NSObject {
         return _defaultMarketValue
     }
     
-    private init(balanceRepo:BalanceRepo){
+    init(balanceRepo:BalanceRepo){
         self.balanceRepo = balanceRepo
         super.init()
         self.balanceRepo.delegate = self

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="QPG-r4-wgM">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="QPG-r4-wgM">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -40,11 +40,12 @@
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
+                                                <accessibility description="sourceCurrencyAmount"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="QPG-r4-wgM" id="cMV-Ei-LaA"/>
                                                 </connections>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hue-Px-sGt">
+                                            <textField identifier="sourceLabel" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hue-Px-sGt">
                                                 <rect key="frame" x="244" y="7" width="114" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="110" id="bRh-17-Qqa"/>
@@ -54,6 +55,7 @@
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
+                                                <accessibility identifier="sourceLabel"/>
                                             </textField>
                                             <popUpButton identifier="sourceCurrencyPopup" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l9q-qO-wul">
                                                 <rect key="frame" x="370" y="3" width="155" height="26"/>
@@ -71,8 +73,9 @@
                                                         </items>
                                                     </menu>
                                                 </popUpButtonCell>
+                                                <accessibility description="sourceCurrencyPopup" identifier="sourceCurrencyPopup"/>
                                                 <connections>
-                                                    <action selector="targetPopupSelectionChanged:" target="QPG-r4-wgM" id="wsZ-0l-Jtc"/>
+                                                    <action selector="sourcePopupSelectionChanged:" target="QPG-r4-wgM" id="Yu2-hm-dMK"/>
                                                 </connections>
                                             </popUpButton>
                                         </subviews>
@@ -87,7 +90,7 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <stackView distribution="equalCentering" orientation="horizontal" alignment="bottom" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MZa-v6-bzN">
+                                    <stackView identifier="targetLabel" distribution="equalCentering" orientation="horizontal" alignment="bottom" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MZa-v6-bzN">
                                         <rect key="frame" x="0.0" y="59" width="522" height="32"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="249" placeholderIntrinsicWidth="220" placeholderIntrinsicHeight="51" translatesAutoresizingMaskIntoConstraints="NO" id="XJZ-b5-Cc1">
@@ -105,7 +108,7 @@
                                                     <outlet property="delegate" destination="QPG-r4-wgM" id="awS-hW-q2p"/>
                                                 </connections>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wv7-D5-orX">
+                                            <textField identifier="targetLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wv7-D5-orX">
                                                 <rect key="frame" x="244" y="7" width="114" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="110" id="Yan-Hm-j0W"/>
@@ -151,6 +154,7 @@
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
+                                        <accessibility identifier="targetLabel"/>
                                     </stackView>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uXO-0E-v9i">
                                         <rect key="frame" x="0.0" y="0.0" width="522" height="32"/>
@@ -161,6 +165,7 @@
                                             <font key="font" metaFont="system" size="18"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <accessibility identifier="scratchpad"/>
                                         </textFieldCell>
                                     </textField>
                                 </subviews>

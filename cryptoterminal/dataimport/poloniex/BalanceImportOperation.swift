@@ -14,7 +14,7 @@ class GetPoloniexAccountBalance: GroupOperation {
     
     // MARK: Properties
     let opResult = OperationResultContext()
-    let balanceRepo = SQLiteRepository()
+    let balanceRepo = Portfolio.shared.balanceRepo
     let downloadOperation: Operation
     let parseOperation: Operation
     

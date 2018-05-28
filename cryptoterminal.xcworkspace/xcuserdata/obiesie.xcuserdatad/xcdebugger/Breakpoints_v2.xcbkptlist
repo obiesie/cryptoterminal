@@ -1250,7 +1250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/operations/URLSessionTaskOperation.swift"
-            timestampString = "546735364.8184"
+            timestampString = "549161304.379169"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -2818,7 +2818,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/operations/URLSessionTaskOperation.swift"
-            timestampString = "546735364.828017"
+            timestampString = "549161304.3812881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -3926,7 +3926,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/AppDelegate.swift"
-            timestampString = "548799574.024345"
+            timestampString = "548882557.698244"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -4006,7 +4006,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/AppDelegate.swift"
-            timestampString = "548799574.0244679"
+            timestampString = "548882557.698815"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -4423,7 +4423,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/model/Balance.swift"
-            timestampString = "544426990.868897"
+            timestampString = "548882557.6992821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -4487,7 +4487,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminalTests/portfolioTests.swift"
-            timestampString = "541492886.228987"
+            timestampString = "548882557.699659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "12"
@@ -4503,7 +4503,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminalTests/portfolioTests.swift"
-            timestampString = "541492886.229368"
+            timestampString = "548882557.700084"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
@@ -4951,11 +4951,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/common/RepositoryImpl.swift"
-            timestampString = "548447135.487341"
+            timestampString = "549163083.741488"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "addBalance(balances:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4967,11 +4967,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/common/RepositoryImpl.swift"
-            timestampString = "548447135.48799"
+            timestampString = "549163083.74193"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "addBalance(balances:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5015,7 +5015,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/poloniex/TradeHistoryImportOperation.swift"
-            timestampString = "548447135.489578"
+            timestampString = "549154639.622573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -5047,7 +5047,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/poloniex/Poloniex.swift"
-            timestampString = "548799574.025025"
+            timestampString = "548882557.702897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -5239,7 +5239,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/poloniex/Poloniex.swift"
-            timestampString = "548799574.025704"
+            timestampString = "548882557.703552"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -5408,7 +5408,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/model/Balance.swift"
-            timestampString = "544426990.8703001"
+            timestampString = "548882557.704022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -5452,11 +5452,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/model/Balance.swift"
-            timestampString = "544426990.870368"
+            timestampString = "548882557.7041579"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
@@ -5472,7 +5472,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/model/Balance.swift"
-            timestampString = "544426990.870422"
+            timestampString = "548882557.704264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
@@ -5488,7 +5488,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/model/Balance.swift"
-            timestampString = "544426990.870473"
+            timestampString = "548882557.704356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
@@ -5536,7 +5536,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/model/Balance.swift"
-            timestampString = "544426990.870523"
+            timestampString = "548882557.70444"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
@@ -5552,7 +5552,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/model/Balance.swift"
-            timestampString = "544426990.870574"
+            timestampString = "548882557.704531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -5600,7 +5600,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/model/Balance.swift"
-            timestampString = "544426990.870689"
+            timestampString = "548882557.704695"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
@@ -5648,7 +5648,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/model/Balance.swift"
-            timestampString = "544426990.8707449"
+            timestampString = "548882557.704782"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
@@ -5664,7 +5664,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/common/ParseOperation.swift"
-            timestampString = "543784723.0233361"
+            timestampString = "549163083.7428091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
@@ -5676,11 +5676,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/common/ParseOperation.swift"
-            timestampString = "543784727.542671"
+            timestampString = "549163083.742877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -5744,7 +5744,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/addresses/AddressListController.swift"
-            timestampString = "548447135.492599"
+            timestampString = "548833722.525425"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "198"
@@ -5760,7 +5760,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/addresses/AddressListController.swift"
-            timestampString = "548447135.4935271"
+            timestampString = "548833722.526023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "199"
@@ -5872,7 +5872,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/addresses/AddressListController.swift"
-            timestampString = "548447135.499303"
+            timestampString = "548833722.52648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
@@ -5888,7 +5888,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/home/Portfolio.swift"
-            timestampString = "548799574.026422"
+            timestampString = "549163083.743131"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
@@ -5900,15 +5900,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/common/RepositoryImpl.swift"
-            timestampString = "548447135.4996639"
+            timestampString = "549163083.74342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "deleteWallet(withId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5920,13 +5920,565 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/home/Portfolio.swift"
-            timestampString = "548799574.02651"
+            timestampString = "549163083.74367"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
             landmarkName = "positions"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/exchangerate/PriceConversionService.swift"
+            timestampString = "548882557.707203"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "convertFrom(sourceCurrencySymbol:targetCurrencySymbol:amount:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/scratchpad/ScratchPadController.swift"
+            timestampString = "548882557.707616"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "sourcePopupSelectionChanged(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminalTests/portfolioTests.swift"
+            timestampString = "548882557.707956"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "testPortfolioPositions()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cryptoterminalTests.PortfolioTests.testPortfolioPositions() -&gt; ()"
+                  moduleName = "cryptoterminalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/obiesie/projects/cryptoterminal/cryptoterminalTests/portfolioTests.swift"
+                  timestampString = "548836045.297616"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "555">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #1 : @autoclosure () throws -&gt; Swift.Bool in cryptoterminalTests.PortfolioTests.testPortfolioPositions() -&gt; ()"
+                  moduleName = "cryptoterminalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/obiesie/projects/cryptoterminal/cryptoterminalTests/portfolioTests.swift"
+                  timestampString = "548836045.300758"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/home/Portfolio.swift"
+            timestampString = "549163083.7439409"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "positions(from:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cryptoterminal.Portfolio.(positions in _F78960A3C1CB6D0ED8F9771CAB79DA55)(from: Swift.Array&lt;cryptoterminal.Balance&gt;) -&gt; Swift.Array&lt;cryptoterminal.Position&gt;"
+                  moduleName = "cryptoterminal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/obiesie/projects/cryptoterminal/cryptoterminal/home/Portfolio.swift"
+                  timestampString = "548836044.255263"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "77">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (cryptoterminal.Balance) -&gt; Swift.Int in cryptoterminal.Portfolio.(positions in _F78960A3C1CB6D0ED8F9771CAB79DA55)(from: Swift.Array&lt;cryptoterminal.Balance&gt;) -&gt; Swift.Array&lt;cryptoterminal.Position&gt;"
+                  moduleName = "cryptoterminal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/obiesie/projects/cryptoterminal/cryptoterminal/home/Portfolio.swift"
+                  timestampString = "548836044.25763"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "14">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/poloniex/TradeHistoryImportOperation.swift"
+            timestampString = "549154639.625074"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/poloniex/TradeHistoryImportOperation.swift"
+            timestampString = "549154639.625281"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/poloniex/TradeHistoryImportOperation.swift"
+            timestampString = "549154639.625468"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/poloniex/BalanceImportOperation.swift"
+            timestampString = "549163083.7442321"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "execute()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cryptoterminal.PoloniexBalanceImportOperation.execute() -&gt; ()"
+                  moduleName = "cryptoterminal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/obiesie/projects/cryptoterminal/cryptoterminal/dataimport/poloniex/BalanceImportOperation.swift"
+                  timestampString = "549154210.572432"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "4724">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.URLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in cryptoterminal.PoloniexBalanceImportOperation.execute() -&gt; ()"
+                  moduleName = "cryptoterminal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/obiesie/projects/cryptoterminal/cryptoterminal/dataimport/poloniex/BalanceImportOperation.swift"
+                  timestampString = "549154210.5756691"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "133">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/poloniex/BalanceImportOperation.swift"
+            timestampString = "549163083.744491"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/poloniex/BalanceImportOperation.swift"
+            timestampString = "549163083.7446899"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/poloniex/BalanceImportOperation.swift"
+            timestampString = "549163083.744886"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "handleBadApiResponse(data:response:error:command:op:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
+            timestampString = "549163083.745082"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
+            timestampString = "549163083.745384"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
+            timestampString = "549163083.745639"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/common/ParseOperation.swift"
+            timestampString = "549163083.745948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "execute()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cryptoterminal.ParseImportedDataOperation.execute() -&gt; ()"
+                  moduleName = "cryptoterminal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/obiesie/projects/cryptoterminal/cryptoterminal/dataimport/common/ParseOperation.swift"
+                  timestampString = "549157596.0397789"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "438">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (cryptoterminal.Position) -&gt; () in cryptoterminal.ParseImportedDataOperation.execute() -&gt; ()"
+                  moduleName = "cryptoterminal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/obiesie/projects/cryptoterminal/cryptoterminal/dataimport/common/ParseOperation.swift"
+                  timestampString = "549157596.044726"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "34">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/position/Position.swift"
+            timestampString = "549163083.746008"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "parseGdaxData(transactions:)"
+            landmarkType = "7">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
+                  <ActionContent
+                     consoleCommand = "po $0">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static cryptoterminal.Position.parseGdaxData(transactions: Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; Swift.Array&lt;cryptoterminal.Position&gt;"
+                  moduleName = "cryptoterminal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/obiesie/projects/cryptoterminal/cryptoterminal/position/Position.swift"
+                  timestampString = "549160953.26108"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "232"
+                  endingLineNumber = "232"
+                  offsetFromSymbolStart = "515">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; Swift.String in static cryptoterminal.Position.parseGdaxData(transactions: Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; Swift.Array&lt;cryptoterminal.Position&gt;"
+                  moduleName = "cryptoterminal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/obiesie/projects/cryptoterminal/cryptoterminal/position/Position.swift"
+                  timestampString = "549160953.263997"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "232"
+                  endingLineNumber = "232"
+                  offsetFromSymbolStart = "41">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/position/Position.swift"
+            timestampString = "549163083.746057"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "parseGdaxData(transactions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
+            timestampString = "549163083.746107"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
+            timestampString = "549163083.746398"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
+            timestampString = "549163083.746743"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
+            timestampString = "549163083.747122"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
+            timestampString = "549163083.747493"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/common/ParseOperation.swift"
+            timestampString = "549163083.74786"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
+            timestampString = "549163083.747946"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "execute()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

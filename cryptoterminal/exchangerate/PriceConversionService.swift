@@ -11,7 +11,7 @@ class PriceConversionService : NSObject {
     static let allowedFiatCurrencies =  ["EUR", "GBP", "USD"]
     static let defaultCurrencyCode = "USD"
     
-    static func convertFrom(sourceCurrencySymbol : String, targetCurrencySymbol: String, amount : Double) -> (targetCryptoCurrency:Double?, fiatEquivalent:Double?){
+    static func convertFrom(sourceCurrencySymbol: String, targetCurrencySymbol: String, amount: Double) -> (targetCryptoCurrency:Double?, fiatEquivalent:Double?){
         
         let locale = Locale.current
         let currencyCode = locale.currencyCode!

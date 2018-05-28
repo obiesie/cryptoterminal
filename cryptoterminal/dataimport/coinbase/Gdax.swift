@@ -20,7 +20,7 @@ class GetGdaxData : GroupOperation {
         self.apiSecret = apiSecret
         self.passphrase = passphrase
         let opResult = OperationResultContext()
-        let balanceRepo =  SQLiteRepository()
+        let balanceRepo = Portfolio.shared.balanceRepo
         
         let acctImport = GDAXAccountImportOperation( apiResult : opResult, apiKey : apiKey,
                                                      apiSecret : apiSecret, passphrase:self.passphrase, opResult:opResult)
@@ -28,7 +28,6 @@ class GetGdaxData : GroupOperation {
                                                            apiResult: opResult, balanceRepo: balanceRepo)
         let gdaxOrderFillImportOperation = GDAXOrderFillImportOperation( apiResult : opResult, apiKey : apiKey,
                                                                          apiSecret : apiSecret, passphrase:self.passphrase)
-        
         let parseGdaxTransactionOperation  = ParseImportedDataOperation( exchange: .GDAX, apiResult : opResult  )
         
         balanceImportOperation.addDependency(acctImport)
@@ -64,7 +63,7 @@ class GetGdaxData : GroupOperation {
     
     override func operationDidFinish(operation: Operation, withErrors errors: [NSError]) {
         if !errors.isEmpty {
-            self.cancel()
+            ///self.cancel()
             self.finish(errors: errors)
         }
     }
@@ -127,11 +126,11 @@ class GDAXAccountImportOperation: CryptoOperation {
             self.finish(errors: errors)
         })
         task.resume()
-        super.execute()
+       // super.execute()
     }
 }
 
-class GDAXOrderFillImportOperation : CryptoOperation {
+class GDAXOrderFillImportOperation : GroupOperation {
     
     let baseURL : URL? = URL(string: "https://api.gdax.com")
     var apiResult : OperationResultContext
@@ -146,6 +145,7 @@ class GDAXOrderFillImportOperation : CryptoOperation {
         self.apiSecret = apiSecret
         self.passphrase = passphrase
         self.after = after
+        super.init(operations: [])
     }
     
     override func execute(){
@@ -155,7 +155,6 @@ class GDAXOrderFillImportOperation : CryptoOperation {
             urlString += "&after=" + _after
         }
         guard let url = URL(string: urlString, relativeTo: baseURL) else { return }
-        let queue = OperationQueue.current
         var request = URLRequest(url: url)
         GetGdaxData.auth(request: &request, withKey : self.apiKey, withSecret : self.apiSecret, with: passphrase)
         
@@ -172,14 +171,12 @@ class GDAXOrderFillImportOperation : CryptoOperation {
                 do {
                     let fills = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [ [String: Any] ]
                     os_log("Downloaded account fill data from gdax:- %@", log: OSLog.default, type: .info, fills)
-                    for fill in fills {
-                        self.apiResult.data.append(fill)
-                    }
+                    self.apiResult.data.append(contentsOf: fills)
                     if let cbAfter = httpResponse.allHeaderFields["cb-after"] as? String {
                         os_log("found after header so enqueuing new task", log: OSLog.default, type: .info)
                         let op = GDAXOrderFillImportOperation(apiResult : self.apiResult, apiKey : self.apiKey,
                                                               apiSecret : self.apiSecret, passphrase:self.passphrase, after:cbAfter)
-                        queue?.addOperation(op)
+                        self.addOperation(operation: op)
                     }
                 } catch let error as NSError {
                     errors.append(error)

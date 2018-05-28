@@ -66,8 +66,6 @@ class PositionViewController: NSViewController, NSTableViewDelegate, NSDraggingD
             let cell = tableView.makeView(withIdentifier : columnIdentifier, owner: nil) as? NSTableCellView,
             let position = (positionController.arrangedObjects as! [Any])[row] as? Position
             else { return nil }
-        //cell.textField?.textColor = NSColor.white
-        print(columnIdentifier.rawValue)
         switch(columnIdentifier.rawValue){
         case "Position":
             cell.textField?.formatter = CryptoFormatters.cryptoFormatter

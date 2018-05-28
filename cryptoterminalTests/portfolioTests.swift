@@ -32,7 +32,7 @@ class PortfolioTests: XCTestCase {
                 }
             }
         }
-        self.portfolio = Portfolio(db:db!)
+        self.portfolio = Portfolio(balanceRepo:SQLiteRepository(db:db))
     }
     
     func configureDataSource() -> DatabaseQueue {
@@ -47,7 +47,7 @@ class PortfolioTests: XCTestCase {
     }
     
     func testEmptyPortfolio(){
-        try! db!.inDatabase {
+        try? db!.inDatabase {
             db in try db.execute("DELETE FROM BALANCE;")
         }
         if let _portfolio = portfolio{
@@ -66,7 +66,6 @@ class PortfolioTests: XCTestCase {
                     INSERT INTO BALANCE(EXCHANGE, WALLET, CURRENCY, BALANCE) VALUES (NULL,1,27.0,2835.9921875);
                     INSERT INTO BALANCE(EXCHANGE, WALLET, CURRENCY, BALANCE) VALUES (NULL,2,8.0,20.1573753356934);
                     INSERT INTO BALANCE(EXCHANGE, WALLET, CURRENCY, BALANCE) VALUES (NULL,1,8.0,20.1573753356934);
-
             """)
         }
         

@@ -228,12 +228,18 @@ class Position : NSObject, RowConvertible, TableMapping, Persistable {
     static func parseGdaxData( transactions : [[String : Any]]) -> [Position] {
         let exchange = CryptoExchange.allCryptoExchanges()
             .filter({$0.name.localizedUppercase==GetGdaxData.exchangeName.localizedUppercase}).first
-        
+        for d in transactions{
+            let n = d["order_id"]
+            if n == nil {
+                print(d)
+            }
+            
+        }
         let groups = Dictionary(grouping: transactions, by: { $0["order_id"] as! String })
-        let transactions = groups.values.map{ $0.reduce(into : [String:String](),
+        let parsedTransactions = groups.values.map{ $0.reduce(into : [String:String](),
                                                         reduceSplitOrders(fieldsToCombine:["size", "fee"]))}
         var parsedPositions = [Position?]()
-        for transaction in transactions {
+        for transaction in parsedTransactions {
             if let vol = Double(transaction["size"] ?? ""),
                 let exchangeRate = Double(transaction["price"] ?? ""),
                 let _ = Double(transaction["fee"] ?? ""),
