@@ -16,7 +16,7 @@ class GetKrakenData : GroupOperation {
         self.apiKey = apiKey
         self.apiSecret = apiSecret
         let apiResult = OperationResultContext()
-        let balanceRepo = SQLiteRepository()
+        let balanceRepo = Portfolio.shared.balanceRepo
         
         let krakenBalanceImportOperation = KrakenBalanceImport( apiResult: apiResult, apiKey: apiKey, apiSecret: apiSecret)
         let balanceParseOperation = BalanceParseOperation(exchange: .KRAKEN, apiResult: apiResult, balanceRepo : balanceRepo)

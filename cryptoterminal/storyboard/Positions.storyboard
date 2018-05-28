@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="wkw-cZ-lyF">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="wkw-cZ-lyF">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
@@ -45,7 +45,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="Yrx-BL-7ps">
-                                                            <rect key="frame" x="1" y="1" width="140" height="40"/>
+                                                            <rect key="frame" x="1" y="1" width="141" height="40"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="4qr-qd-3QK">
@@ -86,7 +86,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="x3s-of-bh9">
-                                                            <rect key="frame" x="144.5" y="1" width="142" height="40"/>
+                                                            <rect key="frame" x="144.5" y="1" width="143" height="40"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wxZ-Vd-WMF">
@@ -406,6 +406,7 @@
                     </view>
                     <connections>
                         <outlet property="deleteMenu" destination="1G2-l4-oq6" id="vlB-jJ-SUx"/>
+                        <outlet property="exportAsCSVMenu" destination="JIS-ha-LAz" id="5yp-dc-KUY"/>
                         <outlet property="positionController" destination="nZo-Sf-3zs" id="oIi-8F-Szr"/>
                         <outlet property="positionsTable" destination="NBr-RK-1M9" id="0dm-Cn-3PA"/>
                         <outlet property="segmentedControl" destination="ksU-Di-h6n" id="mWn-Un-MEo"/>
@@ -418,6 +419,12 @@
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="deleteMenuItemClicked:" target="wkw-cZ-lyF" id="ZMC-VG-J1a"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Export as CSV" id="JIS-ha-LAz" userLabel="Export positions">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="exportAsCSV:" target="wkw-cZ-lyF" id="fQH-fg-b49"/>
                             </connections>
                         </menuItem>
                     </items>

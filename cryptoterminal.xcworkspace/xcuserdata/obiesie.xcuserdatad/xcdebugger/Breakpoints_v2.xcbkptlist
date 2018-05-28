@@ -5031,7 +5031,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/operations/OperationQueue.swift"
-            timestampString = "549190489.940513"
+            timestampString = "549199677.512153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -5207,7 +5207,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/operations/GroupOperation.swift"
-            timestampString = "549190489.94127"
+            timestampString = "549199677.513158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
@@ -5255,7 +5255,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/operations/OperationQueue.swift"
-            timestampString = "549190489.941424"
+            timestampString = "549199677.513326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
@@ -5271,7 +5271,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/operations/GroupOperation.swift"
-            timestampString = "549190489.941854"
+            timestampString = "549199677.51377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
@@ -5360,7 +5360,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/kraken/Kraken.swift"
-            timestampString = "548447135.491348"
+            timestampString = "549199677.513968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -5376,7 +5376,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/kraken/Kraken.swift"
-            timestampString = "548447135.491851"
+            timestampString = "549199677.5143991"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
@@ -5392,7 +5392,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/kraken/Kraken.swift"
-            timestampString = "548447135.491963"
+            timestampString = "549199677.51477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -5568,7 +5568,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/kraken/Kraken.swift"
-            timestampString = "548447135.492228"
+            timestampString = "549199677.515257"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
@@ -5584,7 +5584,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/kraken/Kraken.swift"
-            timestampString = "548447135.49235"
+            timestampString = "549199677.515716"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
@@ -5664,7 +5664,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/common/ParseOperation.swift"
-            timestampString = "549190489.942608"
+            timestampString = "549199677.516163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
@@ -5680,7 +5680,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/common/ParseOperation.swift"
-            timestampString = "549190489.943091"
+            timestampString = "549199677.5163701"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -6112,7 +6112,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/poloniex/BalanceImportOperation.swift"
-            timestampString = "549190489.944526"
+            timestampString = "549199677.516993"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "99"
@@ -6160,7 +6160,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/poloniex/BalanceImportOperation.swift"
-            timestampString = "549190489.944611"
+            timestampString = "549199677.517066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
@@ -6176,7 +6176,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/poloniex/BalanceImportOperation.swift"
-            timestampString = "549190489.94468"
+            timestampString = "549199677.517141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
@@ -6192,7 +6192,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/poloniex/BalanceImportOperation.swift"
-            timestampString = "549190489.944746"
+            timestampString = "549199677.51722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -6208,11 +6208,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.944815"
+            timestampString = "549199677.517316"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "execute()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6224,11 +6224,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.945503"
+            timestampString = "549199677.517561"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "execute()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6240,11 +6240,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.9460191"
+            timestampString = "549199677.517768"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "execute()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6252,11 +6252,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/common/ParseOperation.swift"
-            timestampString = "549190489.946642"
+            timestampString = "549199677.518038"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
@@ -6265,7 +6265,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "cryptoterminal.ParseImportedDataOperation.execute() -&gt; ()"
@@ -6280,7 +6280,7 @@
                   offsetFromSymbolStart = "438">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (cryptoterminal.Position) -&gt; () in cryptoterminal.ParseImportedDataOperation.execute() -&gt; ()"
@@ -6304,7 +6304,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/position/Position.swift"
-            timestampString = "549190489.947113"
+            timestampString = "549199677.518206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "238"
@@ -6360,7 +6360,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/position/Position.swift"
-            timestampString = "549190489.947197"
+            timestampString = "549199677.5183049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "241"
@@ -6376,11 +6376,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.947279"
+            timestampString = "549199677.518412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "execute()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6392,11 +6392,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.947919"
+            timestampString = "549199677.518594"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "execute()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6408,7 +6408,39 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.9486279"
+            timestampString = "549199677.518748"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
+            timestampString = "549199677.5189821"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
+            timestampString = "549199677.5191669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -6423,40 +6455,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.949352"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "execute()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.9500149"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "execute()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/common/ParseOperation.swift"
-            timestampString = "549190489.950947"
+            timestampString = "549199677.519334"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -6472,11 +6472,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.95149"
+            timestampString = "549199677.519497"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "execute()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6488,11 +6488,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.952147"
+            timestampString = "549199677.519635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "execute()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6504,11 +6504,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.95271"
+            timestampString = "549199677.519775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "execute()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6520,11 +6520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.953288"
+            timestampString = "549199677.5199209"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "execute()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6536,11 +6536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.953746"
+            timestampString = "549199677.52011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "execute()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6552,11 +6552,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.954278"
+            timestampString = "549199677.520243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "execute()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6568,11 +6568,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.954823"
+            timestampString = "549199677.520414"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "execute()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6584,39 +6584,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.95529"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "execute()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.955947"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
-            landmarkName = "execute()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.956543"
+            timestampString = "549199677.520573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "198"
@@ -6632,11 +6600,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.957042"
+            timestampString = "549199677.520751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
+            timestampString = "549199677.520918"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "execute()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
+            timestampString = "549199677.521042"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "execute()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6648,7 +6648,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/operations/GroupOperation.swift"
-            timestampString = "549190489.957575"
+            timestampString = "549199677.521185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
@@ -6664,12 +6664,140 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoterminal/dataimport/coinbase/Gdax.swift"
-            timestampString = "549190489.957647"
+            timestampString = "549199677.5212801"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
             endingLineNumber = "32"
             landmarkName = "init(apiKey:apiSecret:passphrase:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/position/PositionViewController.swift"
+            timestampString = "549199677.521402"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "exportAsCSV(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cryptoterminal.PositionViewController.exportAsCSV(Any) -&gt; ()"
+                  moduleName = "cryptoterminal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/obiesie/projects/cryptoterminal/cryptoterminal/position/PositionViewController.swift"
+                  timestampString = "549194902.228862"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "459">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.NSTableColumn) -&gt; Swift.String in cryptoterminal.PositionViewController.exportAsCSV(Any) -&gt; ()"
+                  moduleName = "cryptoterminal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/obiesie/projects/cryptoterminal/cryptoterminal/position/PositionViewController.swift"
+                  timestampString = "549194902.232311"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/position/PositionViewController.swift"
+            timestampString = "549199677.521975"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "exportAsCSV(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/position/PositionViewController.swift"
+            timestampString = "549199677.522409"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "exportAsCSV(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/position/PositionViewController.swift"
+            timestampString = "549199677.522838"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "exportAsCSV(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/position/PositionViewController.swift"
+            timestampString = "549199677.523317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "exportAsCSV(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoterminal/position/PositionViewController.swift"
+            timestampString = "549199677.523739"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "exportAsCSV(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
