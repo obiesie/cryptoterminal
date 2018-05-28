@@ -21,13 +21,16 @@ class GetCoinbaseData : GroupOperation {
         
         let coinbaseAccountImportOperation = CoinbaseAccountImportOperation(apiResult: opResult,
                                                                             apiKey: apiKey, apiSecret: apiSecret)
-        let coinbaseBalanceImportOperation = BalanceParseOperation(exchange: Balance.Exchange.COINBASE,
-                                                                   apiResult: opResult, balanceRepo: balanceRepo )
+        let parseBalanceOpBlock = {
+            let balances = Balance.balanceFrom(exchange:Balance.Exchange.COINBASE, accountData: opResult.data)
+            let nonzeroBalances = balances.filter{$0.quantity>0}
+            balanceRepo.addBalance(balances: nonzeroBalances)
+            opResult.data = []
+        }
         
-        coinbaseBalanceImportOperation.addDependency(coinbaseAccountImportOperation)
-        
-        let ops = [coinbaseAccountImportOperation, coinbaseBalanceImportOperation]
-        super.init(operations: ops)
+        let finishOp = BlockOperation(block: parseBalanceOpBlock)        
+        let ops = [coinbaseAccountImportOperation]
+        super.init(operations: ops, finishOperation: finishOp)
     }
     
     
@@ -152,7 +155,7 @@ class CoinbaseTransactionImportOperation : GroupOperation {
     }
 }
 
-class CoinbaseAccountTransactionImportOperation : CryptoOperation {
+class CoinbaseAccountTransactionImportOperation : GroupOperation {
     let baseURL : URL? = URL(string: "https://api.coinbase.com/")
     var apiResult : OperationResultContext
     let apiKey : String
@@ -167,13 +170,14 @@ class CoinbaseAccountTransactionImportOperation : CryptoOperation {
         self.apiSecret = apiSecret
         self.transactionEndpoint = transactionEndpoint
         self.accountId = accountId
+        super.init(operations: [])
     }
     
     override func execute(){
         os_log("Importing account transactions", log: OSLog.default, type: .error)
         
         let url = URL(string: transactionEndpoint, relativeTo: baseURL)
-        let queue = OperationQueue.current
+        //let queue = OperationQueue.current
         
         var request = URLRequest(url: url!)
         GetCoinbaseData.auth(request: &request, withKey : self.apiKey, withSecret : self.apiSecret)
@@ -205,8 +209,11 @@ class CoinbaseAccountTransactionImportOperation : CryptoOperation {
                 let json = try JSONSerialization.jsonObject(with: responseData, options: .allowFragments) as! [String: Any]
                 if  let jsonData = json["data"] as? [[String:Any]], let paginationData = json["pagination"] as? [String:Any],
                     let nextUrl = paginationData["next_uri"] as? String {
-                    let txDownloadOp = CoinbaseAccountTransactionImportOperation(apiResult:self.apiResult, apiKey:self.apiKey, apiSecret:self.apiSecret, transactionEndpoint: nextUrl, accountId:self.accountId)
-                    queue?.addOperation(txDownloadOp)
+                    if nextUrl != "" {
+                        let txDownloadOp = CoinbaseAccountTransactionImportOperation(apiResult:self.apiResult, apiKey:self.apiKey, apiSecret:self.apiSecret, transactionEndpoint: nextUrl, accountId:self.accountId)
+                        self.produceOperation(operation: txDownloadOp)
+                        //queue?.addOperation(txDownloadOp)
+                    }
                     self.apiResult.data.append(contentsOf: jsonData )
                 }
             } catch let error as NSError {

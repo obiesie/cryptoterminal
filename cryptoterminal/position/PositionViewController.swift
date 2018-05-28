@@ -42,18 +42,15 @@ class PositionViewController: NSViewController, NSTableViewDelegate, NSDraggingD
     @IBAction func exportAsCSV(_ sender: Any) {
         let columns = self.positionsTable.tableColumns
         let columnHeaders = columns.map{ $0.identifier.rawValue }
-        print(columnHeaders)
         
         let fileName = "positions.csv"
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         var csvText = columnHeaders.joined(separator: ",") + "\n"
         
-        
         for position in (positionController.arrangedObjects as? [Position]) ?? [] {
-            let newLine = "\(position.coin?.name ?? ""),\(position.purchaseDate),\(position.quantity),\(position.baseCurrency.code), \(position.costOfPosition), \(position.exchange.name),\(position.side)\n"
+            let newLine = "\(position.coin?.name ?? ""),\(position.purchaseDate),\(position.quantity),\(position.purchaseCurrency.code), \(position.costOfPosition), \(position.exchange.name),\(position.side)\n"
             csvText.append(newLine)
         }
-        print(csvText)
         do {
             try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
             if let pathUrl = path?.absoluteURL {
