@@ -14,14 +14,11 @@ protocol CurrencyPairRepo {
 }
 
 protocol ExchangeRateRepo {
-    
     func exchangeRates(for pair: CurrencyPair) -> [HistoricalExchangeRate]
     func exchangeRates(for pair: CurrencyPair, after cutoff: TimeInterval) -> [HistoricalExchangeRate]
-
 }
 
 protocol BalanceRepo {
-    
     var delegate:BalancePersistenceDelegate? { get set }
     
     func addBalance(balances : [Balance])
@@ -31,4 +28,10 @@ protocol BalanceRepo {
 protocol WalletRepo {
     func addWallet(cryptoAddressIdentifier: String, cryptoAddressType: Int64, addressNickname: String)
     func deleteWallet(withId walletId: Int)
+}
+
+protocol PositionRepo {
+    func addPosition(position:Position)
+    func removePosition(position:Position)
+    func allPositions() -> [Position]
 }

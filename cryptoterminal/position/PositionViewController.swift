@@ -7,20 +7,22 @@ import Cocoa
 import GRDB
 
 
-class PositionViewController: NSViewController, NSTableViewDelegate, NSDraggingDestination, NSSearchFieldDelegate {
+class PositionViewController: NSViewController, NSTableViewDelegate, NSDraggingDestination, NSSearchFieldDelegate, PositionPersistenceDelegeate, NewPositionControllerDelegate {
+
     @IBOutlet var positionController: NSArrayController!
     @IBOutlet weak var segmentedControl: NSSegmentedControl!
     @IBOutlet weak var portfolioTableHeaderView: NSTableHeaderView!
     @IBOutlet weak var positionsTable: NSTableView!
     @IBOutlet var deleteMenu: NSMenu!
     @IBOutlet weak var searchField: NSSearchField!
-    
-    var controller : FetchedRecordsController<Position>!
-    let datasource = Datasource.shared
+    var dataRepo = SQLiteRepository()
     
     lazy var sheetViewController: NSViewController = {
-        return self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "newPositionView"))
-            as! NSViewController
+        let v = self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "newPositionView"))
+            as! NewPositionController
+        v.delegate = self
+        return v
+        
     }()
     
     @IBAction func segCtrlClicked(_ sender: Any) {
@@ -31,9 +33,7 @@ class PositionViewController: NSViewController, NSTableViewDelegate, NSDraggingD
         guard let positions = positionController.arrangedObjects as? [Position] else { return }
         let indexOfClickedRow = positionsTable.clickedRow
         let positionToDelete = positions[indexOfClickedRow]
-        Position.deletePosition(withId: positionToDelete.id )
-        positionsTable.reloadData()
-        
+        dataRepo.removePosition(position: positionToDelete)
     }
     
     @IBOutlet weak var exportAsCSVMenu: NSMenuItem!
@@ -68,17 +68,8 @@ class PositionViewController: NSViewController, NSTableViewDelegate, NSDraggingD
         self.view.wantsLayer = true
         self.view.layer?.backgroundColor = NSColor.white.cgColor
         self.positionController.avoidsEmptySelection = false
-        self.controller = try! FetchedRecordsController(
-            Datasource.shared.db!,
-            request: Position.all()
-        )
-        self.controller.trackChanges{ controller in
-            self.positionController.content = controller.fetchedRecords
-        }
-        try! self.controller.performFetch()
-        DispatchQueue.main.async {
-            self.positionController.content = self.controller.fetchedRecords
-        }
+        self.dataRepo.positionDelegate = self
+        self.positionController.content = dataRepo.allPositions()
         NotificationCenter.default.addObserver(self, selector: #selector(PositionViewController.cryptoPricesUpdated(notification:)), name: Notification.Name(CryptoNotification.cryptoUpdatedNotification), object: nil)
     }
     
@@ -123,5 +114,20 @@ class PositionViewController: NSViewController, NSTableViewDelegate, NSDraggingD
         DispatchQueue.main.async {
             self.positionsTable.reloadData()
         }
+    }
+    
+    func positionAdded(sender: PositionRepo, position: Position) {
+        positionController.content = dataRepo.allPositions()
+        positionsTable.reloadData()
+    }
+    
+    func positionRemoved(sender: PositionRepo, position: Position) {
+        positionController.content = dataRepo.allPositions()
+        positionsTable.reloadData()
+    }
+    
+    func newPositionCreated() {
+        positionController.content = dataRepo.allPositions()
+        positionsTable.reloadData()
     }
 }

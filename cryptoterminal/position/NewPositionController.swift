@@ -6,47 +6,6 @@
 import Cocoa
 
 class NewPositionController: NSViewController, DragDestinationDelegate,  NSTextFieldDelegate, OperationObserver {
-   
-    func operationDidStart(operation: Operation) {
-        DispatchQueue.main.async(execute: {() -> Void in
-            self.exchangeDataImportProgressIndicator.isHidden = false
-            self.downloadProgressStatus.isHidden = false
-            self.exchangeDataImportProgressIndicator.startAnimation(self.exchangeDataImportProgressIndicator)
-        })
-    }
-    
-    func operation(operation: Operation, didProduceOperation newOperation: Operation) {}
-    
-    func operationDidFinish(operation: Operation, errors: [NSError]) {
-        if errors.isEmpty {
-            DispatchQueue.main.async(execute: {() -> Void in
-                
-                self.exchangeDataImportProgressIndicator.stopAnimation(self.exchangeDataImportProgressIndicator)
-                self.exchangeDataImportProgressIndicator.isHidden = true
-                self.downloadProgressStatus.stringValue = "Download complete."
-            })
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-                self.dismiss(self)
-            })
-        } else {
-            DispatchQueue.main.async(execute: {() -> Void in
-                
-                self.exchangeDataImportProgressIndicator.stopAnimation(self.exchangeDataImportProgressIndicator)
-                self.exchangeDataImportProgressIndicator.isHidden = true
-                var defaultErrorMessage = "Download failed."
-                if let error = errors.first, let errorMessage = error.userInfo["errorMessage"] as? String {
-                    defaultErrorMessage = errorMessage
-                }
-                self.downloadProgressStatus.stringValue = defaultErrorMessage
-                
-            })
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-                self.dismiss(self)
-            })
-        }
-    }
-    
     
     @IBOutlet weak var dragDropLabel: NSTextField!
     @IBOutlet weak var amount: NSTextField!
@@ -64,10 +23,11 @@ class NewPositionController: NSViewController, DragDestinationDelegate,  NSTextF
     @IBOutlet weak var exchangeDataImportProgressIndicator: NSProgressIndicator!
     @IBOutlet weak var downloadProgressStatus: NSTextField!
     @IBOutlet weak var exchangeDataImportButton: NSButton!
+    weak var delegate : NewPositionControllerDelegate?
+
     lazy var sheetViewController: NSViewController = {
         let vc = self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "exchangeSelection"))
             as! ExchangeSelectionController
-        //vc.delegate = (self as! ExchangeDataImportDelegate)
         vc.obDelegate = self
         return vc
     }()
@@ -111,7 +71,6 @@ class NewPositionController: NSViewController, DragDestinationDelegate,  NSTextF
         self.amount.delegate = self
         self.costField.delegate = self
         initForm()
-        
     }
     
     private func initForm(){
@@ -177,8 +136,8 @@ class NewPositionController: NSViewController, DragDestinationDelegate,  NSTextF
             let position = Position.positionFrom(coin: coin, quantity: Double(truncating: coinAmt), dateEntered: dateOfPosition, costOfPosition : Double(truncating: cost), purchaseCurrency: purchaseCurrency, purchaseSide: side, exchangeId: exchange.id)
             Position.addPosition(position: position)
         }
+        delegate?.newPositionCreated()
         self.dismiss(nil)
-        NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
     }
     
     func inputIsValid(for textField : NSTextField) -> Bool{
@@ -199,6 +158,44 @@ class NewPositionController: NSViewController, DragDestinationDelegate,  NSTextF
             partialStringValidationSucceeded(for: textField)
         } else{
             partialStringValidationFailed(for: textField)
+        }
+    }
+    
+    func operationDidStart(operation: Operation) {
+        DispatchQueue.main.async(execute: {() -> Void in
+            self.exchangeDataImportProgressIndicator.isHidden = false
+            self.downloadProgressStatus.isHidden = false
+            self.downloadProgressStatus.stringValue = "Downloading data ..."
+            self.exchangeDataImportProgressIndicator.startAnimation(self.exchangeDataImportProgressIndicator)
+        })
+    }
+    
+    func operation(operation: Operation, didProduceOperation newOperation: Operation) {}
+    
+    func operationDidFinish(operation: Operation, errors: [NSError]) {
+        if errors.isEmpty {
+            DispatchQueue.main.async(execute: {() -> Void in
+                self.exchangeDataImportProgressIndicator.stopAnimation(self.exchangeDataImportProgressIndicator)
+                self.exchangeDataImportProgressIndicator.isHidden = true
+                self.downloadProgressStatus.stringValue = "Download complete."
+            })
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+                self.dismiss(self)
+            })
+        } else {
+            DispatchQueue.main.async(execute: {() -> Void in
+                
+                self.exchangeDataImportProgressIndicator.stopAnimation(self.exchangeDataImportProgressIndicator)
+                self.exchangeDataImportProgressIndicator.isHidden = true
+                var defaultErrorMessage = "Download failed."
+                if let error = errors.first, let errorMessage = error.userInfo["errorMessage"] as? String {
+                    defaultErrorMessage = errorMessage
+                }
+                self.downloadProgressStatus.stringValue = defaultErrorMessage
+            })
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                self.dismiss(self)
+            })
         }
     }
 }
@@ -222,6 +219,9 @@ public extension NSControl {
     }
 }
 
+protocol NewPositionControllerDelegate: class {
+    func newPositionCreated()
+}
 
 class ExchangeSelectionController : NSViewController {
     
@@ -231,7 +231,6 @@ class ExchangeSelectionController : NSViewController {
     @IBOutlet weak var importExchangeDataButton: NSButton!
     @IBOutlet weak var exchangeAPISecretTextField: NSTextField!
     @IBOutlet weak var gdaxPassphraseTextField: NSTextField!
-    //weak var delegate: ExchangeDataImportDelegate?
     var obDelegate : OperationObserver?
     var queue = CryptoOperationQueue()
     

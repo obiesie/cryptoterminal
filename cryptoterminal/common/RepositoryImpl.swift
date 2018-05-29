@@ -5,10 +5,11 @@
 import GRDB
 import Foundation
 
-struct SQLiteRepository: CurrencyPairRepo, ExchangeRateRepo, BalanceRepo, WalletRepo {
+struct SQLiteRepository: CurrencyPairRepo, ExchangeRateRepo, BalanceRepo, WalletRepo, PositionRepo {
    
     weak var delegate : BalancePersistenceDelegate?
     weak var walletDelegate : WalletPersistenceDelegate?
+    weak var positionDelegate: PositionPersistenceDelegeate?
 
     var db: DatabaseQueue?
     
@@ -75,7 +76,23 @@ struct SQLiteRepository: CurrencyPairRepo, ExchangeRateRepo, BalanceRepo, Wallet
         Wallet.deleteWallet(withId: walletId)
         walletDelegate?.deletedWallet(sender: self, walletId:walletId)
     }
+    
+    func addPosition(position:Position) {
+        try! db?.inDatabase{ db in try position.save(db)}
+        positionDelegate?.positionAdded(sender: self, position: position)
+    }
+    
+    func removePosition(position:Position) {
+        _ = try! db?.inDatabase{ db in try Position.deleteOne(db, key: position.id) }
+        positionDelegate?.positionRemoved(sender: self, position: position)
+    }
+    
+    func allPositions() -> [Position]{
+        return Position.allPositions()
+    }
 }
+
+
 
 protocol BalancePersistenceDelegate: class {
     func addedBalance(sender: BalanceRepo)
@@ -86,3 +103,7 @@ protocol WalletPersistenceDelegate: class {
     func deletedWallet(sender: WalletRepo, walletId: Int)
 }
 
+protocol PositionPersistenceDelegeate: class {
+    func positionAdded(sender: PositionRepo, position: Position)
+    func positionRemoved(sender: PositionRepo, position: Position)
+}
