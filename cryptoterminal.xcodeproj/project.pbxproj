@@ -18,8 +18,6 @@
 		3C2625B11F02EF8100EB7052 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2625B01F02EF8100EB7052 /* Position.swift */; };
 		3C2625B51F0375B200EB7052 /* SideMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2625B41F0375B200EB7052 /* SideMenuItem.swift */; };
 		3C2BB46F203AE5990081817D /* portfolioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2BB46E203AE5990081817D /* portfolioTests.swift */; };
-		3C2BB471203B07190081817D /* tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C2BB470203B07190081817D /* tokens.json */; };
-		3C2BB472203B0B550081817D /* tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C2BB470203B07190081817D /* tokens.json */; };
 		3C2BB474203B1AAF0081817D /* insert.sql in Resources */ = {isa = PBXBuildFile; fileRef = 3C2BB473203B1AAF0081817D /* insert.sql */; };
 		3C2D69F91F7397CB00E5A389 /* CryptoAddressBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2D69F81F7397CB00E5A389 /* CryptoAddressBalance.swift */; };
 		3C2DB4E51F154DEE0095E6D6 /* WatchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DB4E31F154DEE0095E6D6 /* WatchListController.swift */; };
@@ -131,7 +129,6 @@
 		3C2625B01F02EF8100EB7052 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		3C2625B41F0375B200EB7052 /* SideMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItem.swift; sourceTree = "<group>"; };
 		3C2BB46E203AE5990081817D /* portfolioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = portfolioTests.swift; sourceTree = "<group>"; };
-		3C2BB470203B07190081817D /* tokens.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokens.json; sourceTree = "<group>"; };
 		3C2BB473203B1AAF0081817D /* insert.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = insert.sql; sourceTree = "<group>"; };
 		3C2D69F81F7397CB00E5A389 /* CryptoAddressBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAddressBalance.swift; sourceTree = "<group>"; };
 		3C2DB4E31F154DEE0095E6D6 /* WatchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListController.swift; sourceTree = "<group>"; };
@@ -317,7 +314,6 @@
 			isa = PBXGroup;
 			children = (
 				3C7D1D491EFCE216001C58E7 /* SideMenus.plist */,
-				3C2BB470203B07190081817D /* tokens.json */,
 				3C2BB473203B1AAF0081817D /* insert.sql */,
 			);
 			name = Resources;
@@ -688,7 +684,6 @@
 			files = (
 				3C383842203C010200A55E71 /* insert.sql in Resources */,
 				3C8522FF204D190D00D799CB /* Home.storyboard in Resources */,
-				3C2BB472203B0B550081817D /* tokens.json in Resources */,
 				926BD6091F77E7B800942A99 /* AddressList.storyboard in Resources */,
 				3C0B4D931EFC2941007F8D2B /* Assets.xcassets in Resources */,
 				3C0F735D1F88404800C3502B /* Positions.storyboard in Resources */,
@@ -706,7 +701,6 @@
 			files = (
 				3C6B72801FCD3988004E6990 /* testTrades.csv in Resources */,
 				3C527AE82043DD1A001AF949 /* inserts.sql in Resources */,
-				3C2BB471203B07190081817D /* tokens.json in Resources */,
 				3CD95796203E38CD0093A435 /* tests.sql in Resources */,
 				3C2BB474203B1AAF0081817D /* insert.sql in Resources */,
 			);

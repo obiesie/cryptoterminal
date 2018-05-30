@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="9y1-rq-sGj">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="9y1-rq-sGj">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
@@ -154,11 +154,11 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView id="Czo-MB-f8S">
-                                                                    <rect key="frame" x="247" y="1" width="200" height="40"/>
+                                                                    <rect key="frame" x="247" y="1" width="201" height="40"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="3" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eC0-UO-2ZI">
-                                                                            <rect key="frame" x="0.0" y="-8" width="230" height="50"/>
+                                                                            <rect key="frame" x="0.0" y="-8" width="231" height="50"/>
                                                                             <subviews>
                                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oil-ij-gG8">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -168,7 +168,7 @@
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="lRT-LT-0v2"/>
                                                                                 </imageView>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRo-xV-hes">
-                                                                                    <rect key="frame" x="51" y="33" width="181" height="17"/>
+                                                                                    <rect key="frame" x="51" y="33" width="182" height="17"/>
                                                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Table View Cell" id="HsD-Br-Emc">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -285,7 +285,7 @@
                         <menuItem title="Remove from watchlist" id="xuy-ga-0BC">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="addToWatchListClicked:" target="9y1-rq-sGj" id="mLt-gv-fYt"/>
+                                <action selector="removeWatchListedItem:" target="9y1-rq-sGj" id="xQg-an-V1Q"/>
                             </connections>
                         </menuItem>
                     </items>
