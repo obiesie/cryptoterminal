@@ -164,7 +164,7 @@ extension String {
         
         let digest = stringFromResult(result: result, length: digestLen)
         
-        result.deallocate(capacity: digestLen)
+        result.deallocate()
         
         return digest
     }

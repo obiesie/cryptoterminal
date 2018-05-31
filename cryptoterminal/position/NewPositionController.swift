@@ -32,10 +32,10 @@ class NewPositionController: NSViewController, DragDestinationDelegate,  NSTextF
         return vc
     }()
     
-    let datasource : Datasource = Datasource.shared
-    var coins : [Currency] = [Currency]()
+    let positionRepo: PositionRepo = SQLiteRepository()
+    var coins: [Currency] = [Currency]()
     var currencies = Currency.allCurrencies()
-    var fileDropped : Bool = false
+    var fileDropped: Bool = false
     let cryptoExchangeList = CryptoExchange.allCryptoExchanges()
     
     @IBOutlet weak var exchangeListPopup: NSPopUpButton!
@@ -120,12 +120,12 @@ class NewPositionController: NSViewController, DragDestinationDelegate,  NSTextF
             let positions = Position.positionFromFile(filePath: dragAndDrop.filePath!)
             let validPositions = positions.compactMap{ $0 }
             validPositions.forEach{ pos in
-                Position.addPosition(position: pos)
+                positionRepo.addPosition(position: pos)
             }
         } else {
             guard let coinAmt = CryptoFormatters.decimalFormatter.number(from: amount.stringValue),
                 let cost = CryptoFormatters.decimalFormatter.number(from: costField.stringValue)
-                else{ return }
+                else { return }
             let purchaseCurrencyIndex = purchaseCurrencyPopup.indexOfSelectedItem
             let coin = coins[coinPopup.indexOfSelectedItem]
             let datePurchased = date.dateValue
@@ -134,7 +134,7 @@ class NewPositionController: NSViewController, DragDestinationDelegate,  NSTextF
             let exchange = cryptoExchangeList[ exchangeListPopup.indexOfSelectedItem ]
             let dateOfPosition = CryptoFormatters.dateFormatter.string(from: datePurchased as Date)
             let position = Position.positionFrom(coin: coin, quantity: Double(truncating: coinAmt), dateEntered: dateOfPosition, costOfPosition : Double(truncating: cost), purchaseCurrency: purchaseCurrency, purchaseSide: side, exchangeId: exchange.id)
-            Position.addPosition(position: position)
+            positionRepo.addPosition(position: position)
         }
         delegate?.newPositionCreated()
         self.dismiss(nil)
