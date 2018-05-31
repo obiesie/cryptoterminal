@@ -10,7 +10,7 @@ import GRDB
 class Datasource : NSObject {
     
     let APP_DATA_DIR = "CryptoMachines"
-    let APP_DB_FILE = "db.sqlite"
+    let APP_DB_FILE = "data.sqlite"
     
     var db : DatabaseQueue?
     var config = Configuration()
