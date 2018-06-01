@@ -1,6 +1,9 @@
 # Cryptoterminal
 Cryptoterminal is a very simple macOS desktop application that enables you keep track of your cryptocurrency portfolio.
 
+Cryptoterminal provides support for you to import trade data from exchanges - only GDAX, Coinbase, Kraken and Poloniex at the moment,
+create a watch list to monitor price trends for major cryptocurrencies, import wallet balances (not all wallets are supported yet) and provides an aggregate view of all your cryptocurrency portfolio.
+
 
 ## Installation
 If you want to install the app from a pre-built version on the release page, you can simply run the executeable after download.
