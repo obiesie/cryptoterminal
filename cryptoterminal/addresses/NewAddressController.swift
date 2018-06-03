@@ -51,9 +51,9 @@ class NewAddressController: NSViewController, WalletPersistenceDelegate, Operati
     
     func addedWallet(sender: WalletRepo, wallet: Wallet) {
         let task = GetAddressBalance(walletAddresses: [wallet])
+        (task as CryptoOperation).addObserver(observer: self)
         queue.isSuspended = false
         queue.addOperation(task)
-        (task as CryptoOperation).addObserver(observer: self)
 
     }
 

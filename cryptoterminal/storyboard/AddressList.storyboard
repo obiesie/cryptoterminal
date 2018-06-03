@@ -469,8 +469,8 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <popUpButton verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xdo-CA-0ue">
-                                                <rect key="frame" x="106" y="-3" width="76" height="26"/>
+                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xdo-CA-0ue">
+                                                <rect key="frame" x="106" y="-3" width="147" height="26"/>
                                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="aIk-AX-lGc" id="bJc-Y1-AyY">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="menu"/>
@@ -483,13 +483,6 @@
                                                     </menu>
                                                 </popUpButtonCell>
                                             </popUpButton>
-                                            <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPW-bB-eSn">
-                                                <rect key="frame" x="185" y="2" width="67" height="18"/>
-                                                <buttonCell key="cell" type="check" title="ERC20 Address" bezelStyle="regularSquare" imagePosition="left" inset="2" id="z4r-ho-Fva">
-                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="rhR-jT-haj"/>
@@ -497,10 +490,8 @@
                                         <visibilityPriorities>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
-                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
@@ -589,7 +580,6 @@ Gw
                         <outlet property="cancelButton" destination="y62-1v-E6X" id="Mko-Y5-lMH"/>
                         <outlet property="coinPopup" destination="xdo-CA-0ue" id="3PY-m4-qx2"/>
                         <outlet property="doneButton" destination="wKV-gI-TSe" id="bWL-sN-Xcl"/>
-                        <outlet property="isERC20TokenCheck" destination="z4r-ho-Fva" id="z8O-Oy-vla"/>
                     </connections>
                 </viewController>
                 <customObject id="WLQ-ao-YSy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
