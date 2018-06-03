@@ -6,8 +6,8 @@
 
 import Cocoa
 
-class NewAddressController: NSViewController {
-
+class NewAddressController: NSViewController, WalletPersistenceDelegate, OperationObserver {
+    
     @IBOutlet weak var addressNicknameTextField: NSTextField!
     @IBOutlet weak var coinPopup: NSPopUpButton!
     @IBOutlet weak var doneButton: NSButton!
@@ -15,19 +15,20 @@ class NewAddressController: NSViewController {
     @IBOutlet weak var cancelButton: NSButton!
     @IBOutlet weak var isERC20TokenCheck: NSButtonCell!
     weak var delegate : NewAddressDelegate?
+    var queue = CryptoOperationQueue()
     var coins : [CryptoAddressType] = [CryptoAddressType]()
     var repo = SQLiteRepository()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var items = [String]()
-        //repo.walletDelegate = delegate
+        var addressTypes = [String]()
+        repo.walletDelegate = self
         coins = CryptoAddressType.allCryptoAddressType()
         for v in coins {
-            items.append(v.name.capitalized)
+            addressTypes.append(v.name.capitalized)
         }
         coinPopup.removeAllItems()
-        coinPopup.addItems(withTitles: items)
+        coinPopup.addItems(withTitles: addressTypes)
     }
     
     @IBAction func doneClicked(_ sender: Any) {
@@ -41,13 +42,31 @@ class NewAddressController: NSViewController {
             repo.addWallet(cryptoAddressIdentifier: address,
                            cryptoAddressType: _addressType.id,
                            addressNickname: addressAlias)
-            delegate?.newAddressAdded()
         }
     }
     
     @IBAction func cancelClicked(_ sender: Any) {
         self.dismiss(sender)
     }
+    
+    func addedWallet(sender: WalletRepo, wallet: Wallet) {
+        let task = GetAddressBalance(walletAddresses: [wallet])
+        queue.isSuspended = false
+        queue.addOperation(task)
+        (task as CryptoOperation).addObserver(observer: self)
+
+    }
+
+    func deletedWallet(sender: WalletRepo, walletId: Int) {}
+    
+    func operationDidStart(operation: Operation) {}
+    
+    func operation(operation: Operation, didProduceOperation newOperation: Operation) {}
+    
+    func operationDidFinish(operation: Operation, errors: [NSError]) {
+        delegate?.newAddressAdded()
+    }
+    
 }
 
 

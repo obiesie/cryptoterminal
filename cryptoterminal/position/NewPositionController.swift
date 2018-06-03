@@ -219,10 +219,6 @@ public extension NSControl {
     }
 }
 
-protocol NewPositionControllerDelegate: class {
-    func newPositionCreated()
-}
-
 class ExchangeSelectionController : NSViewController {
     
     @IBOutlet weak var exchangeAPIKeyTextField: NSTextField!
@@ -287,7 +283,9 @@ class ExchangeSelectionController : NSViewController {
     }
 }
 
-
+protocol NewPositionControllerDelegate: class {
+    func newPositionCreated()
+}
 
 
 

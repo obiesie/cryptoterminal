@@ -52,11 +52,13 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
         cryptoAddressDetailTable.dataSource = self
         repo.delegate = Portfolio.shared
         repo.walletDelegate = Portfolio.shared
-        NotificationCenter.default.addObserver(self, selector: #selector(AddressListController.methodOfReceivedNotification1(notification:)), name: Notification.Name(CryptoNotification.cryptoAddressUpdatedNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddressListController.cryptoAddressBalanceUpdated(notification:)), name: Notification.Name(CryptoNotification.cryptoAddressUpdatedNotification), object: nil)
     }
     
     func newAddressAdded() {
-        cryptoAddressTable.reloadData()
+        DispatchQueue.main.async {
+            self.cryptoAddressTable.reloadData()
+        }
     }
     
     private func generateQRCode(from string: String) -> NSImage?{
@@ -90,6 +92,7 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
         if let walletId = selectedWallet.id {
             repo.deleteWallet(withId: walletId)
             self.cryptoAddressTable.reloadData()
+            self.cryptoAddressDetailTable.reloadData()
         }
     }
 
@@ -110,7 +113,7 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
         backgroundView.layer?.backgroundColor = NSColor.white.cgColor
     }
     
-    @objc func methodOfReceivedNotification1(notification: Notification){
+    @objc func cryptoAddressBalanceUpdated(notification: Notification){
         DispatchQueue.main.async {
             self.cryptoAddressTable.reloadData()
             self.cryptoAddressDetailTable.reloadData()
