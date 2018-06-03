@@ -100,7 +100,7 @@ func registerMigrations(){
             t.primaryKey(["ID"], onConflict: .replace)
         }
         
-        if let path = Bundle.main.path(forResource: "insert", ofType: "sql") {
+        if let path = Bundle.main.path(forResource: "insert_v1", ofType: "sql") {
             let data = try! Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
             let sql = String(data: data, encoding: .utf8)
             if let _sql = sql{

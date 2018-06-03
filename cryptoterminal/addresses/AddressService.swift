@@ -57,8 +57,10 @@ final class GetAddressBalance: GroupOperation {
                     let decimalPlaces = Int(balanceDecimalPlaces)
                     if let balance = json[ pathTree[pathIndex]  ] as? NSString {
                         actualbalance = Double(balance.floatValue / NSDecimalNumber(decimal: pow(10, decimalPlaces)).floatValue)
-                    } else if let balance = json[pathTree[pathIndex]] as? Float{
+                    } else if let balance = json[pathTree[pathIndex]] as? Float {
                         actualbalance = Double(balance / NSDecimalNumber(decimal: pow(10, decimalPlaces)).floatValue)
+                    } else if let balance = json[pathTree[pathIndex]] as? NSNumber {
+                        actualbalance = Double(balance.floatValue / NSDecimalNumber(decimal: pow(10, decimalPlaces)).floatValue)
                     }
                     
                     if actualbalance > 0 {

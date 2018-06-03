@@ -13,17 +13,17 @@ class NewAddressController: NSViewController {
     @IBOutlet weak var doneButton: NSButton!
     @IBOutlet weak var addressField: NSTextField!
     @IBOutlet weak var cancelButton: NSButton!
+    @IBOutlet weak var isERC20TokenCheck: NSButtonCell!
     weak var delegate : NewAddressDelegate?
     var coins : [CryptoAddressType] = [CryptoAddressType]()
     var repo = SQLiteRepository()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         var items = [String]()
-        repo.walletDelegate = Portfolio.shared
+        //repo.walletDelegate = delegate
         coins = CryptoAddressType.allCryptoAddressType()
-        for v in coins{
+        for v in coins {
             items.append(v.name.capitalized)
         }
         coinPopup.removeAllItems()
@@ -32,9 +32,14 @@ class NewAddressController: NSViewController {
     
     @IBAction func doneClicked(_ sender: Any) {
         self.dismiss(sender)
-        if let address = addressField.objectValue as? String, let addressAlias = addressNicknameTextField.objectValue as? String  {
+        let addressTypeId = coins[coinPopup.indexOfSelectedItem].id
+        
+        let addressTypes = CryptoAddressType.allCryptoAddressType()
+        let addressType = addressTypes.filter{$0.id == addressTypeId }.first
+        if let address = addressField.objectValue as? String, let addressAlias = addressNicknameTextField.objectValue as? String,
+            let _addressType = addressType {
             repo.addWallet(cryptoAddressIdentifier: address,
-                           cryptoAddressType: coins[coinPopup.indexOfSelectedItem].id as Int64,
+                           cryptoAddressType: _addressType.id,
                            addressNickname: addressAlias)
             delegate?.newAddressAdded()
         }
