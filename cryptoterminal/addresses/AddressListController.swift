@@ -27,7 +27,7 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
     }()
     var selectedCryptoAddress : Wallet? {
         didSet {
-            if let address = selectedCryptoAddress{
+            if let address = selectedCryptoAddress {
                 qrCodeImageView.image = generateQRCode(from: address.address)
             }
         }
@@ -96,7 +96,6 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
         }
     }
 
-   
     private func initSelections(){
         let cryptoAddresses =  Wallet.allWallets()
         if let defaultAddressSelection = cryptoAddresses.first{
@@ -130,10 +129,10 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
     
     func numberOfRows(in tableView: NSTableView) -> Int{
         var rowCount = 0
-        if tableView == self.cryptoAddressTable{
+        if tableView == self.cryptoAddressTable {
             rowCount = Wallet.allWallets().count
-        } else{
-            if let cryptoAddress = selectedCryptoAddress{
+        } else {
+            if let cryptoAddress = selectedCryptoAddress {
                 rowCount = cryptoAddress.allCryptoBalances().count
             }
         }
@@ -147,7 +146,7 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
         var cellIdentifier = ""
         switch(tableColumn?.identifier.rawValue){
         case "AddressType"?:
-            if let cryptoAddressType = cryptoAddressTypes.first(where: { $0.id == item.addressTypeId }) {
+            if let cryptoAddressType = cryptoAddressTypes.first(where: { $0.id == item.blockChainId }) {
                 cellValue = cryptoAddressType.name
             }
             cellIdentifier = CellIdentifiers.AddressTypeCell

@@ -14,7 +14,7 @@ class Currency : NSObject, Codable, RowConvertible, TableMapping {
     @objc var code : String
     var _currencyTypeId : Int
     
-    final var _addressTypeId : Int?
+    final var _blockchainId : Int?
     final var balanceEndpoint : String?
     final var balanceResponsePath : String?
     final var balanceDecimalPlaces : Int?
@@ -50,9 +50,8 @@ class Currency : NSObject, Codable, RowConvertible, TableMapping {
         static let ID = Column("ID")
         static let NAME = Column("NAME")
         static let CODE = Column("CODE")
-        static let ADDRESS_TYPE = Column("ADDRESS_TYPE")
+        static let BLOCKCHAIN = Column("BLOCKCHAIN")
         static let CURRENCY_TYPE = Column("TYPE")
-        
     }
     
     required init(row: Row) {
@@ -60,7 +59,7 @@ class Currency : NSObject, Codable, RowConvertible, TableMapping {
         name = row[ "NAME"]
         code = row[ "CODE"]
         _currencyTypeId = row["TYPE"]
-        _addressTypeId = row["ADDRESS_TYPE"]
+        _blockchainId = row["BLOCKCHAIN"]
         balanceEndpoint = row[ "BALANCE_ENDPOINT"]
         balanceResponsePath = row[ "BALANCE_RESPONSE_PATH"]
         balanceDecimalPlaces = row[ "BALANCE_DECIMAL_PLACE"]

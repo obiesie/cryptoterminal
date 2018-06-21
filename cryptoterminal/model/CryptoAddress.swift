@@ -14,16 +14,16 @@ class CryptoAddress: NSObject,  RowConvertible, TableMapping, Persistable{
     var cryptoId : Int64? = nil
     var cryptoAddress : String
     var balance : Double
-    var addressTypeId : Int64?
+    var blockChainId : Int64?
     var addressAlias : String?
     
     var addressType : CryptoAddressType? {
-        let type = try! Datasource.shared.db!.read{ d in try CryptoAddressType.filter(CryptoAddress.cryptoAddressTypeColumn == addressTypeId).fetchOne(d) }
+        let type = try! Datasource.shared.db!.read{ d in try CryptoAddressType.filter(CryptoAddress.cryptoAddressTypeColumn == blockChainId).fetchOne(d) }
         return type
     }
     
     static var cryptoIdColumn = Column("CRYPTO_ID")
-    static var cryptoAddressTypeColumn = Column("ADDRESS_TYPE")
+    static var cryptoAddressTypeColumn = Column("BLOCKCHAIN")
     static var addressIdColumn = Column("ADDRESS_ID")
 
     final var  historicalPrices : [HistoricalExchangeRate] {
@@ -38,7 +38,7 @@ class CryptoAddress: NSObject,  RowConvertible, TableMapping, Persistable{
     init(cryptoAddress: String, balance : Double, cryptoAddressType: Int64, addressAlias : String = "") {
         self.cryptoAddress = cryptoAddress
         self.balance = balance
-        self.addressTypeId = cryptoAddressType
+        self.blockChainId = cryptoAddressType
         self.addressAlias = addressAlias
         super.init()
     }
@@ -51,7 +51,7 @@ class CryptoAddress: NSObject,  RowConvertible, TableMapping, Persistable{
         cryptoAddress = row[ "Address"]
         balance = row["balance"]
         addressId = row[ "address_id"]
-        addressTypeId = row[ "ADDRESS_TYPE"]
+        blockChainId = row[ "BLOCKCHAIN"]
         addressAlias = row[ "ADDRESS_ALIAS"]
         super.init()
     }
@@ -64,14 +64,13 @@ class CryptoAddress: NSObject,  RowConvertible, TableMapping, Persistable{
         container["Address"] = cryptoAddress
         container["address_id"] = addressId
         container["balance"] = balance
-        container["ADDRESS_TYPE"] = addressTypeId
+        container["BLOCKCHAIN"] = blockChainId
         container["ADDRESS_ALIAS"] = addressAlias
     }
     
     func didInsert(with rowID: Int64, for column: String?) {
         addressId = rowID
     }
-    
     
     static func allCryptoAddresses() -> [CryptoAddress] {
         var cryptoAddresses = [CryptoAddress]()
@@ -89,17 +88,17 @@ class CryptoAddress: NSObject,  RowConvertible, TableMapping, Persistable{
         return cryptoBalancesAtAddress
     }
     
-    func cryptosForAddress() -> [Currency]{
+    func cryptosForAddress() -> [Currency] {
         var cryptosForAddress = [Currency]()
-        Datasource.shared.db?.inDatabase{db in
-            cryptosForAddress = try! Currency.filter(Currency.Columns.ADDRESS_TYPE == self.addressTypeId).fetchAll(db)
+        Datasource.shared.db?.inDatabase { db in
+            cryptosForAddress = try! Currency.filter(Currency.Columns.BLOCKCHAIN == self.blockChainId).fetchAll(db)
         }
         return cryptosForAddress
     }
     
     static func persistChanges(cryptoAddressToUpdate:CryptoAddress?=nil){
         Datasource.shared.db?.inDatabase{db in
-            if let cryptoAddress = cryptoAddressToUpdate{
+            if let cryptoAddress = cryptoAddressToUpdate {
                 try! cryptoAddress.update(db)
             }
         }

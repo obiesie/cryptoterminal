@@ -54,7 +54,6 @@ class NewAddressController: NSViewController, WalletPersistenceDelegate, Operati
         (task as CryptoOperation).addObserver(observer: self)
         queue.isSuspended = false
         queue.addOperation(task)
-
     }
 
     func deletedWallet(sender: WalletRepo, walletId: Int) {}

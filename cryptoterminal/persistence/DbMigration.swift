@@ -19,7 +19,7 @@ func registerMigrations(){
             t.primaryKey(["ID"])
         }
         
-        try db.create(table: "ADDRESS_TYPE") { t in
+        try db.create(table: "BLOCKCHAIN") { t in
             t.column("ID", .integer)
             t.column("TYPE", .text)
             t.primaryKey(["ID"])
@@ -32,7 +32,6 @@ func registerMigrations(){
             t.primaryKey(["ID"], onConflict: .replace)
         }
         
-        
         try db.create(table: "CURRENCY") { t in
             t.column("ID", .integer)
             t.column("NAME", .text).notNull().unique(onConflict: .ignore).collate(.nocase)
@@ -42,7 +41,7 @@ func registerMigrations(){
             t.column("BALANCE_RESPONSE_PATH", .text)
             t.column("BALANCE_DECIMAL_PLACE", .double)
             t.column("IS_EXCHANGE_CURRENCY", .integer).notNull().defaults(to: 0)
-            t.column("ADDRESS_TYPE", .integer).references("ADDRESS_TYPE")
+            t.column("BLOCKCHAIN", .integer).references("BLOCKCHAIN")
             t.primaryKey(["ID"])
         }
         
@@ -58,18 +57,18 @@ func registerMigrations(){
             t.primaryKey(["ID"])
         }
         
-        try db.create(table: "WALLET") { t in
+        try db.create(table: "WALLET_ADDRESS") { t in
             t.column( "ID", .integer)
             t.column( "ADDRESS", .text)
             t.column( "NAME", .text)
-            t.column( "ADDRESS_TYPE", .integer).notNull().references("ADDRESS_TYPE", onDelete: .cascade)
+            t.column( "BLOCKCHAIN", .integer).notNull().references("BLOCKCHAIN", onDelete: .cascade)
             t.primaryKey(["ID"])
         }
         
         try db.create(table: "BALANCE") { t in
             t.column("ID", .integer)
             t.column("EXCHANGE", .integer).references("EXCHANGE", onDelete: .cascade)
-            t.column( "WALLET", .integer).references("WALLET", onDelete: .cascade)
+            t.column( "WALLET_ADDRESS", .integer).references("WALLET_ADDRESS", onDelete: .cascade)
             t.column( "CURRENCY", .double).defaults(to: 0).notNull().references("CURRENCY", onDelete: .cascade)
             t.column( "BALANCE", .double).defaults(to: 0)
             t.primaryKey(["ID"], onConflict: .replace)

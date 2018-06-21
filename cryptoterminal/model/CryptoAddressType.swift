@@ -7,7 +7,7 @@ import GRDB
 import Foundation
 
 class CryptoAddressType: NSObject,  RowConvertible, TableMapping, Persistable{
-    static var databaseTableName: String = "ADDRESS_TYPE"
+    static var databaseTableName: String = "BLOCKCHAIN"
     
     var id : Int64
     var name : String
