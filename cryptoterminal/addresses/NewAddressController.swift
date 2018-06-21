@@ -65,7 +65,6 @@ class NewAddressController: NSViewController, WalletPersistenceDelegate, Operati
     func operationDidFinish(operation: Operation, errors: [NSError]) {
         delegate?.newAddressAdded()
     }
-    
 }
 
 

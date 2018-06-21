@@ -58,6 +58,7 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
     func newAddressAdded() {
         DispatchQueue.main.async {
             self.cryptoAddressTable.reloadData()
+            self.cryptoAddressDetailTable.reloadData()
         }
     }
     
@@ -170,7 +171,7 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
     }
     
     private func tableViewForAddressDetail(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?{
-        if let cryptoAddress = selectedCryptoAddress{
+        if let cryptoAddress = selectedCryptoAddress {
             let cryptoAddress = cryptoAddress.allCryptoBalances()[row]
             var cellValue = ""
             var cellIdentifier = ""
