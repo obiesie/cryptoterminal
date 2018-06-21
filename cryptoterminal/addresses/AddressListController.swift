@@ -6,7 +6,7 @@
 import Cocoa
 
 class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDelegate, NSTableViewDataSource {
-
+    
     @IBOutlet weak var leftCustomView: NSView!
     @IBOutlet weak var topRightView: NSView!
     @IBOutlet weak var segmentedControl: NSSegmentedControl!
@@ -96,7 +96,7 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
             self.cryptoAddressDetailTable.reloadData()
         }
     }
-
+    
     private func initSelections(){
         let cryptoAddresses =  Wallet.allWallets()
         if let defaultAddressSelection = cryptoAddresses.first{

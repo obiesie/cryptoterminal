@@ -18,7 +18,7 @@ class NewAddressController: NSViewController, WalletPersistenceDelegate, Operati
     var queue = CryptoOperationQueue()
     var coins : [CryptoAddressType] = [CryptoAddressType]()
     var repo = SQLiteRepository()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var addressTypes = [String]()
@@ -55,7 +55,7 @@ class NewAddressController: NSViewController, WalletPersistenceDelegate, Operati
         queue.isSuspended = false
         queue.addOperation(task)
     }
-
+    
     func deletedWallet(sender: WalletRepo, walletId: Int) {}
     
     func operationDidStart(operation: Operation) {}

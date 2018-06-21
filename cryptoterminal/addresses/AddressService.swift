@@ -7,7 +7,7 @@ import os
 import Foundation
 
 final class GetAddressBalance: GroupOperation {
-
+    
     init(walletAddresses : [Wallet] = []){
         let cryptoWalletList = walletAddresses == [] ? Wallet.allWallets() : walletAddresses
         let notificationOp = NotificationOperation(notification:CryptoNotification.cryptoAddressUpdatedNotification)
