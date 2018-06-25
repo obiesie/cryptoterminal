@@ -8,7 +8,7 @@ import GRDB
 
 
 class PositionViewController: NSViewController, NSTableViewDelegate, NSDraggingDestination, NSSearchFieldDelegate, PositionPersistenceDelegeate, NewPositionControllerDelegate {
-
+    
     @IBOutlet var positionController: NSArrayController!
     @IBOutlet weak var segmentedControl: NSSegmentedControl!
     @IBOutlet weak var portfolioTableHeaderView: NSTableHeaderView!
@@ -77,7 +77,7 @@ class PositionViewController: NSViewController, NSTableViewDelegate, NSDraggingD
     func tableView(_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
         tableView.reloadData()
     }
-   
+    
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let columnIdentifier = tableColumn?.identifier,

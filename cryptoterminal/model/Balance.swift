@@ -30,7 +30,7 @@ class Balance : NSObject, RowConvertible, TableMapping, Persistable {
     required init(row: Row) {
         currencyId = row["CURRENCY"]
         quantity = row["BALANCE"]
-        walletId = row[ "WALLET"]
+        walletId = row[ "WALLET_ADDRESS"]
         exchangeId = row["EXCHANGE"]
         super.init()
     }
@@ -48,7 +48,7 @@ class Balance : NSObject, RowConvertible, TableMapping, Persistable {
     func encode(to container: inout PersistenceContainer) {
         container["CURRENCY"] = currencyId
         container["BALANCE"] = quantity
-        container["WALLET"] = walletId
+        container["WALLET_ADDRESS"] = walletId
         container["EXCHANGE"] = exchangeId
     }
     

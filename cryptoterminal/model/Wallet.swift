@@ -12,11 +12,11 @@ class Wallet : NSObject, RowConvertible, TableMapping, Persistable {
     var id : Int?
     var address : String
     var walletAlias : String?
-    var addressTypeId : Int
+    var blockChainId : Int
     var addressType : CryptoAddressType? {
         var type : CryptoAddressType?
         do {
-            type = try Datasource.shared.db!.read{ d in try CryptoAddressType.filter(Column("ID") == addressTypeId).fetchOne(d) }
+            type = try Datasource.shared.db!.read{ d in try CryptoAddressType.filter(Column("ID") == blockChainId).fetchOne(d) }
         } catch let error {
             print(error.localizedDescription)
         }
@@ -27,7 +27,7 @@ class Wallet : NSObject, RowConvertible, TableMapping, Persistable {
         self.id = id
         self.address = name
         self.walletAlias = walletAlias
-        self.addressTypeId = typeId
+        self.blockChainId = typeId
         super.init()
     }
     
@@ -35,7 +35,7 @@ class Wallet : NSObject, RowConvertible, TableMapping, Persistable {
         id = row["ID"]
         address = row["ADDRESS"]
         walletAlias = row["NAME"]
-        addressTypeId = row["ADDRESS_TYPE"]
+        blockChainId = row["BLOCKCHAIN"]
         super.init()
     }
     
@@ -44,21 +44,21 @@ class Wallet : NSObject, RowConvertible, TableMapping, Persistable {
     }
     
     class var databaseTableName : String {
-        return "WALLET"
+        return "WALLET_ADDRESS"
     }
     
     func encode(to container: inout PersistenceContainer) {
         container["ID"] = id
         container["ADDRESS"] = address
         container["NAME"] = walletAlias
-        container["ADDRESS_TYPE"] = addressTypeId
+        container["BLOCKCHAIN"] = blockChainId
     }
     
     static func wallet(by name : String) -> Wallet? {
         var wallet : Wallet?
         do {
             wallet = try Datasource.shared.db!.read{
-                db in try Wallet.filter(Column("name") == name.uppercased(with: Locale.current)).fetchOne(db)
+                db in try Wallet.filter(Column("NAME") == name.uppercased(with: Locale.current)).fetchOne(db)
             }
         } catch let error {
             print(error.localizedDescription)
@@ -77,7 +77,7 @@ class Wallet : NSObject, RowConvertible, TableMapping, Persistable {
     func cryptosForAddress() -> [Currency]{
         var cryptosForAddress = [Currency]()
         Datasource.shared.db?.inDatabase{db in
-            cryptosForAddress = try! Currency.filter(Currency.Columns.ADDRESS_TYPE == self.addressTypeId).fetchAll(db)
+            cryptosForAddress = try! Currency.filter(Currency.Columns.BLOCKCHAIN == self.blockChainId).fetchAll(db)
         }
         return cryptosForAddress
     }
@@ -96,8 +96,8 @@ class Wallet : NSObject, RowConvertible, TableMapping, Persistable {
     
     func allCryptoBalances() -> [Balance]{
         var cryptoBalancesAtWallet = [Balance]()
-        Datasource.shared.db?.inDatabase{db in
-            cryptoBalancesAtWallet = try! Balance.filter(Column("wallet") == self.id).fetchAll(db)
+        Datasource.shared.db?.inDatabase{ db in
+            cryptoBalancesAtWallet = try! Balance.filter( Column("WALLET_ADDRESS") == self.id ).fetchAll(db)
         }
         return cryptoBalancesAtWallet
     }

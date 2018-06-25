@@ -18,7 +18,7 @@ struct SQLiteRepository: CurrencyPairRepo, ExchangeRateRepo, BalanceRepo, Wallet
     }
     
     func addBalance(balances: [Balance]) {
-        for balance in balances{
+        for balance in balances {
             if let _exchangeId = balance.exchangeId {
                 try? db?.inTransaction{db in
                     let deleteSql = "DELETE FROM BALANCE WHERE CURRENCY = \(balance.currencyId) AND EXCHANGE = \(_exchangeId);"
@@ -28,7 +28,7 @@ struct SQLiteRepository: CurrencyPairRepo, ExchangeRateRepo, BalanceRepo, Wallet
                 }
             } else if let _walletId = balance.walletId {
                 try? db?.inTransaction{ db in
-                    let deleteSql = "DELETE FROM BALANCE WHERE CURRENCY = \(balance.currencyId) AND WALLET = \(_walletId);"
+                    let deleteSql = "DELETE FROM BALANCE WHERE CURRENCY = \(balance.currencyId) AND WALLET_ADDRESS = \(_walletId);"
                     try db.execute(deleteSql)
                     try balance.save(db)
                     return .commit

@@ -6,7 +6,7 @@
 import Cocoa
 
 class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDelegate, NSTableViewDataSource {
-
+    
     @IBOutlet weak var leftCustomView: NSView!
     @IBOutlet weak var topRightView: NSView!
     @IBOutlet weak var segmentedControl: NSSegmentedControl!
@@ -27,7 +27,7 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
     }()
     var selectedCryptoAddress : Wallet? {
         didSet {
-            if let address = selectedCryptoAddress{
+            if let address = selectedCryptoAddress {
                 qrCodeImageView.image = generateQRCode(from: address.address)
             }
         }
@@ -52,11 +52,14 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
         cryptoAddressDetailTable.dataSource = self
         repo.delegate = Portfolio.shared
         repo.walletDelegate = Portfolio.shared
-        NotificationCenter.default.addObserver(self, selector: #selector(AddressListController.methodOfReceivedNotification1(notification:)), name: Notification.Name(CryptoNotification.cryptoAddressUpdatedNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddressListController.cryptoAddressBalanceUpdated(notification:)), name: Notification.Name(CryptoNotification.cryptoAddressUpdatedNotification), object: nil)
     }
     
     func newAddressAdded() {
-        cryptoAddressTable.reloadData()
+        DispatchQueue.main.async {
+            self.cryptoAddressTable.reloadData()
+            self.cryptoAddressDetailTable.reloadData()
+        }
     }
     
     private func generateQRCode(from string: String) -> NSImage?{
@@ -90,10 +93,10 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
         if let walletId = selectedWallet.id {
             repo.deleteWallet(withId: walletId)
             self.cryptoAddressTable.reloadData()
+            self.cryptoAddressDetailTable.reloadData()
         }
     }
-
-   
+    
     private func initSelections(){
         let cryptoAddresses =  Wallet.allWallets()
         if let defaultAddressSelection = cryptoAddresses.first{
@@ -110,7 +113,7 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
         backgroundView.layer?.backgroundColor = NSColor.white.cgColor
     }
     
-    @objc func methodOfReceivedNotification1(notification: Notification){
+    @objc func cryptoAddressBalanceUpdated(notification: Notification){
         DispatchQueue.main.async {
             self.cryptoAddressTable.reloadData()
             self.cryptoAddressDetailTable.reloadData()
@@ -127,10 +130,10 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
     
     func numberOfRows(in tableView: NSTableView) -> Int{
         var rowCount = 0
-        if tableView == self.cryptoAddressTable{
+        if tableView == self.cryptoAddressTable {
             rowCount = Wallet.allWallets().count
-        } else{
-            if let cryptoAddress = selectedCryptoAddress{
+        } else {
+            if let cryptoAddress = selectedCryptoAddress {
                 rowCount = cryptoAddress.allCryptoBalances().count
             }
         }
@@ -144,7 +147,7 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
         var cellIdentifier = ""
         switch(tableColumn?.identifier.rawValue){
         case "AddressType"?:
-            if let cryptoAddressType = cryptoAddressTypes.first(where: { $0.id == item.addressTypeId }) {
+            if let cryptoAddressType = cryptoAddressTypes.first(where: { $0.id == item.blockChainId }) {
                 cellValue = cryptoAddressType.name
             }
             cellIdentifier = CellIdentifiers.AddressTypeCell
@@ -168,7 +171,7 @@ class AddressListController: NSViewController, NewAddressDelegate, NSTableViewDe
     }
     
     private func tableViewForAddressDetail(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?{
-        if let cryptoAddress = selectedCryptoAddress{
+        if let cryptoAddress = selectedCryptoAddress {
             let cryptoAddress = cryptoAddress.allCryptoBalances()[row]
             var cellValue = ""
             var cellIdentifier = ""

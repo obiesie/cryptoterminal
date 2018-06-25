@@ -24,7 +24,7 @@ class NewPositionController: NSViewController, DragDestinationDelegate,  NSTextF
     @IBOutlet weak var downloadProgressStatus: NSTextField!
     @IBOutlet weak var exchangeDataImportButton: NSButton!
     weak var delegate : NewPositionControllerDelegate?
-
+    
     lazy var sheetViewController: NSViewController = {
         let vc = self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "exchangeSelection"))
             as! ExchangeSelectionController
@@ -219,10 +219,6 @@ public extension NSControl {
     }
 }
 
-protocol NewPositionControllerDelegate: class {
-    func newPositionCreated()
-}
-
 class ExchangeSelectionController : NSViewController {
     
     @IBOutlet weak var exchangeAPIKeyTextField: NSTextField!
@@ -260,14 +256,14 @@ class ExchangeSelectionController : NSViewController {
             task = GetCoinbaseData(apiKey: exchangeAPIKeyTextField.stringValue, apiSecret: exchangeAPISecretTextField.stringValue)
         case "GDAX":
             task = GetGdaxData(apiKey : exchangeAPIKeyTextField.stringValue,
-                                           apiSecret : exchangeAPISecretTextField.stringValue,
-                                           passphrase:gdaxPassphraseTextField.stringValue )
+                               apiSecret : exchangeAPISecretTextField.stringValue,
+                               passphrase:gdaxPassphraseTextField.stringValue )
         case "POLONIEX":
             task = GetPoloniexData(apiKey : exchangeAPIKeyTextField.stringValue,
                                    apiSecret : exchangeAPISecretTextField.stringValue)
         case "KRAKEN":
             task = GetKrakenData(apiKey : exchangeAPIKeyTextField.stringValue,
-                                             apiSecret : exchangeAPISecretTextField.stringValue)
+                                 apiSecret : exchangeAPISecretTextField.stringValue)
         default:
             break
         }
@@ -287,7 +283,9 @@ class ExchangeSelectionController : NSViewController {
     }
 }
 
-
+protocol NewPositionControllerDelegate: class {
+    func newPositionCreated()
+}
 
 
 

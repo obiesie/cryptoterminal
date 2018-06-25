@@ -38,28 +38,28 @@ class Datasource : NSObject {
         do {
             db = try DatabaseQueue(path: dbPath.absoluteString, configuration: config)
             os_log("Initialising application database %@", log: OSLog.default, type: .default, dbPath.absoluteString)
-            initDatabase()
+            try initDatabase()
             os_log("Application database initializsation is complete", log: OSLog.default, type: .default)
-        } catch is DatabaseError {
-            os_log("DatabaseError initialising application database %@", log: OSLog.default, type: .default, dbPath.absoluteString)
+        } catch let error as DatabaseError {
+            os_log("DatabaseError - %@ initialising application database %@", log: OSLog.default, type: .default, error as CVarArg, dbPath.absoluteString)
             return
         } catch {
-            os_log("Unknown Error initialising application database %@", log: OSLog.default, type: .default, dbPath.absoluteString)
+            os_log("Error - %@ initialising application database %@", log: OSLog.default, type: .default, error as CVarArg, dbPath.absoluteString)
             return
         }
     }
     
-    func initDatabase(){
+    func initDatabase() throws {
         registerMigrations()
         os_log("Migrations registered", log: OSLog.default, type: .default)
         if let _db = db {
             os_log("About to migrate database", log: OSLog.default, type: .default)
-            do {
+            
                 try migrator.migrate(_db)
                 os_log("Database schema migration complete", log: OSLog.default, type: .default)
-            }catch {
+            /*} catch err {
                 os_log("Error during database schema migration", log: OSLog.default, type: .default)
-            }
+            }*/
         }
     }
 }

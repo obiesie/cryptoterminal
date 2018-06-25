@@ -7,23 +7,20 @@ import GRDB
 import Foundation
 
 class CryptoAddressType: NSObject,  RowConvertible, TableMapping, Persistable{
-    static var databaseTableName: String = "ADDRESS_TYPE"
+    static var databaseTableName: String = "BLOCKCHAIN"
     
     var id : Int64
     var name : String
     
-    
     required init(row: Row) {
         id = row[ "id"]
         name = row[ "type"]
-        
         super.init()
     }
     
     func encode(to container: inout PersistenceContainer) {
         container["id"] = id
         container["type"] = name
-        
     }
     
     /// Update record ID after a successful insertion
