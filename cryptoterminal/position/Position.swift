@@ -178,17 +178,17 @@ class Position : NSObject, RowConvertible, TableMapping, Persistable {
         
         for (_, importedRecord) in importedRecords.enumerated(){
             guard let _pair = importedRecord[CSVHeaders.PAIR],
-            let _purchaseDate = importedRecord[CSVHeaders.PURCHASE_DATE],
-            let _quantity = importedRecord[CSVHeaders.AMOUNT],
-            let _cost = importedRecord[CSVHeaders.COST],
-            let _side = importedRecord[CSVHeaders.SIDE],
-            let _exchangeName = importedRecord[CSVHeaders.EXCHANGE_NAME],
-            let currencyPair = Util.currencyPairs(from: _pair),
-            let baseCurrency = (Currency.currency(by: currencyPair.baseCurrency)),
-            let purchaseCurrency = (Currency.currency(by: currencyPair.counterCurrency)),
-            let exchange = CryptoExchange.allCryptoExchanges()
+                let _purchaseDate = importedRecord[CSVHeaders.PURCHASE_DATE],
+                let _quantity = importedRecord[CSVHeaders.AMOUNT],
+                let _cost = importedRecord[CSVHeaders.COST],
+                let _side = importedRecord[CSVHeaders.SIDE],
+                let _exchangeName = importedRecord[CSVHeaders.EXCHANGE_NAME],
+                let currencyPair = Util.currencyPairs(from: _pair),
+                let baseCurrency = (Currency.currency(by: currencyPair.baseCurrency)),
+                let purchaseCurrency = (Currency.currency(by: currencyPair.counterCurrency)),
+                let exchange = CryptoExchange.allCryptoExchanges()
                     .filter({$0.name.localizedUppercase==_exchangeName.localizedUppercase}).first
-            else {
+                else {
                     importStatus.append( nil )
                     continue
             }
@@ -237,7 +237,7 @@ class Position : NSObject, RowConvertible, TableMapping, Persistable {
         }
         let groups = Dictionary(grouping: transactions, by: { $0["order_id"] as! String })
         let parsedTransactions = groups.values.map{ $0.reduce(into : [String:String](),
-                                                        reduceSplitOrders(fieldsToCombine:["size", "fee"]))}
+                                                              reduceSplitOrders(fieldsToCombine:["size", "fee"]))}
         var parsedPositions = [Position?]()
         for transaction in parsedTransactions {
             if let vol = Double(transaction["size"] ?? ""),
@@ -284,7 +284,7 @@ class Position : NSObject, RowConvertible, TableMapping, Persistable {
                 let side = transaction["type"] as? String, ALLOWED_TRANSACTION_TYPES.contains(side),
                 let positionId = transaction["id"] as? String,
                 let _exchange = exchange {
-
+                
                 
                 parsedPositions.append( Position(itemId: Int64(currency.id), quantity: amount, purchaseDate: purchaseDate,
                                                  costOfPosition : nativeAmount, purchaseCurrency : nativeAmountCurrencyId,
